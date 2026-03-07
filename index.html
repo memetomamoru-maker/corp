@@ -101,7 +101,10 @@ nav.on .hamburger span { background:var(--ink); }
 
 /* ── HERO ── */
 .hero {
-  position:relative; height:100vh; min-height:600px;
+  background-image:url("https://raw.githubusercontent.com/memetomamoru-maker/corp/main/images/mv_1.jpg");
+  background-size:cover;
+  background-position:center;
+  position:relative; height:100vh;height:100svh; min-height:600px;
   overflow:hidden; display:flex; align-items:center; justify-content:center;
 }
 .hbg {
@@ -823,16 +826,6 @@ body { font-size:18px; }
   margin-bottom:14px !important;
 }
 /* ── PROFILE IMAGE FIX ── */
-#hero-canvas {
-  position:absolute;
-  top:0; left:0;
-  width:100%; height:100%;
-  pointer-events:none;
-  z-index:2;
-  display:block;
-}
-
-
 /* ── PAIN CARD REDESIGN ── */
 .pain-grid{
   display:grid;grid-template-columns:repeat(3,1fr);
@@ -1067,6 +1060,11 @@ body { font-size:18px; }
   font-weight:500;
 }
 
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(10,24,16,.72) 0%,rgba(10,24,16,.55) 100%);
+  z-index:1;
+}
 </style>
 </head>
 <body>
@@ -1119,7 +1117,6 @@ body { font-size:18px; }
   </svg>
   <div class="hparticles" id="hp"></div>
   <div class="hbutterflies" id="hb"></div>
-  <canvas id="hero-canvas"></canvas>
   <div class="hcontent">
     
     <h1 class="htitle">NUDGE<br>ROGUE<em>KOBE</em></h1>
@@ -1188,7 +1185,7 @@ body { font-size:18px; }
     </div>
     <div class="story-r">
       <div class="story-img-single">
-        <img src="https://raw.githubusercontent.com/memetomamoru-maker/corp/main/images/mv_4.jpg" alt="" loading="lazy">
+        <img src="https://raw.githubusercontent.com/memetomamoru-maker/corp/main/images/mv_5.jpg" alt="" loading="lazy">
       </div>
     </div>
   </div>
@@ -1282,13 +1279,13 @@ body { font-size:18px; }
     <div class="svc-card">
       <div class="svc-num">02</div>
       <div class="svc-cat">Web Consulting</div>
-      <div class="svc-sub">マーケ担当責任者10年以上の視点を、あなたのサイトへ</div>
+      <div class="svc-sub">大手IT企業15年の知見を、あなたのサイトへ</div>
       <div class="svc-divider"></div>
-      <p class="svc-body">貴社のサイト、作ったまま放置していませんか。代理店の言っていることが正しいのかわからない。社内に相談できる人間もいない。大手IT企業でマーケ担当責任者として10年以上・立教大学大学院MBA取得の視点で、まず状況を整理します。</p>
+      <p class="svc-body">大規模Webサービスの新規立ち上げ・UI/UX設計・グロース・PMを担当してきた経験をそのまま活かします。「作ったけれど成果が出ない」「何を改善すればいいかわからない」。Web事業の成長を本気で考えている方はぜひ。</p>
       <div class="svc-points">
-        <div class="svc-pt">✓ マーケ担当責任者として10年以上の実戦経験</div>
-        <div class="svc-pt">✓ 広告代理店MTG同席・第三者視点でのFB</div>
-        <div class="svc-pt">✓ MBA×経営視点での収益設計まで一気通貫</div>
+        <div class="svc-pt">✓ 大手IT企業15年のグロース・UX実戦経験</div>
+        <div class="svc-pt">✓ 「何が問題かわからない」状態から一緒に整理</div>
+        <div class="svc-pt">✓ FP視点での収益設計まで一気通貫で対応</div>
       </div>
       <div class="svc-foot">
         <a href="./web_lp.html" class="svc-link">料金・サービス詳細を見る →</a>
@@ -1538,133 +1535,6 @@ body { font-size:18px; }
   <div class="f-copy">© 2027 Nudge Rogue 合同会社　Kobe, Japan</div>
 </footer>
 
-<script>
-// NAV scroll
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => nav.classList.toggle('on', scrollY > 60), { passive:true });
 
-// Hamburger
-const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
-let menuOpen = false;
-
-function openMenu() {
-  menuOpen = true;
-  hamburger.classList.add('open');
-  mobileMenu.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeMenu() {
-  menuOpen = false;
-  hamburger.classList.remove('open');
-  mobileMenu.classList.remove('open');
-  document.body.style.overflow = '';
-}
-hamburger.addEventListener('click', () => menuOpen ? closeMenu() : openMenu());
-
-// Particles
-const hp = document.getElementById('hp');
-for (let i = 0; i < 34; i++) {
-  const p = document.createElement('div'); p.className = 'hp';
-  const sz = Math.random()*3+1, dl = Math.random()*12, dr = Math.random()*10+8;
-  p.style.cssText = `width:${sz}px;height:${sz}px;left:${Math.random()*100}%;bottom:0;--drift:${(Math.random()-.5)*100}px;animation-duration:${dr}s;animation-delay:-${dl}s;opacity:${Math.random()*.5+.2};filter:blur(${Math.random()*.8}px)`;
-  hp.appendChild(p);
-}
-// Butterflies
-const hb = document.getElementById('hb');
-for (let i = 0; i < 7; i++) {
-  const b = document.createElement('div'); b.className = 'hb';
-  const sx=Math.random()*80+10, sy=Math.random()*60+20, ex=Math.random()*80+10, ey=Math.random()*60+10;
-  const mx=(sx+ex)/2+(Math.random()-.5)*26, my=Math.min(sy,ey)-Math.random()*16-6;
-  b.style.cssText = `--sx:${sx}vw;--sy:${sy}vh;--mx:${mx}vw;--my:${my}vh;--ex:${ex}vw;--ey:${ey}vh;--mr:${(Math.random()-.5)*26}deg;--er:${(Math.random()-.5)*16}deg;animation-duration:${Math.random()*14+10}s;animation-delay:-${Math.random()*10}s;left:0;top:0;transform:translate(${sx}vw,${sy}vh)`;
-  hb.appendChild(b);
-}
-
-document.getElementById('cform').addEventListener('submit', function(e){
-  e.preventDefault();
-  this.style.display = 'none';
-  document.getElementById('cformSuccess').style.display = 'block';
-});
-
-
-// Floating CTA: 常時表示
-
-</script>
-
-<!-- FLOATING CTA -->
-<div class="float-cta" id="floatCta">
-  <a href="#contact-form" class="float-cta-btn" id="floatCtaBtn">まず30分、話してみる</a>
-  <span class="float-cta-note">完全無料 · 勧誘なし</span>
-</div>
-
-
-
-
-
-
-<script>
-(function(){
-  var canvas = document.getElementById('hero-canvas');
-  if(!canvas) return;
-  var ctx = canvas.getContext('2d');
-  var stars = [];
-  var W = 0, H = 0;
-
-  function resize(){
-    var rect = canvas.parentElement.getBoundingClientRect();
-    W = canvas.width  = rect.width  || window.innerWidth;
-    H = canvas.height = rect.height || window.innerHeight;
-  }
-
-  function rand(min, max){ return Math.random()*(max-min)+min; }
-
-  function createStar(){
-    var isGreen = Math.random() < 0.15;
-    return {
-      x: rand(0, W), y: rand(0, H),
-      r: isGreen ? rand(1.2, 2.4) : rand(0.4, 1.4),
-      targetAlpha: rand(0.3, isGreen ? 0.7 : 0.9),
-      speed: rand(0.004, 0.012),
-      phase: rand(0, Math.PI * 2),
-      isGreen: isGreen
-    };
-  }
-
-  for(var i = 0; i < 120; i++) stars.push(createStar());
-
-  var t = 0;
-  function loop(){
-    ctx.clearRect(0, 0, W, H);
-    t += 0.016;
-    for(var i = 0; i < stars.length; i++){
-      var s = stars[i];
-      var a = s.targetAlpha * (0.5 + 0.5 * Math.sin(t * s.speed * 60 + s.phase));
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      if(s.isGreen){
-        ctx.fillStyle = 'rgba(160,230,180,' + a + ')';
-        ctx.shadowColor = 'rgba(100,200,130,0.6)';
-        ctx.shadowBlur = 6;
-      } else {
-        ctx.fillStyle = 'rgba(240,250,245,' + a + ')';
-        ctx.shadowColor = 'transparent';
-        ctx.shadowBlur = 0;
-      }
-      ctx.fill();
-    }
-    ctx.shadowBlur = 0;
-    requestAnimationFrame(loop);
-  }
-
-  window.addEventListener('load', function(){ resize(); loop(); });
-  window.addEventListener('resize', function(){
-    resize();
-    for(var i = 0; i < stars.length; i++){
-      stars[i].x = rand(0, W);
-      stars[i].y = rand(0, H);
-    }
-  });
-})();
-</script>
 </body>
 </html>

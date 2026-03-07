@@ -42,28 +42,26 @@ nav{
   transition:all .3s;white-space:nowrap;
 }
 .nav-cta:hover{background:#3d7050;transform:translateY(-1px);}
-
+.nav-back{
+  font-size:.78rem;color:rgba(255,255,255,.4);
+  text-decoration:none;letter-spacing:.1em;
+  transition:color .3s;white-space:nowrap;
+}
 .nav-back:hover{color:rgba(255,255,255,.75);}
 
 /* ══════════════ HERO ══════════════ */
 .lp-hero{
-  min-height:100vh;
+  min-height:100vh;min-height:100svh;
   background:var(--ink);
   display:flex;align-items:center;
-  padding:120px var(--H) 96px;
+  padding:120px var(--H) 80px;
   position:relative;overflow:hidden;
-
   background-image:url("https://raw.githubusercontent.com/memetomamoru-maker/corp/main/images/mv_3.jpg");
   background-size:cover;
-  background-position:center 50%;
-}
+  background-position:center;}
 .lp-hero::before{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(10,24,16,.75) 0%,rgba(10,24,16,.58) 100%)}
-#hero-canvas{
-  position:absolute;top:0;left:0;
-  width:100%;height:100%;
-  pointer-events:none;z-index:2;display:block;
+  background:linear-gradient(to bottom,rgba(10,24,16,.75) 0%,rgba(10,24,16,.58) 100%);
 }
 .hero-inner{
   position:relative;z-index:10;
@@ -82,7 +80,7 @@ nav{
 .hero-h1 b{color:rgba(160,230,180,.9);font-weight:700;}
 .hero-sub{
   font-size:1.02rem;color:rgba(215,245,228,.7);
-  line-height:2.3;margin-bottom:40px;max-width:500px;
+  line-height:2.3;margin-bottom:44px;max-width:500px;
 }
 .hero-cta-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:14px;}
 .hero-btn{
@@ -102,7 +100,7 @@ nav{
 }
 
 /* ══════════════ SECTION COMMON ══════════════ */
-.sec{padding:96px var(--H);}
+.sec{padding:108px var(--H);}
 .sec-bg-white{background:var(--white);}
 .sec-bg-cream{background:var(--cream);}
 .sec-bg-gm{background:var(--gm);}
@@ -137,11 +135,17 @@ nav{
   margin-bottom:0;letter-spacing:.02em;
 }
 .ttl b{font-weight:700;}
-.sec-header{margin-bottom:56px;}
+.sec-header{margin-bottom:64px;}
 
 /* ══════════════ WHY US ══════════════ */
-
-
+.strength-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--gp);border:1px solid var(--gp);
+}
+.strength-item{
+  background:var(--white);padding:44px 36px;
+  transition:background .25s;
+}
 .strength-item:hover{background:var(--gm);}
 .s-num{
   font-family:'Bebas Neue',sans-serif;font-size:4rem;
@@ -159,14 +163,24 @@ nav{
   display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
   background:var(--gp);border:1px solid var(--gp);
 }
-
+.case-card {
+  background:var(--cream);
+  padding:44px 40px;
+  transition:box-shadow .25s, transform .25s, border-left-color .25s;
+  position:relative;
+  border-left:3px solid transparent;
+}
 .case-card:hover{ border-left-color:var(--green); transform:translateY(-3px); box-shadow:0 8px 32px rgba(74,140,101,.1); }
 .case-n{
   font-family:'Bebas Neue',sans-serif;font-size:4.5rem;
   color:rgba(200,216,192,.35);line-height:1;
   margin-bottom:20px;display:block;letter-spacing:.04em;
 }
-.case-top{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--gp);}
+.case-top{
+  padding-bottom:22px;
+  border-bottom:1px solid var(--gp);
+  margin-bottom:22px;
+}
 .case-tag{
   font-size:.78rem;font-weight:700;letter-spacing:.18em;
   color:var(--tx2);text-transform:uppercase;
@@ -186,39 +200,65 @@ nav{
 .case-sol{font-size:.97rem;line-height:2.15;color:var(--tx2);}
 
 /* ══════════════ PRICE ══════════════ */
-
-
-
-
-
-
-
-
-
-.pc-price small{
-  font-size:.45em;
-  letter-spacing:.04em;
-  vertical-align:baseline;
+.price-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+}
+.price-card{
+  padding:40px 32px;border:1px solid var(--gp);
+  border-radius:2px;background:var(--gm);
+  display:flex;flex-direction:column;
+}
+.price-card.featured{
+  background:var(--white);
+  border-color:var(--green);
+  box-shadow:0 4px 32px rgba(74,140,101,.12);
+  position:relative;
+}
+.price-card.featured::before{
+  content:'おすすめ';position:absolute;top:-1px;left:32px;
+  font-family:'Shippori Mincho',serif;font-size:.72rem;
+  letter-spacing:.1em;padding:4px 12px;
+  background:var(--green);color:#fff;border-radius:0 0 2px 2px;
+}
+.pc-label{
+  font-family:'Cormorant Garamond',serif;font-size:.82rem;
+  font-style:italic;letter-spacing:.2em;color:var(--green);
+  margin-bottom:12px;
+}
+.pc-name{
+  font-family:'Shippori Mincho',serif;font-size:1.15rem;
+  font-weight:700;margin-bottom:6px;line-height:1.6;color:var(--ink);
+}
+.pc-detail{font-size:.84rem;color:var(--tx2);margin-bottom:20px;letter-spacing:.04em;}
+.pc-price{
+  font-family:'Cormorant Garamond',serif;font-size:2.6rem;
+  font-style:italic;color:var(--ink);margin-bottom:16px;
+  letter-spacing:-.01em;line-height:1;
+}
+.pc-price small{font-size:.85rem;font-style:normal;letter-spacing:0;}
+.pc-desc{font-size:.93rem;line-height:2.1;color:var(--tx2);margin-top:auto;}
+.price-note{
+  margin-top:32px;font-size:.88rem;color:var(--tx2);
+  font-style:italic;line-height:2.1;
+  padding-top:24px;border-top:1px solid var(--gp);
 }
 
-
-
-
-.pc-custom strong{
-  color:var(--green);
-  font-family:'Shippori Mincho',serif;
-  display:block;
-  margin-bottom:4px;
-  font-size:.95rem;
+/* ══════════════ FLOW ══════════════ */
+.flow-wrap{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:0;
 }
-@media(max-width:768px){
-  
+.flow-item{
+  padding:44px 36px;background:var(--white);
+  border:1px solid var(--gp);position:relative;
 }
-
-
-
-.flow-item+
-
+.flow-item+.flow-item{border-left:none;}
+.flow-arrow{
+  position:absolute;right:-18px;top:50%;
+  transform:translateY(-50%);
+  font-size:1.2rem;color:rgba(200,216,192,.7);
+  z-index:2;font-family:'Cormorant Garamond',serif;
+}
 .flow-n{
   font-family:'Bebas Neue',sans-serif;font-size:2.8rem;
   color:var(--gp);letter-spacing:.1em;margin-bottom:10px;line-height:1;
@@ -235,7 +275,11 @@ nav{
 .flow-sub{font-size:.93rem;color:var(--tx2);line-height:2.1;}
 
 /* ══════════════ PROFILE ══════════════ */
-
+.profile-card{
+  display:flex;gap:48px;align-items:flex-start;
+  background:var(--white);border:1px solid var(--gp);
+  padding:52px 52px;border-radius:2px;
+}
 .profile-img-wrap{flex-shrink:0;}
 .profile-img-wrap img{
   width:120px;height:120px;border-radius:50%;
@@ -337,7 +381,7 @@ nav{
 .form-success p{font-size:.93rem;color:var(--tx2);line-height:2.0;}
 
 /* ══════════════ FLOAT ══════════════ */
-
+.float-cta{position:fixed;bottom:28px;right:28px;z-index:500;display:flex;flex-direction:column;align-items:flex-end;}
 .float-btn{
   display:inline-flex;align-items:center;gap:10px;
   padding:14px 24px;background:var(--green);color:#fff;
@@ -370,244 +414,60 @@ footer{
 .f-back:hover{color:rgba(255,255,255,.7);}
 
 /* ══════════════ RESPONSIVE ══════════════ */
-@media(max-width:960px){
-  
-  
-
-.price-card{
-  padding:48px 40px;
-  background:var(--white);
-  display:flex;
-  flex-direction:column;
-}
-.price-card.featured{
-  background:var(--gm);
-}
-
-.pc-label{
-  font-family:'Cormorant Garamond',serif;
-  font-size:.88rem;
-  font-style:italic;
-  letter-spacing:.18em;
-  color:var(--green);
-  margin-bottom:8px;
-  display:block;
-}
-.pc-name{
-  font-family:'Shippori Mincho',serif;
-  font-size:1.2rem;
-  font-weight:700;
-  color:var(--ink);
-  margin-bottom:8px;
-  line-height:1.5;
-  letter-spacing:.04em;
-}
-.pc-detail{
-  font-size:.88rem;
-  color:var(--tx2);
-  margin-bottom:24px;
-  letter-spacing:.04em;
-  line-height:1.9;
-  padding-bottom:24px;
-  border-bottom:1px solid var(--gp);
-}
-.pc-price{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:2.8rem;
-  font-style:normal;
-  color:var(--ink);
-  margin-bottom:8px;
-  letter-spacing:.02em;
-  line-height:1.1;
-}
-.pc-price small{
-  font-size:.45em;
-  letter-spacing:.04em;
-  vertical-align:baseline;
-}
 
 
-.pc-desc{
-  font-size:.93rem;
-  line-height:2.1;
-  color:var(--tx);
-  margin-top:20px;
-  flex:1;
-}
-.pc-custom{
-  margin-top:28px;
-  padding-top:24px;
-  border-top:1px solid var(--gp);
-  font-size:.88rem;
-  color:var(--tx2);
-  line-height:1.9;
-}
-.pc-custom strong{
-  color:var(--green);
-  font-family:'Shippori Mincho',serif;
-  display:block;
-  margin-bottom:4px;
-  font-size:.95rem;
-}
+
+.hero-targets{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:40px;}
+.hero-target-item{font-family:'Shippori Mincho',serif;font-size:.88rem;color:rgba(200,230,210,.75);letter-spacing:.06em;}
+.hero-target-sep{color:rgba(200,230,210,.3);font-size:.8rem;}
+.pc-was{display:inline-block;font-family:'Bebas Neue',sans-serif;font-size:.55em;color:var(--tx2);text-decoration:line-through;margin-right:6px;font-style:normal;}
+.pc-save{font-size:.84rem;color:var(--green);font-family:'Shippori Mincho',serif;font-weight:700;letter-spacing:.04em;margin-bottom:20px;background:rgba(74,140,101,.08);padding:6px 14px;display:inline-block;border-radius:2px;}
+.case-example{margin-top:16px;padding:14px 16px;background:rgba(74,140,101,.06);border-left:2px solid var(--green);font-size:.88rem;line-height:1.9;color:var(--tx2);}
+.case-ex-label{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--green);font-weight:600;margin-right:4px;}
+.pc-cta-link{display:inline-block;font-family:'Shippori Mincho',serif;font-size:.92rem;font-weight:700;color:#fff;background:var(--green);padding:12px 24px;border-radius:2px;text-decoration:none;letter-spacing:.06em;transition:background .2s;}
+.pc-cta-link:hover{background:var(--green-d);}
+
+
 @media(max-width:768px){
-  
-}
+  html,body{overflow-x:hidden;}
 
+  .lp-hero{min-height:100svh;padding:100px 24px 60px;}
+  .hero-h1{font-size:clamp(1.7rem,6vw,2.4rem);}
+  .hero-targets{gap:6px;}
+  .hero-target-sep{display:none;}
+  .hero-target-item{
+    font-size:.78rem;
+    background:rgba(255,255,255,.06);
+    padding:3px 10px;
+    border-radius:20px;
+  }
 
-  .flow-item+.flow-item{border-left:1px solid var(--gp);border-top:none;}
+  .sec{padding:64px 24px;}
+  .sec-header{margin-bottom:40px;}
+
+  .strength-grid{grid-template-columns:1fr;}
+  .strength-item{border-right:none;border-bottom:1px solid var(--gp);padding:36px 24px;}
+  .strength-item:last-child{border-bottom:none;}
+
+  .cases-grid{grid-template-columns:1fr;}
+  .case-card,.case-card-featured{padding:36px 24px;grid-column:span 1;}
+
+  .price-grid{grid-template-columns:1fr;}
+  .price-card,.price-card-featured{padding:36px 24px;}
+  .pc-price{font-size:2.2rem;}
+
+  .flow-wrap{grid-template-columns:1fr;}
+  .flow-item{padding:36px 24px;}
   .flow-arrow{display:none;}
-  .profile-card{flex-direction:column;gap:24px;padding:32px 24px;}
-  .case-card {
-  background:var(--cream);
-  padding:48px 40px;
-  transition:box-shadow .25s, transform .25s, border-left-color .25s;
-  position:relative;
-  border-left:3px solid transparent;
-}
-  .strength-item{padding:48px 40px;border-right:1px solid var(--gp);}
-  footer{flex-direction:column;text-align:center;gap:8px;}
-  .float-cta{bottom:16px;right:16px;}
-  .nav-back{display:none;}
+
+  .profile-card{flex-direction:column;gap:24px;padding:36px 24px;}
+  .profile-img-wrap{width:120px;height:148px;}
+
+  .float-btn{bottom:20px;right:20px;padding:12px 20px;font-size:.82rem;}
+
+  .nav-right .nav-back{display:none;}
 }
 
-.case-card-featured {
-  border-left:3px solid var(--green) !important;
-  background:var(--gm) !important;
-}
-.price-card-featured {
-  border:2px solid var(--green) !important;
-  background:var(--gm) !important;
-  position:relative;
-}
-
-
-.pc-was {
-  display:inline-block;
-  font-size:.75em;
-  color:var(--tx2);
-  text-decoration:line-through;
-  margin-right:8px;
-  font-family:'Cormorant Garamond',serif;
-}
-.pc-save {
-  display:inline-block;
-  font-size:.82rem;
-  color:var(--green);
-  font-family:'Shippori Mincho',serif;
-  font-weight:700;
-  letter-spacing:.04em;
-  margin-bottom:20px;
-  background:rgba(74,140,101,.08);
-  padding:4px 12px;
-  border-radius:2px;
-}
-
-
-.case-example {
-  margin-top:16px;
-  padding:14px 16px;
-  background:rgba(74,140,101,.06);
-  border-left:2px solid var(--green);
-  font-size:.88rem;
-  line-height:1.9;
-  color:var(--tx2);
-}
-.case-ex-label {
-  font-family:'Cormorant Garamond',serif;
-  font-style:italic;
-  color:var(--green);
-  font-weight:600;
-  margin-right:4px;
-}
-
-
-.price-custom-note{
-  margin-top:40px;
-  padding:36px 40px;
-  background:var(--gm);
-  border:1px solid var(--gp);
-  border-radius:2px;
-}
-.pcn-title{
-  font-family:'Shippori Mincho',serif;
-  font-size:1.1rem;
-  font-weight:700;
-  color:var(--ink);
-  margin-bottom:12px;
-  letter-spacing:.06em;
-}
-.price-custom-note p{
-  font-size:.93rem;
-  line-height:2.1;
-  color:var(--tx2);
-}
-
-.hero-targets{
-  display:flex;align-items:center;flex-wrap:wrap;gap:8px;
-  margin-bottom:40px;
-}
-.hero-target-item{
-  font-family:'Shippori Mincho',serif;
-  font-size:.88rem;
-  color:rgba(200,230,210,.75);
-  letter-spacing:.06em;
-  line-height:1.6;
-}
-.hero-target-sep{
-  color:rgba(200,230,210,.3);
-  font-size:.8rem;
-}
-
-
-/* ── PC GRIDS (base) ── */
-.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gp);margin-top:52px;}
-.strength-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--gp);}
-.flow-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gp);margin-top:52px;}
-
-
-.pc-cta-link {
-  display:inline-block;
-  font-family:'Shippori Mincho',serif;
-  font-size:.92rem;
-  font-weight:700;
-  color:#fff;
-  background:var(--green);
-  padding:12px 24px;
-  border-radius:2px;
-  text-decoration:none;
-  letter-spacing:.06em;
-  transition:background .2s;
-}
-.pc-cta-link:hover { background:var(--green-d); }
-
-.price-note {
-  margin-top: 32px;
-  font-size: .88rem;
-  color: var(--tx2);
-  line-height: 2.0;
-  letter-spacing: .03em;
-}
-
-.profile-body {
-  flex: 1;
-  min-width: 0;
-}
-
-.profile-body h3 {
-  font-family: 'Shippori Mincho', serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 8px;
-  letter-spacing: .06em;
-}
-
-.profile-body p {
-  font-size: .95rem;
-  line-height: 2.2;
-  color: var(--tx);
-  margin-top: 16px;
-}
 </style>
 </head>
 <body>
@@ -621,11 +481,10 @@ footer{
 </nav>
 
 <section class="lp-hero">
-  <canvas id="hero-canvas"></canvas>
   <div class="hero-inner">
     <span class="hero-eyebrow">Web Consulting — Nudge Rogue KOBE</span>
-    <h1 class="hero-h1">貴社のサイト、<br><b>作ったまま放置していませんか。</b></h1>
-    <p class="hero-sub">成果が見えない。代理店の言っていることが正しいのかわからない。社内に相談できる人間もいない。<br>マーケティング担当責任者として10年以上・大手IT企業15年の視点で、まず状況を整理します。</p>
+    <h1 class="hero-h1">そのサイト、<br><b>放置していませんか。</b></h1>
+    <p class="hero-sub">作ったはいいが、成果が見えない。何が問題かもわからない。<br>大手IT企業15年の視点で、課題をまず言語化します。</p>
     <div class="hero-targets">
       <span class="hero-target-item">中小企業・スタートアップのWeb担当者</span>
       <span class="hero-target-sep">／</span>
@@ -649,18 +508,18 @@ footer{
   <div class="strength-grid">
     <div class="strength-item">
       <span class="s-num">15</span>
-      <div class="s-title">マーケ担当責任者として10年以上</div>
-      <div class="s-body">LINEヤフーで15年以上、大規模Webサービスの新規立ち上げ・マーケティング・グロース・PMを担当責任者として歴任。広告予算配分・KPI設計・代理店管理を現場で回してきた経験から、広告費の妥当性・費用対効果を判断する視点があります。</div>
-    </div>
-    <div class="strength-item">
-      <span class="s-num">MBA</span>
-      <div class="s-title">経営視点での収益設計</div>
-      <div class="s-body">立教大学大学院 経営管理学修士（MBA）取得。サイトの「育てる視点」と「稼がせる視点」を両方持っています。制作会社には頼めない、収益構造・マネタイズまで踏み込んだ提案ができます。</div>
+      <div class="s-title">大手ITでの実戦経験</div>
+      <div class="s-body">LINEヤフーで15年以上、大規模Webサービスの新規立ち上げ・UI/UX設計・グロース・PMを担当。理論ではなく現場で培った視点でお答えします。</div>
     </div>
     <div class="strength-item">
       <span class="s-num">→</span>
       <div class="s-title">「何が問題かわからない」から始められる</div>
-      <div class="s-body">課題が言語化できていない状態でも大丈夫です。まず状況を整理するところから一緒に入ります。専門知識がなくても、社内に詳しい人がいなくても構いません。</div>
+      <div class="s-body">課題が言語化できていない状態でも大丈夫です。壁打ち診断45分で、問題を一緒に整理するところから始めます。</div>
+    </div>
+    <div class="strength-item">
+      <span class="s-num">FP</span>
+      <div class="s-title">収益設計まで一気通貫</div>
+      <div class="s-body">FP資格も持つため、サイトのマネタイズ・収益構造まで踏み込んだ提案ができます。「育てる視点」と「稼がせる視点」を両方持っています。</div>
     </div>
   </div>
 </section>
@@ -679,28 +538,19 @@ footer{
         <div class="case-issue">サイトを作ったが、成果が出ない</div>
       </div>
       <span class="case-tag-sol">Approach</span>
-      <div class="case-sol">UI/UX・マネタイズ・導線設計の観点から現状を診断。何が問題で、どこから手をつければいいかを状況整理してお伝えします。</div>
+      <div class="case-sol">UI/UX・マネタイズ・導線設計の観点から現状を診断。何が問題で、どこから手をつければいいかを優先度マップで整理します。</div>
     </div>
     <div class="case-card">
       <span class="case-n">02</span>
       <div class="case-top">
         <span class="case-tag">Situation</span>
-        <div class="case-issue">広告出稿しているが、費用対効果が適正かわからない</div>
-      </div>
-      <span class="case-tag-sol">Approach</span>
-      <div class="case-sol">広告代理店とのMTGに同席し、提出資料をもとに第三者視点でフィードバックします。「この数字は正しいのか」を一緒に確認します。</div>
-    </div>
-    <div class="case-card">
-      <span class="case-n">03</span>
-      <div class="case-top">
-        <span class="case-tag">Situation</span>
         <div class="case-issue">制作会社に任せきりで、数字が見えない</div>
       </div>
       <span class="case-tag-sol">Approach</span>
-      <div class="case-sol">Googleアナリティクスの導入支援から、設置後の改善仮説の立て方・検証まで並走します。</div>
+      <div class="case-sol">Googleアナリティクスの読み方から、改善の仮説立て・検証まで一緒に進めます。</div>
     </div>
     <div class="case-card">
-      <span class="case-n">04</span>
+      <span class="case-n">03</span>
       <div class="case-top">
         <span class="case-tag">Situation</span>
         <div class="case-issue">リニューアルしたいが、何から始めればいいかわからない</div>
@@ -709,28 +559,31 @@ footer{
       <div class="case-sol">現状分析から要件整理まで。制作会社への発注前の「整理役」として入ることで、無駄なコストを防げます。</div>
     </div>
     <div class="case-card">
+      <span class="case-n">04</span>
+      <div class="case-top">
+        <span class="case-tag">Situation</span>
+        <div class="case-issue">集客はできているが、収益につながらない</div>
+      </div>
+      <span class="case-tag-sol">Approach</span>
+      <div class="case-sol">マネタイズ構造・LPの訴求・価格設計まで踏み込んで見直します。FP視点での収益設計も合わせて対応できます。</div>
+    </div>
+    <div class="case-card">
       <span class="case-n">05</span>
       <div class="case-top">
         <span class="case-tag">Situation</span>
-        <div class="case-issue">社内に相談できる専門家がいない</div>
+        <div class="case-issue">社内に相談できる人間がいない</div>
       </div>
       <span class="case-tag-sol">Approach</span>
-      <div class="case-sol">週次・月次で「壁打ち相手」として入ります。Web・マーケ領域の専門知識が社内にない場合でも、意思決定の前に話せる場所をつくります。顧問契約での継続サポートも対応しています。
-      <div class="case-example">
-        <span class="case-ex-label">例）</span>社内にWebマーケの担当者がおらず、制作会社・広告代理店・SNS運用をそれぞれ別に外注していて、全体を見渡せる人間がいない、というEC事業者の方。壁打ち顧問＋広告MTG同席を組み合わせてご依頼。
-      </div></div>
+      <div class="case-sol">週次・月次で「壁打ち相手」として入ります。意思決定の前に話せる場所があるだけで、動くスピードが変わります。</div>
     </div>
-    <div class="case-card case-card-featured">
+    <div class="case-card">
       <span class="case-n">06</span>
       <div class="case-top">
         <span class="case-tag">Situation</span>
         <div class="case-issue">LPを作ったが、反応が薄い</div>
       </div>
       <span class="case-tag-sol">Approach</span>
-      <div class="case-sol">ターゲット設定・コピー・導線・CTA設計を一通り見直します。10年以上のマーケ担当責任者経験をもとに、コンバージョン改善の具体策を提案します。
-      <div class="case-example">
-        <span class="case-ex-label">例）</span>採用サービスのLPを自社制作したがCVRが低い、という人材系スタートアップの方。スポット診断レポート＋壁打ち診断を組み合わせてご依頼。
-      </div></div>
+      <div class="case-sol">ターゲット設定・コピー・導線・CTA設計を一通り見直します。大手IT企業での経験をもとに、コンバージョン改善の具体策を提案します。</div>
     </div>
   </div>
 </section>
@@ -738,10 +591,11 @@ footer{
 <!-- PRICING -->
 <section class="sec sec-bg-white">
   <div class="sec-header">
-    <span class="lbl">Plans & Pricing</span>
+    <span class="lbl">Plans &amp; Pricing</span>
     <h2 class="ttl">課題の深さに合わせて<br><b>選べる6つのプラン</b></h2>
   </div>
   <div class="price-grid">
+
     <div class="price-card featured">
       <div class="pc-label">まずここから・初回無料</div>
       <div class="pc-name">壁打ち診断</div>
@@ -750,22 +604,29 @@ footer{
       <div class="pc-save">¥5,000オフ・創業記念価格</div>
       <div class="pc-desc">「何が問題かわからない」状態の整理に最適。15年の視点で課題を言語化します。初回ヒアリング30分は無料です。</div>
     </div>
+
     <div class="price-card">
       <div class="pc-label">単発で同席・確認したい</div>
       <div class="pc-name">広告MTG同席診断</div>
       <div class="pc-detail">1回 ／ オンライン同席 ／ FB資料付き</div>
       <div class="pc-price"><span class="pc-was">¥50,000</span>¥44,000</div>
       <div class="pc-save">¥6,000オフ・創業記念価格</div>
-      <div class="pc-desc">代理店とのMTGに同席し、提出資料をもとに第三者視点でフィードバック。広告費が適切に使われているか、第三者の目で一緒に確認します。</div>
+      <div class="pc-desc">広告代理店とのMTGに同席し、提出資料をもとに第三者視点でフィードバックします。広告費が適切に使われているか、費用対効果は妥当かを一緒に確認します。
+        <div class="case-example"><span class="case-ex-label">例）</span>月次レポートのCPA・CTRが改善しているように見えるが本当に効果が出ているのか確認したい、という飲食チェーン運営会社の担当者の方。MTG同席＋診断レポートを組み合わせてご依頼。</div>
+      </div>
     </div>
+
     <div class="price-card">
       <div class="pc-label">成果物として受け取る</div>
       <div class="pc-name">スポット診断レポート</div>
       <div class="pc-detail">PDF納品 ／ 約1週間</div>
       <div class="pc-price"><span class="pc-was">¥80,000</span>¥72,000</div>
       <div class="pc-save">¥8,000オフ・創業記念価格</div>
-      <div class="pc-desc">UI/UX・マネタイズ・導線設計を総合診断。改善の優先順位と具体的な提案をPDFで納品します。</div>
+      <div class="pc-desc">UI/UX・マネタイズ・導線設計を総合診断。改善の優先順位と具体的な提案をPDFで納品します。
+        <div class="case-example"><span class="case-ex-label">例）</span>採用サービスのLPを自社制作したがCVRが低い、という人材系スタートアップの方。スポット診断レポート＋壁打ち診断を組み合わせてご依頼。</div>
+      </div>
     </div>
+
     <div class="price-card">
       <div class="pc-label">継続的に伴走する</div>
       <div class="pc-name">月次コンサルティング</div>
@@ -774,28 +635,32 @@ footer{
       <div class="pc-save">¥6,000オフ・創業記念価格</div>
       <div class="pc-desc">月1回の面談で現状レビュー・改善施策の立案・優先順位整理を行います。「何をすべきか」を毎月明確にしたい方向け。実行は社内で行う前提のプランです。</div>
     </div>
-    <div class="price-card price-card-featured">
+
+    <div class="price-card featured">
       <div class="pc-label">おすすめ ／ 社内に専門家がいない方へ</div>
       <div class="pc-name">Webマーケ壁打ち顧問</div>
       <div class="pc-detail">月2回面談 ／ テキスト相談無制限 ／ MTG同席1回/月含む<br><span style="font-size:.82em;color:var(--tx2);">最低契約3ヶ月 ／ 以降1ヶ月単位で継続・解約可</span></div>
       <div class="pc-price">¥200,000<small> /月〜</small></div>
       <div class="pc-save">詳細・ご予算はお気軽にご相談ください</div>
-      <div class="pc-desc">月次コンサルとの違いは「深さと速さ」です。テキスト相談無制限で意思決定をリアルタイムでサポート。広告MTGへの同席・代理店への対応・数字の解釈まで、社内に専門家がいる状態をつくります。<br><br>「月1回では間に合わない」「判断を一人で抱えている」という方に。</div>
+      <div class="pc-desc">月次コンサルとの違いは「深さと速さ」です。テキスト相談無制限で意思決定をリアルタイムでサポート。広告MTGへの同席・代理店への対応・数字の解釈まで、社内に専門家がいる状態をつくります。<br><br>「月1回では間に合わない」「判断を一人で抱えている」という方に。
+        <div class="case-example"><span class="case-ex-label">例）</span>社内にWebマーケの担当者がおらず、制作会社・広告代理店・SNS運用をそれぞれ別に外注していて、全体を見渡せる人間がいない、というEC事業者の方。壁打ち顧問＋広告MTG同席を組み合わせてご依頼。</div>
+      </div>
     </div>
+
     <div class="price-card">
       <div class="pc-label">その他・なんでもご相談を</div>
       <div class="pc-name">カスタム対応</div>
       <div class="pc-detail">内容・規模によりご相談 ／ オンライン</div>
-      <div class="pc-price" style="font-size:2rem;line-height:1.4;">要相談</div>
+      <div class="pc-price" style="font-size:2rem;line-height:1.4;padding-top:8px;">要相談</div>
       <div class="pc-save">まずはお気軽にどうぞ</div>
-      <div class="pc-desc">上記プランに当てはまらないお困りごとも、柔軟に対応します。「何から相談すればいいかわからない」という方も歓迎です。内容をお聞きした上でオーダーメイドでご提案します。</div>
+      <div class="pc-desc">上記プランに当てはまらないお困りごとも、柔軟に対応します。「どのプランが合うかわからない」「複数組み合わせたい」「予算が合わない」など、状況をお聞きした上でオーダーメイドでご提案します。</div>
       <div style="margin-top:auto;padding-top:24px;">
         <a href="#contact-form" class="pc-cta-link">無料ヒアリングを予約する →</a>
       </div>
     </div>
+
   </div>
   <p class="price-note">※ 初回ヒアリング（30分）は無料です。プランはヒアリング後にゆっくり決めてください。<br>※ 対面をご希望の方はスケジュール調整の上お伺いします（交通費実費をご負担ください）。</p>
-
 </section>
 
 <!-- FLOW -->
@@ -913,70 +778,6 @@ footer{
   <div class="f-copy">© 2027 Nudge Rogue 合同会社</div>
 </footer>
 
-<script>
-function submitForm(){
-  var name=document.getElementById('fname').value.trim();
-  var email=document.getElementById('femail').value.trim();
-  if(!name||!email){alert('お名前とメールアドレスをご入力ください。');return;}
-  document.getElementById('form-body').style.display='none';
-  document.getElementById('form-success').style.display='block';
-  window.scrollTo({top:document.getElementById('contact-form').offsetTop-80,behavior:'smooth'});
-}
-</script>
-<script>
-(function(){
-  var canvas = document.getElementById('hero-canvas');
-  if(!canvas) return;
-  var ctx = canvas.getContext('2d');
-  var stars = [], W = 0, H = 0;
-  function resize(){
-    W = canvas.width = canvas.parentElement.offsetWidth || window.innerWidth;
-    H = canvas.height = canvas.parentElement.offsetHeight || window.innerHeight;
-  }
-  function rand(a,b){ return Math.random()*(b-a)+a; }
-  function mk(){
-    var g = Math.random()<.13;
-    return { x:rand(0,W), y:rand(0,H), r:g?rand(1.4,2.4):rand(.4,1.2),
-      peak:g?rand(.45,.8):rand(.3,.9), spd:rand(.003,.01),
-      ph:rand(0,Math.PI*2), green:g };
-  }
-  function init(){
-    resize();
-    stars=[];
-    for(var i=0;i<130;i++) stars.push(mk());
-  }
-  var t=0, running=false;
-  function loop(){
-    ctx.clearRect(0,0,W,H); t+=.016;
-    for(var i=0;i<stars.length;i++){
-      var s=stars[i];
-      var a=s.peak*(0.5+0.5*Math.sin(t*s.spd*60+s.ph));
-      ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-      if(s.green){
-        ctx.fillStyle='rgba(160,230,180,'+a+')';
-        ctx.shadowColor='rgba(100,200,130,.8)'; ctx.shadowBlur=10;
-      } else {
-        ctx.fillStyle='rgba(245,252,248,'+a+')';
-        ctx.shadowColor='rgba(200,240,220,.3)'; ctx.shadowBlur=3;
-      }
-      ctx.fill();
-    }
-    ctx.shadowBlur=0;
-    requestAnimationFrame(loop);
-  }
-  // 即時初期化 + DOMContentLoaded + load の三重保険
-  function start(){
-    if(running) return; running=true;
-    init(); loop();
-  }
-  setTimeout(start, 0);
-  document.addEventListener('DOMContentLoaded', start);
-  window.addEventListener('load', start);
-  window.addEventListener('resize', function(){
-    resize();
-    for(var i=0;i<stars.length;i++){ stars[i].x=rand(0,W); stars[i].y=rand(0,H); }
-  });
-})();
-</script>
+
 </body>
 </html>
