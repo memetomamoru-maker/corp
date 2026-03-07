@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nudge Rogue 合同会社</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Noto+Serif+JP:wght@200;300;400;500&family=Shippori+Mincho:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#252520; --cream:#f5f1ea; --grey:#6e6b65;
+  --green:#4a8c65;  --gp:#c4e0ce; --gm:#eaf4ee;
+   --white:#faf8f3; --tx:#38382e; --tx2:#5a5a52;
+  --H:60px; --V:104px;
+}
+html,body {
+  margin:0;padding:0;
+  overflow-x:hidden;
+  max-width:100%;
+}
+*,*::before,*::after { box-sizing:border-box; }
+html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+body {
+  font-family:'Noto Serif JP',serif;
+  background:var(--white); color:var(--ink);
+  font-size:16px; line-height:2.0;
+  overflow-wrap:anywhere;
+}
+
+/* ── NAV ── */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:20px var(--H); transition:background .4s, padding .4s, box-shadow .4s;
+}
+nav.on {
+  background:rgba(250,248,243,.97); backdrop-filter:blur(14px);
+  padding:13px var(--H);
+  border-bottom:1px solid rgba(0,0,0,.07);
+  box-shadow:0 2px 18px rgba(0,0,0,.05);
+}
+.nav-logo {
+  font-family:'Bebas Neue',sans-serif; font-size:1.35rem;
+  letter-spacing:.16em; color:#fff; line-height:1.1;
+  transition:color .4s; flex-shrink:0; z-index:201;
+}
+nav.on .nav-logo { color:var(--ink); }
+.nav-logo small {
+  display:block; font-family:'Noto Serif JP',serif;
+  font-size:.4em; letter-spacing:.2em; color:rgba(255,255,255,.65);
+  font-weight:200; margin-top:3px; transition:color .4s;
+}
+nav.on .nav-logo small { color:var(--grey); }
+
+/* PC nav links */
+.nav-links {
+  display:none;
+}
+.nav-links a {
+  color:#fff; text-decoration:none;
+  font-family:'Cormorant Garamond',serif;
+  font-size:1rem; font-style:italic; letter-spacing:.1em;
+  opacity:.75; transition:all .3s;
+}
+nav.on .nav-links a { color:var(--ink); }
+.nav-links a:hover { opacity:1; }
+
+/* ── HAMBURGER ── */
+.hamburger {
+  display:flex;
+  flex-direction:column; justify-content:center; gap:5px;
+  width:36px; height:36px; cursor:pointer;
+  background:none; border:none; padding:4px; z-index:201;
+}
+.hamburger span {
+  display:block; width:24px; height:2px;
+  background:#fff; border-radius:2px;
+  transition:all .35s; transform-origin:center;
+}
+nav.on .hamburger span { background:var(--ink); }
+.hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity:0; }
+.hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+/* ── MOBILE MENU OVERLAY ── */
+.mobile-menu {
+  display:none;
+  position:fixed; inset:0; z-index:190;
+  background:rgba(250,248,243,.97);
+  backdrop-filter:blur(16px);
+  flex-direction:column; align-items:center; justify-content:center;
+  gap:40px;
+  opacity:0; transition:opacity .35s;
+}
+.mobile-menu.open { opacity:1; }
+.mobile-menu a {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.4rem,4vw,2.2rem); font-style:italic; letter-spacing:.18em;
+  color:var(--ink); text-decoration:none; opacity:.75; transition:opacity .3s;
+}
+.mobile-menu a:hover { opacity:1; }
+
+/* ── HERO ── */
+.hero {
+  position:relative; height:100vh; min-height:600px;
+  overflow:hidden; display:flex; align-items:center; justify-content:center;
+}
+.hbg {
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 55% 75% at 50% 100%,#1c4030 0%,transparent 68%),
+    radial-gradient(ellipse 90% 55% at 25% 55%,#2d6044 0%,transparent 58%),
+    radial-gradient(ellipse 70% 65% at 75% 38%,#3d7a55 0%,transparent 58%),
+    linear-gradient(180deg,#1c3d28 0%,#2d6044 42%,#4a8c65 72%,#2d5c3a 100%);
+  animation:hbreathe 9s ease-in-out infinite;
+}
+@keyframes hbreathe { 0%,100%{filter:brightness(1)} 50%{filter:brightness(1.07) saturate(1.1)} }
+.hrays { position:absolute; inset:0; background:linear-gradient(174deg,rgba(255,248,200,.07) 0%,transparent 52%),linear-gradient(167deg,rgba(210,255,210,.06) 12%,transparent 48%),linear-gradient(180deg,rgba(180,255,195,.09) 22%,transparent 44%); animation:hray 7s ease-in-out infinite; }
+@keyframes hray { 0%,100%{opacity:.7} 40%{opacity:1} 70%{opacity:.85} }
+.hmist  { position:absolute; bottom:0; left:0; right:0; height:44%; background:linear-gradient(to top,rgba(195,238,212,.22),transparent); animation:hmove 11s ease-in-out infinite; }
+.hmist2 { position:absolute; bottom:8%; left:-18%; right:-18%; height:26%; background:linear-gradient(to top,rgba(175,228,198,.13),transparent); border-radius:50%; animation:hmove2 15s ease-in-out infinite; }
+@keyframes hmove  { 0%,100%{transform:translateX(0);opacity:.8}  50%{transform:translateX(2%);opacity:1} }
+@keyframes hmove2 { 0%,100%{transform:translateX(0);opacity:.6}  50%{transform:translateX(-3%);opacity:.9} }
+.hparticles { position:absolute; inset:0; pointer-events:none; }
+.hp { position:absolute; border-radius:50%; background:rgba(195,255,210,.72); animation:hpfloat linear infinite; }
+@keyframes hpfloat { 0%{transform:translateY(100vh) translateX(0) scale(0);opacity:0} 10%{opacity:1} 90%{opacity:.5} 100%{transform:translateY(-8vh) translateX(var(--drift)) scale(1);opacity:0} }
+.hbutterflies { position:absolute; inset:0; pointer-events:none; }
+.hb { position:absolute; animation:hbfly linear infinite; }
+.hb::before,.hb::after { content:''; position:absolute; width:10px; height:7px; border-radius:50% 50% 0 50%; animation:hwing .42s ease-in-out infinite alternate; }
+.hb::before { background:rgba(225,255,210,.65); right:5px; top:0; transform-origin:right center; }
+.hb::after  { background:rgba(195,242,178,.55); left:5px;  top:0; border-radius:50% 50% 50% 0; transform-origin:left center; animation-direction:alternate-reverse; }
+@keyframes hwing { from{transform:scaleY(1)} to{transform:scaleY(.28)} }
+@keyframes hbfly { 0%{transform:translate(var(--sx),var(--sy));opacity:0} 5%{opacity:1} 50%{transform:translate(var(--mx),var(--my)) rotate(var(--mr));opacity:.8} 95%{opacity:.5} 100%{transform:translate(var(--ex),var(--ey)) rotate(var(--er));opacity:0} }
+
+.hcontent {
+  position:relative; z-index:10;
+  text-align:center;
+  width:100%; padding:0 clamp(16px,6vw,60px);
+  padding-bottom:60px;
+}
+.heyebrow { font-family:'Cormorant Garamond',serif; font-size:.95rem; font-style:italic; letter-spacing:.28em; color:rgba(220,248,230,.92); margin-bottom:26px; opacity:0; animation:hup 1.2s ease forwards .8s; margin-top:24px; }
+.htitle { font-family:'Bebas Neue',sans-serif; font-size:clamp(4rem,14vw,10rem); line-height:.88; letter-spacing:.04em; color:#fff; text-shadow:0 4px 40px rgba(0,0,0,.5), 0 2px 8px rgba(0,0,0,.3); opacity:0; animation:hup 1.2s ease forwards 1.1s; }
+.htitle em { display:block; font-style:normal; font-size:.44em; letter-spacing:.22em; color:rgba(220,248,232,.95); margin-top:10px; text-shadow:0 2px 12px rgba(0,0,0,.4); }
+.hcatch { margin-top:36px; opacity:0; animation:hup 1.2s ease forwards 1.5s; }
+.hcatch .main { font-family:'Shippori Mincho',serif; font-size:clamp(1.05rem,3vw,1.3rem); line-height:2.5; font-weight:500; color:#fff; text-shadow:0 2px 20px rgba(0,0,0,.55), 0 1px 4px rgba(0,0,0,.4); }
+.hcatch .sub  { font-size:clamp(.92rem,2.4vw,1rem); line-height:2.2; color:rgba(235,255,243,.88); margin-top:8px; text-shadow:0 2px 16px rgba(0,0,0,.45); }
+.htags { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:32px; opacity:0; animation:hup 1.2s ease forwards 1.9s; position:relative; z-index:11; }
+.htag { font-family:'Cormorant Garamond',serif; font-size:.88rem; font-style:italic; letter-spacing:.11em; color:rgba(230,252,238,.95); border:1px solid rgba(175,238,200,.5); padding:7px 18px; border-radius:1px; backdrop-filter:blur(6px); background:rgba(0,0,0,.15); transition:all .35s; }
+.htag:hover { background:rgba(74,140,101,.42); border-color:rgba(175,238,200,.78); color:#fff; }
+.hscroll { position:absolute; bottom:30px; left:50%; transform:translateX(-50%); z-index:5; font-family:'Cormorant Garamond',serif; font-size:.72rem; font-style:italic; letter-spacing:.28em; color:rgba(205,238,218,.52); display:flex; flex-direction:column; align-items:center; gap:8px; opacity:0; animation:hup 1.2s ease forwards 2.2s; }
+.hscroll::after { content:''; width:1px; height:32px; background:linear-gradient(to bottom,rgba(205,238,218,.5),transparent); animation:hscrlpulse 2s ease-in-out infinite; }
+@keyframes hscrlpulse { 0%,100%{opacity:.5} 50%{opacity:1} }
+@keyframes hup { from{opacity:0;transform:translateY(26px)} to{opacity:1;transform:translateY(0)} }
+
+/* ── SECTIONS ── */
+.sec { padding:var(--V) var(--H); }
+.lbl { display:block; font-family:'Cormorant Garamond',serif; font-size:1rem; font-style:italic; letter-spacing:.26em; color:var(--green); margin-bottom:14px; }
+.ttl { font-family:'Cormorant Garamond',serif; font-size:clamp(2.2rem,4.5vw,3.2rem); font-weight:300; line-height:1.35; letter-spacing:.02em; color:var(--ink); }
+.ttl b { font-weight:600; }
+.divline { height:1px; background:rgba(0,0,0,.09); margin:0 var(--H); }
+
+/* ── CONCEPT ── */
+.concept { background:var(--white); }
+.concept-inner { display:grid; grid-template-columns:1fr 1fr; margin-top:52px; border:1px solid var(--gp); }
+.concept-l { padding:52px; border-right:1px solid var(--gp); }
+.concept-l h3 { font-family:'Shippori Mincho',serif; font-size:1.2rem; font-weight:700; color:var(--ink); margin-bottom:20px; line-height:1.7; }
+.concept-l p { font-size:.95rem; line-height:2.5; color:var(--tx); margin-bottom:16px; overflow-wrap:anywhere; }
+.concept-l p:last-child { margin-bottom:0; }
+.concept-r { padding:52px; background:var(--gm); display:flex; align-items:center; }
+.cquote { position:relative; width:100%; padding:44px 40px 40px; background:white; border:1px solid var(--gp); border-radius:2px; overflow:hidden; }
+.cquote::before { content:'"'; position:absolute; top:-8px; left:18px; font-family:'Cormorant Garamond',serif; font-size:5rem; line-height:1; color:var(--gp); font-style:italic; pointer-events:none; }
+.cquote p { font-family:'Shippori Mincho',serif; font-size:clamp(1.05rem,2.2vw,1.3rem); line-height:2.1; font-weight:500; color:var(--ink); letter-spacing:.04em; }
+.cquote cite { display:block; margin-top:18px; font-family:'Cormorant Garamond',serif; font-size:.82rem; font-style:italic; color:var(--green); letter-spacing:.1em; }
+
+/* ── TARGET ── */
+.target { background:var(--cream); }
+.target-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:52px; }
+.tcard { padding:40px 32px; border:1px solid var(--gp); background:var(--white); border-radius:2px; transition:transform .35s,box-shadow .35s,border-color .35s; }
+.tcard:hover { transform:translateY(-4px); box-shadow:0 12px 36px rgba(74,140,101,.1); border-color:var(--green); }
+.tcard-num { font-family:'Bebas Neue',sans-serif; font-size:2.2rem; color:var(--gp); line-height:1; margin-bottom:16px; }
+.tcard h3 { font-family:'Shippori Mincho',serif; font-size:1rem; font-weight:700; color:var(--ink); margin-bottom:12px; line-height:2.0; }
+.tcard p { font-size:.9rem; line-height:2.2; color:var(--tx2); }
+
+/* ── STORY ── */
+.story { background:var(--white); }
+.story-inner { display:grid; grid-template-columns:1fr 1.3fr; gap:80px; align-items:start; margin-top:52px; }
+.story-l p { font-size:.95rem; line-height:2.2; color:var(--tx); margin-bottom:16px; overflow-wrap:anywhere; word-break:auto-phrase; text-align:left; }
+.story-r { text-align:left; }
+.story-img-single {
+  width:100%; overflow:hidden; border-radius:3px;
+}
+.story-img-single img {
+  width:100%; aspect-ratio:4/5;
+  object-fit:cover; object-position:center 20%;
+  display:block;
+}
+.story-r blockquote { font-family:'Shippori Mincho',serif; font-size:clamp(1.1rem,2.6vw,1.45rem); line-height:1.9; font-weight:500; color:var(--ink); margin:0 0 26px 0; padding:0; text-align:left; display:block; }
+.story-r > p { font-size:.95rem; line-height:2.2; color:var(--tx); overflow-wrap:anywhere; word-break:auto-phrase; text-align:left; }
+
+/* ── SERVICES ── */
+.services { background:var(--gm); }
+.ps { margin-top:60px; }
+.ps-head { margin-bottom:22px; }
+.ps-head h3 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.35rem,3vw,1.75rem); font-weight:400; color:var(--ink); margin-bottom:5px; }
+.ps-sub { font-family:'Shippori Mincho',serif; font-size:.88rem; color:var(--green); letter-spacing:.04em; }
+.ps-body { font-size:.95rem; line-height:2.5; color:var(--tx); margin-bottom:26px; max-width:640px; overflow-wrap:anywhere; }
+.ptable { width:100%; border-collapse:collapse; background:white; border:1px solid var(--gp); }
+.ptable th { font-family:'Cormorant Garamond',serif; font-size:.88rem; font-style:italic; letter-spacing:.13em; color:var(--green); font-weight:400; padding:13px 20px; text-align:left; border-bottom:2px solid var(--gp); background:var(--gm); }
+.ptable td { padding:18px 20px; border-bottom:1px solid rgba(196,224,206,.4); font-size:.92rem; color:var(--tx); vertical-align:top; line-height:2.0; }
+.ptable tr:last-child td { border-bottom:none; }
+.ptable tr:hover td { background:rgba(234,244,238,.5); }
+.pt-plan { font-family:'Shippori Mincho',serif; font-weight:700; font-size:.95rem; color:var(--ink); }
+.pt-detail { font-size:.82rem; color:var(--tx2); margin-top:3px; line-height:1.6; }
+.pt-price { font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-style:italic; color:var(--ink); white-space:nowrap; }
+.pt-badge { display:inline-block; font-size:.76rem; letter-spacing:.09em; padding:2px 8px; border:1px solid var(--gp); color:var(--green); font-family:'Cormorant Garamond',serif; font-style:italic; margin-left:7px; vertical-align:middle; border-radius:1px; }
+.ptable-note { margin-top:11px; font-size:.84rem; color:var(--tx2); line-height:2; }
+.apps-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:26px; }
+.acard { background:white; border:1px solid var(--gp); border-radius:2px; padding:36px 32px 30px; display:flex; flex-direction:column; text-decoration:none; color:inherit; transition:transform .35s,box-shadow .35s,border-color .35s; }
+.acard:hover { transform:translateY(-4px); box-shadow:0 12px 36px rgba(74,140,101,.12); border-color:var(--green); }
+.acard-tag { font-family:'Cormorant Garamond',serif; font-size:.82rem; font-style:italic; letter-spacing:.16em; color:var(--green); margin-bottom:10px; }
+.acard-name { font-family:'Shippori Mincho',serif; font-size:1.35rem; font-weight:700; color:var(--ink); margin-bottom:3px; }
+.acard-en { font-family:'Cormorant Garamond',serif; font-size:.84rem; font-style:italic; color:var(--tx2); margin-bottom:16px; word-break:break-all; }
+.acard-rule { width:22px; height:1px; background:var(--gp); margin-bottom:16px; }
+.acard-desc { font-size:.9rem; line-height:2.2; color:var(--tx2); flex:1; }
+.acard-link { display:inline-flex; align-items:center; gap:5px; margin-top:20px; align-self:flex-start; font-family:'Cormorant Garamond',serif; font-size:.88rem; font-style:italic; letter-spacing:.1em; color:var(--green); border-bottom:1px solid var(--gp); padding-bottom:1px; transition:border-color .3s; }
+.acard:hover .acard-link { border-color:var(--green); }
+.acard-link::after { content:'→'; font-style:normal; transition:transform .3s; }
+.acard:hover .acard-link::after { transform:translateX(4px); }
+
+/* ── PROFILE ── */
+.profile { background:var(--cream); }
+.profile-grid { display:grid; grid-template-columns:1fr 1fr; gap:52px; margin-top:52px; min-width:0; }
+.pcard-role { font-family:'Cormorant Garamond',serif; font-size:.88rem; font-style:italic; letter-spacing:.22em; color:var(--green); margin-bottom:7px; }
+.pcard-name { font-family:'Shippori Mincho',serif; font-size:1.8rem; font-weight:700; color:var(--ink); line-height:1.15; margin-bottom:3px; }
+.pcard-en { font-family:'Cormorant Garamond',serif; font-size:.92rem; font-style:italic; color:var(--tx2); margin-bottom:4px; }
+.pcard-pen { font-size:.86rem; color:var(--tx2); margin-bottom:18px; }
+.pcard-rule { width:26px; height:1px; background:var(--gp); margin-bottom:20px; }
+.pcard-body > p { font-size:.9rem; line-height:2.2; color:var(--tx); overflow-wrap:anywhere; word-break:normal; }
+.tl { margin-top:22px; padding-top:18px; border-top:1px solid var(--gm); }
+.tl-row { display:flex; gap:14px; margin-bottom:9px; align-items:baseline; }
+.tl-y { font-family:'Bebas Neue',sans-serif; font-size:.9rem; color:var(--green); min-width:42px; flex-shrink:0; }
+.tl-t { font-size:.88rem; line-height:2.0; color:var(--tx2); overflow-wrap:anywhere; }
+
+/* ── PHILOSOPHY ── */
+.philosophy { background:var(--white); }
+.philo-g { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:52px; }
+.phi { padding:44px 36px; border:1px solid var(--gp); background:var(--white); border-radius:2px; transition:border-color .3s,box-shadow .3s,transform .3s; }
+.phi:hover { border-color:var(--green); box-shadow:0 8px 22px rgba(74,140,101,.1); transform:translateY(-3px); }
+.phi-n { font-family:'Cormorant Garamond',serif; font-size:2.6rem; font-style:italic; color:var(--gp); line-height:1; margin-bottom:16px; }
+.phi h3 { font-family:'Shippori Mincho',serif; font-size:1rem; font-weight:500; color:var(--ink); margin-bottom:12px; line-height:1.75; }
+.phi p { font-size:.9rem; line-height:2.2; color:var(--tx2); }
+
+/* ── CTA ── */
+.cta { background:var(--gm); display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center; padding:var(--V) var(--H); }
+.cta h2 { font-family:'Shippori Mincho',serif; font-size:clamp(1.5rem,3.2vw,2.5rem); font-weight:500; line-height:2; color:var(--ink); margin-bottom:22px; }
+.cta > div > p { font-size:.95rem; line-height:2.7; color:var(--tx); }
+.cta-r { display:flex; flex-direction:column; align-items:flex-start; gap:22px; }
+.cta-btn { display:inline-block; padding:20px 52px; background:var(--green); color:#fff; text-decoration:none; font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; letter-spacing:.16em; border:1px solid var(--green); transition:all .35s; }
+.cta-btn:hover { background:#3d7050; border-color:#3d7050; }
+.cta-note { font-family:'Cormorant Garamond',serif; font-size:.84rem; font-style:italic; color:var(--tx2); letter-spacing:.13em; }
+
+/* ── FOOTER ── */
+footer { background:var(--ink); padding:44px var(--H); display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,.06); }
+.f-logo { font-family:'Bebas Neue',sans-serif; font-size:1.25rem; letter-spacing:.14em; color:rgba(246,242,235,.6); }
+.f-logo small { display:block; font-family:'Noto Serif JP',serif; font-size:.36em; letter-spacing:.22em; color:rgba(246,242,235,.3); font-weight:200; margin-top:4px; }
+.f-copy { font-size:.84rem; color:rgba(246,242,235,.38); letter-spacing:.09em; }
+
+/* ════════════════════════════
+   MOBILE  ≤ 768px
+════════════════════════════ */
+@media(max-width:768px){
+  .story-inner{grid-template-columns:1fr;gap:40px;}
+  .story-r{border-left:none;padding-left:0;}
+  :root { --H:20px; --V:72px; }
+
+  /* SCROLLインジケーター非表示 */
+  .hscroll  { display:none; }
+  .htags    { display:none; }
+  .heyebrow { display:none; }
+  .hcontent { padding-bottom:20px; padding-top:16px; }
+
+  /* モバイル: nav-links非表示は全体CSSで対応済み */
+  .mobile-menu{ display:flex; pointer-events:none; }
+  .mobile-menu.open { pointer-events:auto; }
+
+  .nav-logo { font-size:1.1rem; letter-spacing:.13em; }
+
+  /* concept */
+  .concept-inner { grid-template-columns:1fr; }
+  .concept-l { border-right:none; border-bottom:1px solid var(--gp); padding:36px 20px; }
+  .concept-r { padding:36px 20px; }
+  .cquote { padding:32px 20px 28px; }
+  .cquote::before { font-size:3.8rem; top:-6px; left:12px; }
+  .cquote p { font-size:1.02rem; line-height:1.95; }
+
+  /* target */
+  .target-grid { grid-template-columns:1fr; gap:12px; }
+  .tcard { padding:30px 20px; }
+
+  /* story */
+  .story-inner { grid-template-columns:1fr; gap:36px; }
+  .story-r { border-left:none; border-top:2px solid var(--gp); padding-left:0; padding-top:28px; text-align:left; }
+  .story-r blockquote { font-size:1.05rem; margin:0 0 20px 0; padding:0; }
+
+  /* services */
+  .ptable { display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .apps-grid { grid-template-columns:1fr; gap:14px; }
+  .acard { padding:26px 20px; }
+
+  /* profile */
+  .profile-grid { grid-template-columns:1fr; gap:28px; }
+  .pcard-name { font-size:1.55rem; }
+  .pcard-body > p { line-height:2.0; }
+
+  /* philosophy */
+  .philo-g { grid-template-columns:1fr; gap:10px; }
+  .phi { padding:32px 20px; }
+
+  /* cta / footer */
+  .cta { grid-template-columns:1fr; gap:36px; }
+  footer { flex-direction:column; gap:14px; text-align:center; }
+}
+
+/* ─ TRUST NUMBERS ─ */
+.trust { background:var(--ink); }
+.trust-inner { display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:0; }
+.trust-item { padding:44px 44px; border-right:1px solid rgba(255,255,255,.1); text-align:center; }
+.trust-item:last-child { border-right:none; }
+.trust-num { font-family:'Bebas Neue',sans-serif; font-size:clamp(2.8rem,5vw,4.2rem); color:var(--gp); line-height:1; margin-bottom:10px; letter-spacing:.04em; }
+.trust-num span { font-size:.46em; vertical-align:baseline; letter-spacing:0; }
+.trust-label { font-family:'Shippori Mincho',serif; font-size:.92rem; color:rgba(246,242,235,.78); line-height:2; }
+.trust-source { font-family:'Cormorant Garamond',serif; font-size:.82rem; font-style:italic; color:rgba(246,242,235,.45); margin-top:8px; letter-spacing:.08em; }
+
+/* ─ HOW IT WORKS ─ */
+.flow { background:var(--cream); }
+.flow-lead { font-size:.95rem; line-height:2.5; color:var(--tx2); margin-top:14px; max-width:560px; overflow-wrap:anywhere; }
+.flow-grid { display:grid; grid-template-columns:1fr 28px 1fr 28px 1fr; gap:16px; align-items:start; margin-top:48px; }
+.flow-arr { display:flex; align-items:center; justify-content:center; padding-top:52px; color:var(--gp); font-size:1.4rem; font-family:'Cormorant Garamond',serif; }
+.flow-step { background:var(--white); border:1px solid var(--gp); border-radius:2px; padding:36px 28px; height:100%; }
+.flow-num { font-family:'Bebas Neue',sans-serif; font-size:2rem; color:var(--gp); line-height:1; margin-bottom:14px; }
+.flow-step h3 { font-family:'Shippori Mincho',serif; font-size:.98rem; font-weight:700; color:var(--ink); margin-bottom:10px; line-height:1.7; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.flow-badge { font-family:'Cormorant Garamond',serif; font-size:.78rem; font-style:italic; letter-spacing:.08em; padding:3px 10px; border:1px solid var(--green); color:var(--green); border-radius:1px; font-weight:400; white-space:nowrap; }
+.flow-step p { font-size:.88rem; line-height:2.2; color:var(--tx2); overflow-wrap:anywhere; }
+.flow-notes { margin-top:28px; display:flex; flex-wrap:wrap; gap:18px; }
+.flow-note-item { font-family:'Cormorant Garamond',serif; font-size:.78rem; font-style:italic; color:var(--tx2); letter-spacing:.08em; }
+.flow-note-item::before { content:'※ '; }
+
+/* ─ WHY US ─ */
+.whyus { background:var(--white); }
+.compare-wrap { display:grid; grid-template-columns:1fr 1fr; margin-top:48px; border:1px solid var(--gp); }
+.compare-col { padding:44px 40px; }
+.compare-others { background:var(--cream); border-right:1px solid var(--gp); }
+.compare-us { background:var(--gm); }
+.compare-head { font-family:'Shippori Mincho',serif; font-size:.95rem; font-weight:700; color:var(--ink); padding-bottom:16px; margin-bottom:24px; border-bottom:1px solid var(--gp); }
+.compare-list { list-style:none; display:flex; flex-direction:column; gap:14px; }
+.compare-list li { font-size:.9rem; line-height:1.85; color:var(--tx); padding-left:28px; position:relative; overflow-wrap:anywhere; }
+.compare-list li::before { position:absolute; left:0; top:1px; font-size:.9rem; font-weight:700; }
+.compare-list li.ng { color:var(--tx2); opacity:.7; }
+.compare-list li.ng::before { content:'―'; color:var(--tx2); }
+.compare-list li.ok::before { content:'○'; color:var(--green); }
+.compare-cta { margin-top:28px; font-family:'Shippori Mincho',serif; font-size:.88rem; color:var(--green); font-weight:500; line-height:1.9; overflow-wrap:anywhere; }
+
+/* ─ FAQ ─ */
+.faq { background:var(--gm); }
+.faq-list { margin-top:48px; display:flex; flex-direction:column; gap:3px; }
+.faq-item { background:var(--white); border:1px solid var(--gp); border-radius:2px; overflow:hidden; transition:border-color .3s; }
+.faq-item[open] { border-color:var(--green); }
+.faq-q { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:20px 28px; cursor:pointer; font-family:'Shippori Mincho',serif; font-size:.96rem; font-weight:500; color:var(--ink); line-height:1.75; list-style:none; overflow-wrap:anywhere; }
+.faq-q::-webkit-details-marker { display:none; }
+.faq-q::after { content:'+'; font-family:'Cormorant Garamond',serif; font-size:1.6rem; color:var(--green); flex-shrink:0; transition:transform .35s; line-height:1; }
+.faq-item[open] .faq-q::after { transform:rotate(45deg); }
+.faq-a { padding:4px 28px 24px; border-top:1px solid var(--gm); }
+.faq-a p { font-size:.94rem; line-height:2.4; color:var(--tx); overflow-wrap:anywhere; }
+
+/* ─ CONTACT FORM ─ */
+.contact-sec { background:var(--cream); }
+.contact-lead { font-size:.95rem; line-height:2.5; color:var(--tx2); margin-top:14px; margin-bottom:48px; max-width:560px; overflow-wrap:anywhere; }
+.cform-wrap { max-width:640px; }
+.cform { display:flex; flex-direction:column; gap:26px; }
+.cform-row { display:flex; flex-direction:column; gap:8px; }
+.cform-label { font-family:'Shippori Mincho',serif; font-size:.88rem; color:var(--ink); font-weight:500; }
+.req { font-family:'Cormorant Garamond',serif; font-size:.82rem; font-style:italic; color:var(--green); margin-left:6px; letter-spacing:.08em; }
+.cform-input { width:100%; padding:13px 16px; border:1px solid var(--gp); border-radius:1px; font-family:'Noto Serif JP',serif; font-size:.9rem; color:var(--ink); background:var(--white); transition:border-color .3s; -webkit-appearance:none; appearance:none; }
+.cform-input:focus { outline:none; border-color:var(--green); }
+.cform-select { cursor:pointer; }
+.cform-textarea { resize:vertical; min-height:130px; line-height:1.9; }
+.cform-foot { display:flex; align-items:flex-start; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-top:4px; }
+.cform-note { font-size:.84rem; color:var(--tx2); line-height:2; flex:1; overflow-wrap:anywhere; }
+.cform-btn { flex-shrink:0; padding:16px 44px; background:var(--green); color:#fff; border:1px solid var(--green); font-family:'Cormorant Garamond',serif; font-size:1rem; font-style:italic; letter-spacing:.14em; cursor:pointer; transition:all .35s; border-radius:0; }
+.cform-btn:hover { background:#3d7050; border-color:#3d7050; }
+.cform-success { display:none; padding:28px 32px; background:var(--gm); border:1px solid var(--green); margin-top:8px; }
+.cform-success p { font-family:'Shippori Mincho',serif; font-size:.96rem; line-height:2.2; color:var(--green); }
+
+/* ─ Mobile additions ─ */
+@media(max-width:768px){
+  /* trust */
+  .trust-inner { grid-template-columns:1fr; }
+  .trust-item { border-right:none; border-bottom:1px solid rgba(255,255,255,.08); padding:36px 20px; }
+  .trust-item:last-child { border-bottom:none; }
+  /* flow */
+  .flow-grid { grid-template-columns:1fr; gap:12px; }
+  .flow-arr { display:none; }
+  .flow-step { padding:28px 20px; }
+  /* compare */
+  .compare-wrap { grid-template-columns:1fr; }
+  .compare-others { border-right:none; border-bottom:1px solid var(--gp); }
+  .compare-col { padding:32px 20px; }
+  /* faq */
+  .faq-q { padding:18px 20px; font-size:.9rem; }
+  .faq-a { padding:4px 20px 20px; }
+  /* form */
+  .cform-foot { flex-direction:column; }
+  .cform-btn { width:100%; text-align:center; }
+}
+
+
+/* ─ ECOSYSTEM ─ */
+.ecosystem { background:var(--white); }
+.eco-lead { font-size:.95rem; line-height:2.5; color:var(--tx2); margin-top:14px; max-width:580px; overflow-wrap:anywhere; }
+.eco-diagram {
+  margin-top:52px;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:0;
+  border:1px solid var(--gp);
+  background:var(--white);
+}
+.eco-row {
+  display:grid;
+  grid-template-columns:200px 1fr;
+  border-bottom:1px solid var(--gp);
+}
+.eco-row:last-child { border-bottom:none; }
+.eco-label {
+  padding:28px 28px;
+  background:var(--gm);
+  border-right:1px solid var(--gp);
+  display:flex; flex-direction:column; justify-content:center;
+}
+.eco-label-en { font-family:'Cormorant Garamond',serif; font-size:.82rem; font-style:italic; letter-spacing:.14em; color:var(--green); margin-bottom:4px; }
+.eco-label-ja { font-family:'Shippori Mincho',serif; font-size:.92rem; font-weight:700; color:var(--ink); }
+.eco-content { padding:28px 32px; }
+.eco-content p { font-size:.9rem; line-height:2.2; color:var(--tx); overflow-wrap:anywhere; }
+.eco-content p + p { margin-top:8px; }
+.eco-arrow {
+  display:flex; align-items:center; justify-content:center;
+  padding:10px; background:var(--cream);
+  border-bottom:1px solid var(--gp);
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.2rem; color:var(--gp); letter-spacing:.1em;
+}
+
+.eco-note {
+  margin-top:28px;
+  padding:28px 32px;
+  background:var(--gm); border:1px solid var(--gp);
+  border-radius:2px;
+}
+.eco-note p { font-size:.88rem; line-height:2.4; color:var(--tx2); overflow-wrap:anywhere; }
+.eco-note strong { font-family:'Shippori Mincho',serif; font-weight:700; color:var(--ink); }
+
+@media(max-width:768px){
+  .eco-row { grid-template-columns:1fr; }
+  .eco-label { border-right:none; border-bottom:1px solid var(--gp); padding:18px 20px; }
+  .eco-content { padding:20px 20px; }
+}
+
+
+/* ── HERO INLINE CTA ── */
+.hero-cta-wrap {
+  position:relative; z-index:12;
+  display:flex; flex-direction:column; align-items:center; gap:10px;
+  margin-top:36px; opacity:0; animation:hup 1.2s ease forwards 2.1s;
+}
+.hero-cta-btn {
+  display:inline-block; padding:16px 44px;
+  background:var(--green); color:#fff; text-decoration:none;
+  font-family:'Shippori Mincho',serif; font-size:.98rem;
+  font-weight:500; letter-spacing:.08em;
+  border:1px solid rgba(255,255,255,.2);
+  transition:all .35s; border-radius:1px;
+}
+.hero-cta-btn:hover { background:#3d7050; transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,.3); }
+.hero-cta-note {
+  font-family:'Cormorant Garamond',serif; font-size:.82rem;
+  font-style:italic; color:rgba(220,248,230,.8); letter-spacing:.12em;
+}
+@media(max-width:768px){
+  .hero-cta-btn { padding:14px 32px; font-size:.92rem; }
+}
+
+/* ── PAIN POINTS ── */
+.pain { background:var(--cream); }
+.pain-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:48px; }
+.pain-card {
+  padding:36px 28px; background:var(--white);
+  border:1px solid var(--gp); border-radius:2px;
+  border-top:2px solid var(--ink);
+}
+.pain-icon { font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:.14em; color:var(--green); line-height:1; margin-bottom:14px; padding:3px 8px; border:1px solid var(--green); display:inline-block; }
+.pain-card h3 { font-family:'Shippori Mincho',serif; font-size:.96rem; font-weight:700; color:var(--ink); margin-bottom:10px; line-height:1.7; }
+.pain-card p { font-size:.86rem; line-height:1.9; color:var(--tx2); overflow-wrap:anywhere; }
+.pain-bottom { margin-top:40px; padding:28px 36px; background:var(--gm); border:1px solid var(--gp); border-radius:2px; }
+.pain-bottom p { font-family:'Shippori Mincho',serif; font-size:1rem; line-height:2.2; color:var(--ink); text-align:center; overflow-wrap:anywhere; }
+@media(max-width:768px){
+  .pain-grid { grid-template-columns:1fr; gap:12px; }
+  .pain-card { padding:28px 20px; }
+  .pain-bottom { padding:22px 20px; }
+}
+
+/* ── MID CTA ── */
+.mid-cta {
+  background:var(--ink); padding:72px var(--H);
+  text-align:center;
+}
+.mid-cta h3 { font-family:'Shippori Mincho',serif; font-size:clamp(1.3rem,3vw,1.9rem); font-weight:500; color:#fff; line-height:1.9; margin-bottom:20px; }
+.mid-cta p { font-size:.94rem; color:rgba(246,242,235,.65); line-height:2.2; margin-bottom:32px; overflow-wrap:anywhere; }
+.mid-cta-btn {
+  display:inline-block; padding:18px 52px;
+  background:var(--green); color:#fff; text-decoration:none;
+  font-family:'Shippori Mincho',serif; font-size:.98rem;
+  font-weight:500; letter-spacing:.08em;
+  border:1px solid rgba(255,255,255,.15);
+  transition:all .35s; border-radius:1px;
+}
+.mid-cta-btn:hover { background:#3d7050; transform:translateY(-2px); }
+.mid-cta-sub { display:block; margin-top:16px; font-family:'Cormorant Garamond',serif; font-size:.82rem; font-style:italic; color:rgba(246,242,235,.4); letter-spacing:.14em; }
+@media(max-width:768px){ .mid-cta { padding:56px var(--H); } }
+
+
+/* ── FLOATING CTA ── */
+.float-cta {
+  position:fixed; bottom:28px; right:28px; z-index:500;
+  display:flex; flex-direction:column; align-items:flex-end; gap:8px;
+}
+.float-cta-btn {
+  display:flex; align-items:center; gap:10px;
+  padding:14px 22px;
+  background:var(--green); color:#fff; text-decoration:none;
+  font-family:'Shippori Mincho',serif; font-size:.88rem; font-weight:500;
+  border-radius:28px; letter-spacing:.06em;
+  box-shadow:0 4px 20px rgba(74,140,101,.45);
+  transition:all .35s; white-space:nowrap;
+  opacity:1; transform:translateY(0);
+  pointer-events:auto;
+}
+.float-cta-btn.visible {
+  opacity:1; transform:translateY(0); pointer-events:auto;
+}
+.float-cta-btn:hover {
+  background:#3d7050; box-shadow:0 6px 28px rgba(74,140,101,.55);
+  transform:translateY(-2px);
+}
+.float-cta-btn::before { content:'📅'; font-size:.9rem; }
+.float-cta-note {
+  font-size:.7rem; color:rgba(74,140,101,.8); letter-spacing:.08em;
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  text-align:right;
+  opacity:0; transition:opacity .3s;
+}
+.float-cta-note { opacity:1; }
+@media(max-width:768px){
+  .float-cta { bottom:20px; right:16px; max-width:calc(100% - 32px); }
+  .float-cta-btn { padding:13px 18px; font-size:.82rem; border-radius:24px; max-width:220px; }
+}
+
+
+/* ── PRICE CARDS (mobile only) ── */
+.price-cards { display:none; }
+
+@media(max-width:768px){
+  .ptable       { display:none !important; }
+  .price-cards  { display:flex; flex-direction:column; gap:10px; }
+  .pc {
+    background:var(--white); border:1px solid var(--gp);
+    border-radius:2px; padding:22px 20px;
+  }
+  .pc.featured  { border-color:var(--green); border-left:3px solid var(--green); }
+  .pc-head      { display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:8px; flex-wrap:wrap; }
+  .pc-plan      { font-family:'Shippori Mincho',serif; font-size:.96rem; font-weight:700; color:var(--ink); }
+  .pc-price     { font-family:'Cormorant Garamond',serif; font-size:1.35rem; font-style:italic; color:var(--ink); white-space:nowrap; }
+  .pc-detail    { font-size:.8rem; color:var(--tx2); margin-bottom:10px; }
+  .pc-desc      { font-size:.88rem; line-height:2.0; color:var(--tx2); overflow-wrap:anywhere; }
+  .pc-badge     { display:inline-block; font-size:.72rem; padding:1px 8px; border:1px solid var(--green); color:var(--green); font-family:'Cormorant Garamond',serif; font-style:italic; margin-left:6px; border-radius:1px; }
+}
+
+
+/* ── PS VALUE POINTS ── */
+.ps-value-points {
+  display:flex; flex-wrap:wrap; gap:8px 20px;
+  margin:20px 0 28px;
+}
+.ps-vp {
+  display:flex; align-items:center; gap:7px;
+  font-size:.88rem; color:var(--tx); line-height:1.6;
+}
+.ps-vp-icon {
+  color:var(--green); font-weight:700; font-size:.9rem; flex-shrink:0;
+}
+@media(max-width:768px){
+  .ps-value-points { flex-direction:column; gap:8px; }
+}
+
+
+/* ── SNS LINKS ── */
+.sns-row {
+  display:flex; gap:14px; align-items:center;
+  margin-top:20px; flex-wrap:wrap;
+}
+.sns-link {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:10px 18px; border:1px solid var(--gp);
+  border-radius:2px; text-decoration:none;
+  font-family:'Cormorant Garamond',serif; font-size:.88rem;
+  font-style:italic; color:var(--tx); letter-spacing:.08em;
+  transition:all .3s; background:var(--white);
+}
+.sns-link:hover { border-color:var(--green); color:var(--green); }
+.sns-link-icon { font-size:1rem; }
+.f-sns { display:flex; gap:14px; margin-top:14px; flex-wrap:wrap; }
+.f-sns a {
+  font-family:'Cormorant Garamond',serif; font-size:.82rem;
+  font-style:italic; letter-spacing:.1em;
+  color:rgba(246,242,235,.45); text-decoration:none; transition:color .3s;
+}
+.f-sns a:hover { color:rgba(246,242,235,.8); }
+
+
+/* ── LP CTA BUTTON ── */
+.lp-cta-wrap {
+  margin-top: 28px; display:flex; flex-direction:column;
+  align-items:flex-start; gap:10px;
+}
+.lp-cta-btn {
+  display:inline-flex; align-items:center; gap:10px;
+  padding:14px 32px; background:var(--ink); color:var(--cream);
+  text-decoration:none; font-family:'Shippori Mincho',serif;
+  font-size:.92rem; font-weight:500; letter-spacing:.08em;
+  border-radius:1px; transition:all .3s;
+}
+.lp-cta-btn::after { content:'→'; font-family:'Cormorant Garamond',serif; font-size:1.1rem; }
+.lp-cta-btn:hover { background:#2d5040; transform:translateX(4px); }
+.lp-cta-note { font-size:.82rem; color:var(--tx2); font-family:'Cormorant Garamond',serif; font-style:italic; letter-spacing:.08em; }
+
+
+/* ── NOTE LINK ── */
+.profile-note-link { margin-top:28px; display:flex; flex-direction:column; gap:8px; }
+.note-link {
+  display:inline-flex; align-items:center; gap:10px;
+  padding:12px 20px; background:#41c9b4; color:#fff;
+  text-decoration:none; font-family:'Shippori Mincho',serif;
+  font-size:.88rem; font-weight:500; letter-spacing:.06em;
+  border-radius:2px; transition:all .3s; width:fit-content;
+}
+.note-link:hover { background:#38b09e; transform:translateX(3px); }
+.note-icon {
+  width:20px; height:20px; background:#fff; color:#41c9b4;
+  border-radius:50%; display:flex; align-items:center; justify-content:center;
+  font-weight:900; font-size:.75rem; flex-shrink:0;
+}
+.note-sub { font-size:.8rem; color:var(--tx2); font-family:'Cormorant Garamond',serif; font-style:italic; letter-spacing:.08em; }
+
+
+/* ── NAME ORIGIN ── */
+.nameorigin { background:var(--ink); }
+.nameorigin-inner {
+  display:grid; grid-template-columns:1fr 1fr; gap:0;
+  max-width:960px; margin:0 auto; margin-top:48px;
+}
+.no-item {
+  padding:52px 52px;
+  border-right:1px solid rgba(255,255,255,.08);
+}
+.no-item:last-child { border-right:none; }
+.no-word {
+  font-family:'Bebas Neue',sans-serif; font-size:3rem;
+  letter-spacing:.18em; color:rgba(255,255,255,.12);
+  line-height:1; margin-bottom:6px;
+}
+.no-read {
+  font-family:'Cormorant Garamond',serif; font-size:.82rem;
+  font-style:italic; letter-spacing:.22em; color:var(--green);
+  margin-bottom:20px;
+}
+.no-def {
+  font-family:'Shippori Mincho',serif; font-size:1.05rem;
+  font-weight:500; color:#fff; line-height:2.0; margin-bottom:16px;
+}
+.no-body {
+  font-size:.88rem; line-height:2.2; color:rgba(246,242,235,.55);
+  overflow-wrap:anywhere;
+}
+.no-close {
+  max-width:960px; margin:0 auto;
+  padding:0 52px 56px;
+  font-family:'Shippori Mincho',serif; font-size:.92rem;
+  font-weight:500; color:rgba(246,242,235,.6); line-height:2.2;
+  border-top:1px solid rgba(255,255,255,.08); padding-top:36px; margin-top:0;
+}
+@media(max-width:768px){
+  .nameorigin-inner { grid-template-columns:1fr; }
+  .no-item { padding:36px 20px; border-right:none; border-bottom:1px solid rgba(255,255,255,.08); }
+  .no-item:last-child { border-bottom:none; }
+  .no-close { padding:28px 20px 40px; }
+}
+
+
+/* ── APP CARDS ── */
+.app-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:28px;
+}
+.app-card {
+  background:var(--white); border:1px solid var(--gp);
+  border-radius:2px; padding:28px 28px;
+}
+.app-cat {
+  font-family:'Cormorant Garamond',serif; font-size:.82rem;
+  font-style:italic; letter-spacing:.14em; color:var(--green); margin-bottom:8px;
+}
+.app-name {
+  font-family:'Shippori Mincho',serif; font-size:1.2rem;
+  font-weight:700; color:var(--ink); margin-bottom:4px;
+}
+.app-url {
+  font-family:'Cormorant Garamond',serif; font-size:.78rem;
+  color:var(--tx2); letter-spacing:.06em; margin-bottom:16px;
+}
+.app-divider {
+  width:24px; height:1px; background:var(--gp); margin-bottom:16px;
+}
+.app-desc {
+  font-size:.88rem; line-height:2.1; color:var(--tx2);
+  overflow-wrap:anywhere; margin-bottom:20px;
+}
+.app-link {
+  font-family:'Cormorant Garamond',serif; font-size:.9rem;
+  font-style:italic; letter-spacing:.1em; color:var(--green);
+  text-decoration:none; border-bottom:1px solid var(--gp);
+  padding-bottom:2px; transition:all .3s;
+}
+.app-link:hover { color:var(--ink); border-color:var(--ink); }
+@media(max-width:768px){
+  .app-grid { grid-template-columns:1fr; gap:14px; }
+  .app-card { padding:22px 20px; }
+}
+
+.hcontent { position:relative; z-index:10; }
+
+
+
+/* ════════════════════════════════
+   READABILITY OVERRIDES
+   ════════════════════════════════ */
+
+/* ベース本文サイズを16pxに引き上げ */
+body { font-size: 16px; }
+
+/* 本文の最大行長を制限（1行60〜70字） */
+.ps-body, .story-l p, .story-r p,
+.phi p, .case-sol, .s-body, .app-desc,
+.no-body, .no-close, .flow-sub,
+.pc-desc, .form-lead, .price-note,
+.profile-mini-body p {
+  max-width: 680px;
+  line-height: 2.2;
+}
+
+/* セクション本文のフォントサイズを引き上げ */
+.ps-body   { font-size: .98rem; }
+.no-body   { font-size: .94rem; }
+.case-sol  { font-size: .92rem; }
+.s-body    { font-size: .92rem; }
+.app-desc  { font-size: .92rem; }
+.flow-sub  { font-size: .88rem; }
+.pc-desc   { font-size: .88rem; line-height: 2.0; }
+.phi p     { font-size: .94rem; line-height: 2.2; }
+.price-note { font-size: .88rem; line-height: 2.0; }
+.form-lead  { font-size: .94rem; line-height: 2.3; }
+
+/* 見出しと本文のサイズコントラストを強化 */
+.ps-head h3 {
+  font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+  letter-spacing: .06em;
+}
+.ttl {
+  font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+  margin-bottom: 44px;
+}
+
+/* カードの内部余白を増やす */
+.case-card, .pain-card, .phi, .price-card,
+.app-card, .strength-item {
+  padding: 32px 28px;
+}
+
+/* セクション本文エリアに最大幅 */
+.ps-body-wrap { max-width: 760px; }
+
+
+
+
+
+/* ── CANVAS Z-INDEX FIX ── */
+
+
+/* ── CARD TEXT SIZE FIX ── */
+.case-card .case-issue { font-size:1rem !important; line-height:1.75 !important; }
+.case-card .case-sol   { font-size:.92rem !important; line-height:2.1 !important; }
+.pain-card h3          { font-size:1rem !important; line-height:1.75 !important; }
+.pain-card p           { font-size:.92rem !important; line-height:2.1 !important; }
+.price-card .pc-name   { font-size:1.05rem !important; }
+.price-card .pc-desc   { font-size:.9rem !important; line-height:2.0 !important; }
+.price-card .pc-price  { font-size:2rem !important; }
+.flow-item .flow-title { font-size:1rem !important; }
+.flow-item .flow-sub   { font-size:.9rem !important; line-height:2.0 !important; }
+.app-card .app-desc    { font-size:.92rem !important; line-height:2.1 !important; }
+.strength-item .s-body { font-size:.92rem !important; line-height:2.1 !important; }
+.strength-item .s-title{ font-size:1rem !important; }
+.pc-label, .app-cat, .case-n { font-size:.85rem !important; }
+
+
+/* ── PAIN LABEL SIZE FIX ── */
+.pain-card p {
+  font-size:.98rem !important;
+  line-height:2.1 !important;
+}
+.pain-card h3 {
+  font-size:1.1rem !important;
+  line-height:1.75 !important;
+  margin-bottom:14px !important;
+}
+/* ── PROFILE IMAGE FIX ── */
+#hero-canvas {
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  pointer-events:none;
+  z-index:2;
+  display:block;
+}
+
+
+/* ── PAIN CARD REDESIGN ── */
+.pain-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--gp);margin-top:48px;
+}
+.pain-card{
+  background:var(--white);padding:44px 36px;
+  position:relative;transition:background .25s;
+}
+.pain-card:hover{background:var(--gm);}
+.pain-n{
+  font-family:'Bebas Neue',sans-serif;font-size:5rem;
+  color:rgba(200,216,192,.3);line-height:1;
+  position:absolute;top:28px;right:28px;letter-spacing:.02em;
+}
+.pain-cat{
+  display:inline-block;font-family:'Cormorant Garamond',serif;
+  font-size:.84rem;font-style:italic;letter-spacing:.2em;
+  color:var(--tx2);margin-bottom:12px;
+}
+.pain-issue{
+  font-family:'Shippori Mincho',serif;font-size:1.12rem;
+  font-weight:700;color:var(--ink);line-height:1.7;
+  margin-bottom:24px;padding-right:40px;
+}
+.pain-divider{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.pain-divider::before{content:'';display:block;width:20px;height:1px;background:var(--green);}
+.pain-divider-label{
+  font-family:'Cormorant Garamond',serif;font-size:.88rem;
+  font-style:italic;letter-spacing:.18em;color:var(--green);font-weight:600;
+}
+.pain-sol{font-size:.96rem;line-height:2.2;color:var(--tx2);}
+@media(max-width:768px){
+  .pain-grid{grid-template-columns:1fr;}
+  .pain-card{padding:36px 24px;}
+  .pain-n{font-size:3.5rem;}
+}
+
+
+/* ── PROFILE CARD ── */
+.pcard {
+  border:1px solid var(--gp);
+  background:var(--white);
+  transition:transform .4s, box-shadow .4s;
+  min-width:0;
+  overflow:hidden;
+}
+.pcard:hover { transform:translateY(-4px); box-shadow:0 16px 48px rgba(74,140,101,.1); }
+
+.pcard-img {
+  width:100%; height:360px; overflow:hidden;
+  position:relative;
+  background:linear-gradient(160deg, #e8f0e4 0%, #c8d8c0 40%, #b5cdb0 100%);
+}
+.pcard-img::after {
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom, transparent 55%, rgba(255,255,255,.15) 100%);
+}
+.pcard-img img {
+  width:100%; height:100%;
+  object-fit:cover; object-position:center 8%;
+  display:block; opacity:0;
+  transition:opacity .4s;
+}
+.pcard-img img.loaded { opacity:1; }
+.pcard-img-placeholder {
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:flex-end;
+  padding-bottom:32px;
+}
+.pcard-img-initials {
+  font-family:'Cormorant Garamond',serif;
+  font-size:4rem;font-style:italic;
+  color:rgba(74,140,101,.25);letter-spacing:.1em;
+  line-height:1;
+}
+
+.pcard-body { padding:32px 36px 40px; }
+.pcard-role {
+  font-family:'Cormorant Garamond',serif;font-size:.88rem;
+  font-style:italic;letter-spacing:.22em;color:var(--green);margin-bottom:10px;
+}
+.pcard-name {
+  font-family:'Shippori Mincho',serif;font-size:1.8rem;
+  font-weight:700;color:var(--ink);line-height:1.15;margin-bottom:6px;
+}
+.pcard-en {
+  font-family:'Cormorant Garamond',serif;font-size:.92rem;
+  font-style:italic;color:var(--tx2);margin-bottom:14px;
+}
+.pcard-pen { font-size:.86rem;color:var(--tx2);margin-bottom:18px; }
+.pcard-rule { width:26px;height:1px;background:var(--gp);margin-bottom:20px; }
+.pcard-body > p { font-size:.9rem;line-height:2.2;color:var(--tx);overflow-wrap:anywhere;word-break:normal; }
+
+@media(max-width:600px){
+  .pcard-img { height:260px; }
+  .pcard-body { padding:24px 24px 32px; }
+  .pcard-name { font-size:1.5rem; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- MOBILE MENU OVERLAY -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#concept"    onclick="closeMenu()">About</a>
+  <a href="#services"   onclick="closeMenu()">Services</a>
+  <a href="#profile"    onclick="closeMenu()">Profile</a>
+  <a href="#philosophy" onclick="closeMenu()">Philosophy</a>
+  <a href="#ecosystem"  onclick="closeMenu()">Ecosystem</a>
+  <a href="#faq"        onclick="closeMenu()">FAQ</a>
+  <a href="#contact-form" onclick="closeMenu()">Contact</a>
+</div>
+
+<nav id="nav">
+  <div class="nav-logo">NUDGE ROGUE KOBE <small>合同会社</small></div>
+  <ul class="nav-links">
+    <li><a href="#concept">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#profile">Profile</a></li>
+    <li><a href="#philosophy">Philosophy</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact-form">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hbg"></div><div class="hrays"></div>
+  <div class="hmist"></div><div class="hmist2"></div>
+  <svg style="position:absolute;bottom:0;left:0;width:100%;height:70%;pointer-events:none" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="100,500 148,285 196,500" fill="#2a5438" opacity=".5"/>
+    <polygon points="310,500 362,252 414,500" fill="#306042" opacity=".46"/>
+    <polygon points="570,500 625,205 680,500" fill="#2a5438" opacity=".46"/>
+    <polygon points="770,500 832,232 894,500" fill="#306042" opacity=".5"/>
+    <polygon points="1040,500 1102,215 1164,500" fill="#2a5438" opacity=".46"/>
+    <polygon points="0,500 58,182 116,500"      fill="#1c3c2c" opacity=".87"/>
+    <polygon points="58,500 128,124 198,500"    fill="#183428" opacity=".91"/>
+    <polygon points="225,500 308,152 391,500"   fill="#1c3c2c" opacity=".81"/>
+    <polygon points="435,500 525,172 615,500"   fill="#183428" opacity=".87"/>
+    <polygon points="695,500 786,132 877,500"   fill="#1c3c2c" opacity=".84"/>
+    <polygon points="895,500 995,162 1095,500"  fill="#183428" opacity=".87"/>
+    <polygon points="1145,500 1245,142 1345,500" fill="#1c3c2c" opacity=".84"/>
+    <polygon points="1315,500 1397,172 1479,500" fill="#183428" opacity=".91"/>
+    <rect x="0" y="470" width="1440" height="30" fill="#102418" opacity=".8"/>
+  </svg>
+  <div class="hparticles" id="hp"></div>
+  <div class="hbutterflies" id="hb"></div>
+  <canvas id="hero-canvas"></canvas>
+  <div class="hcontent">
+    
+    <h1 class="htitle">NUDGE<br>ROGUE<em>KOBE</em></h1>
+    <div class="hcatch">
+      <p class="main">お金の相談を、<br>どこにすればいいかわからない。</p>
+      <p class="sub">何も売らない。サイドFIRE実現者が、あなたの話を聞く。<br>そういうFPが、神戸にいます。</p>
+    </div>
+    <div class="htags">
+      <span class="htag">FP相談</span>
+      <span class="htag">Webコンサル</span>
+      <span class="htag">アプリ開発</span>
+      <span class="htag">執筆</span>
+    </div>
+  </div>
+
+  <div class="hscroll">SCROLL</div>
+</div>
+
+<!-- PAIN POINTS -->
+<section class="pain sec" id="pain">
+  <span class="lbl">What We Solve</span>
+  <h2 class="ttl">こんな課題、<br><b>Nudge Rogueが解決します。</b></h2>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <div class="pain-cat">FP相談</div>
+      <div class="pain-n">01</div>
+      <div class="pain-issue">「FPに相談したら、<br>保険の話になった」</div>
+      <div class="pain-divider"><span class="pain-divider-label">できること</span></div>
+      <div class="pain-sol">報酬は相談料のみ。保険も投資信託も売りません。あなたの利益だけを考えたアドバイスを、構造として保証します。</div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-cat">Webコンサル</div>
+      <div class="pain-n">02</div>
+      <div class="pain-issue">「サイトを作ったけど、<br>成果が何も見えない」</div>
+      <div class="pain-divider"><span class="pain-divider-label">できること</span></div>
+      <div class="pain-sol">大手IT企業15年の視点でUI/UX・マネタイズ・導線設計を診断し、「どこから手をつけるべきか」を整理します。</div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-cat">アプリ</div>
+      <div class="pain-n">03</div>
+      <div class="pain-issue">「FIREの数字を、<br>自分で確認したい」</div>
+      <div class="pain-divider"><span class="pain-divider-label">できること</span></div>
+      <div class="pain-sol">自社開発のFIRE COMPASSで、資産額・生活費・運用利率からFIREまでの道筋を可視化できます。</div>
+    </div>
+  </div>
+  <div class="pain-bottom">
+    <p>FP相談・Webコンサル・アプリ。3つの事業は独立していますが、すべてつながっています。あなたの課題に合わせて、最適な入口からご相談ください。</p>
+  </div>
+    <p>FP相談・Webコンサル・アプリ開発。3つの事業は独立していますが、すべてつながっています。あなたの課題に合わせて、最適な入口からご相談ください。</p>
+  </div>
+</section>
+
+<div class="divline"></div>
+
+<!-- STORY -->
+<section class="story sec" id="vision">
+  <span class="lbl">Our Story</span>
+  <h2 class="ttl">FPに相談したら<br><b>保険を勧められた。</b><br><span style="font-size:.6em;letter-spacing:.05em;">私もそうでした。</span></h2>
+  <div class="story-inner">
+    <div class="story-l">
+      <p>資産形成を始めたころ、お金のことを相談できる相手がいませんでした。YouTuberの情報は参考にはなっても、自分の数字とは遠かった。FP事務所を訪ねれば、いつのまにか保険の話になっていた。IFAは投資商品が前提にある。友人には話しにくかった。結局、FPの資格を自分で取りながら、一人で資産形成を進めました。</p>
+      <p>サイドFIREを実現するとき、もともとはWebコンサルを軸に考えていました。でもそのとき、ふと思ったんです。私があのとき必要としていた人物に、私自身がなれるんじゃないか、と。</p>
+      <p>相談を通じて信頼を積み重ねることが、事業全体の土台だと考えています。</p>
+    </div>
+    <div class="story-r">
+      <div class="story-img-single">
+        <img src="https://raw.githubusercontent.com/memetomamoru-maker/corp/main/images/material4.jpg" alt="" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divline"></div>
+
+<!-- TRUST NUMBERS -->
+<section class="trust sec" style="padding-top:72px;padding-bottom:72px;" id="trust">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <div class="trust-num"><span>約</span>1<span>%</span></div>
+      <div class="trust-label">相談料のみを収益とする<br>FPは全体の約1%</div>
+      <div class="trust-source">有料相談のみで運営するFPは少数</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-num">0<span>円</span></div>
+      <div class="trust-label">初回ヒアリング料<br>（30分・完全無料）</div>
+      <div class="trust-source">販売・勧誘は一切なし</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-num">2026<span>年</span></div>
+      <div class="trust-label">サイドFIRE実現。<br>サイドFIRE実現者が担当します</div>
+      <div class="trust-source">LINEヤフー 15年 / 新規サービス複数立ち上げ / MBA / FP資格</div>
+    </div>
+  </div>
+</section>
+
+<div class="divline"></div>
+
+
+<!-- HOW IT WORKS -->
+<section class="flow sec" id="flow">
+  <span class="lbl">How It Works</span>
+  <h2 class="ttl">相談の<b>流れ</b></h2>
+  <p class="flow-lead">「相談したいけど、何を話せばいいかわからない」。そういう状態でも大丈夫です。まず連絡いただければ、あとはこちらがリードします。</p>
+  <div class="flow-grid">
+    <div class="flow-step">
+      <div class="flow-num">01</div>
+      <h3>お問い合わせ</h3>
+      <p>ページ下部のフォームからご連絡ください。相談内容の概要とご都合のよい日時をお知らせいただければ幸いです。「まだ内容が決まっていない」でも問題ありません。</p>
+    </div>
+    <div class="flow-arr">→</div>
+    <div class="flow-step">
+      <div class="flow-num">02</div>
+      <h3>初回ヒアリング <span class="flow-badge">30分 無料</span></h3>
+      <p>ZoomまたはGoogle Meetにてオンラインで実施します。状況を簡単にお聞きし、どのサービスが合うか一緒に確認します。商品の提案・勧誘は一切ありません。</p>
+    </div>
+    <div class="flow-arr">→</div>
+    <div class="flow-step">
+      <div class="flow-num">03</div>
+      <h3>継続 or スポット</h3>
+      <p>お互いに相性が合えば、月次継続プランまたはスポット相談をご提案します。合わないと感じた場合は、遠慮なくお断りいただいて構いません。</p>
+    </div>
+  </div>
+  <div class="flow-notes">
+    <span class="flow-note-item">全国どこからでもオンライン対応可能です</span>
+    <span class="flow-note-item">初回30分は完全無料・完全予約制です</span>
+    <span class="flow-note-item">保険・金融商品の勧誘は一切ありません</span>
+  </div>
+</section>
+
+<div class="divline"></div>
+
+
+<div class="divline"></div>
+
+<!-- SERVICES -->
+<section class="services sec" id="services">
+  <span class="lbl">Services</span>
+  <h2 class="ttl">4つの<b>事業領域</b></h2>
+
+  <div class="ps">
+    <div class="ps-head"><h3>01 &nbsp; Financial Planning</h3><div class="ps-sub">お金と人生の相談 / FIRE伴走 / 壁打ち</div></div>
+    <p class="ps-body">保険も投資信託も売りません。収益源は相談料のみ。だから、あなたの利益だけを考えたアドバイスができます。「FIRE・早期退職を考えている」「将来が漠然と不安」「誰にも話せなかった」。型にはめず、あなたの状況に合わせてオーダーメイドで向き合います。まず30分の壁打ちから気軽にどうぞ。</p>
+
+    <div class="ps-value-points">
+      <div class="ps-vp"><span class="ps-vp-icon">✓</span>サイドFIREを実現した当事者が対応</div>
+      <div class="ps-vp"><span class="ps-vp-icon">✓</span>有料相談のみで成立する、利益相反ゼロの構造</div>
+      <div class="ps-vp"><span class="ps-vp-icon">✓</span>担当替えなし。代表が一貫して担当します</div>
+    </div>
+
+        <div class="lp-cta-wrap">
+      <a href="./fp.html" class="lp-cta-btn">料金・相談プランを見る</a>
+      <span class="lp-cta-note">壁打ち30分 ¥5,000〜 · 初回無料ヒアリングあり</span>
+    </div>
+  </div>
+
+    <div class="ps">
+    <div class="ps-head"><h3>02 &nbsp; Web Consulting</h3><div class="ps-sub">LINEヤフー15年の知見を、あなたのサイトへ</div></div>
+    <p class="ps-body">ヤフー株式会社（現LINEヤフー）で15年以上、大規模Webサービスの新規立ち上げ・UI/UX設計・グロース・PMを担当してきた経験をそのまま活かします。「作ったけれど成果が出ない」「何を改善すればいいかわからない」。FIRE・資産形成に限らず、Web事業の成長を本気で考えている方はぜひ。まず45分の壁打ち診断で、課題を一緒に言語化するところから始めましょう。</p>
+
+    <div class="ps-value-points">
+      <div class="ps-vp"><span class="ps-vp-icon">✓</span>大手IT企業15年のグロース・UX実戦経験</div>
+      <div class="ps-vp"><span class="ps-vp-icon">✓</span>「何が問題かわからない」状態から一緒に整理</div>
+      <div class="ps-vp"><span class="ps-vp-icon">✓</span>FP視点での収益設計まで一気通貫で対応可能</div>
+    </div>
+
+        <div class="lp-cta-wrap">
+      <a href="./web.html" class="lp-cta-btn">料金・サービス詳細を見る</a>
+      <span class="lp-cta-note">壁打ち診断 ¥10,000〜 · 初回30分無料ヒアリング</span>
+    </div>
+  </div>
+
+    <div class="ps">
+    <div class="ps-head"><h3>03 &nbsp; Apps</h3><div class="ps-sub">自社プロダクト / 公開中</div></div>
+    <p class="ps-body">受託開発ではありません。自分たちが必要だと思ったものを、自分たちで作って公開しています。FIREシミュレーターから子ども向け学習アプリまで。小さくても、誰かの役に立つプロダクトを作り続けます。</p>
+    <div class="app-grid">
+      <div class="app-card">
+        <div class="app-cat">Finance / Simulation</div>
+        <div class="app-name">FIRE COMPASS</div>
+        <div class="app-url">fire-compass-seven.vercel.app</div>
+        <div class="app-divider"></div>
+        <p class="app-desc">「経済的自由への羅針盤」をコンセプトにしたFIREシミュレーター。資産額・生活費・運用利率を入力することで、FIREまでの道筋を可視化します。自分の数字と向き合う最初の一歩に。</p>
+        <a href="https://fire-compass-seven.vercel.app" target="_blank" class="app-link">アプリを見る →</a>
+      </div>
+      <div class="app-card">
+        <div class="app-cat">Education / Kids</div>
+        <div class="app-name">ムシ算</div>
+        <div class="app-url">mushisan.vercel.app</div>
+        <div class="app-divider"></div>
+        <p class="app-desc">むしを集めながら算数を学ぶ、子ども向け学習アプリ。1〜6年生のレベル別問題に正解するとポイントがもらえ、ガチャでレアなむしをゲットできます。学ぶ楽しさを体験してもらうために生まれました。</p>
+        <a href="https://mushisan.vercel.app" target="_blank" class="app-link">アプリを見る →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ps">
+    <div class="ps-head"><h3>04 &nbsp; Writing</h3><div class="ps-sub">執筆・コンテンツ制作</div></div>
+    <p class="ps-body" style="margin-bottom:0">資産形成、キャリアの転換、子育て、AI活用。いずれも当事者として経験してきた領域を、内側から書きます。noteでの継続的な発信を基盤に、企業向けコンテンツ制作や小説・エッセイの執筆にも対応しています。料金は内容・量・媒体により、個別にお見積りします。</p>
+  </div>
+</section>
+
+
+
+<div class="divline"></div>
+
+<!-- MID CTA -->
+<div class="mid-cta" id="mid-cta">
+  <h3>「なんとなく不安」で十分です。<br>まず、30分だけ話してみてください。</h3>
+  <p>相談内容が決まっていなくても大丈夫。資料や準備も不要です。<br>話すことで、自分でも気づいていなかった問題が整理されることがあります。</p>
+  <a href="#contact-form" class="mid-cta-btn">初回30分・無料相談を予約する</a>
+  <span class="mid-cta-sub">完全無料 · 勧誘なし · 全国オンライン対応</span>
+</div>
+
+<div class="divline"></div>
+
+
+<!-- PROFILE -->
+<section class="profile sec" id="profile">
+  <span class="lbl">Profile</span>
+  <h2 class="ttl"><b>代表者</b>プロフィール</h2>
+  <div class="profile-grid">
+    <div class="pcard">
+      <div class="pcard-img">
+        <img onload="this.classList.add('loaded')" src="https://raw.githubusercontent.com/memetomamoru-maker/corp/main/images/mamoru.png" alt="池田直也">
+        <div class="pcard-img-placeholder"><div class="pcard-img-initials">N.I.</div></div></div>
+      <div class="pcard-body">
+        <div class="pcard-role">代表</div>
+        <div class="pcard-name">池田 直也</div>
+        <div class="pcard-en">Naoya Ikeda — Representative</div>
+        <div class="pcard-pen">筆名：芽芽斗 守（noteにてエッセイを執筆）</div>
+        <div class="pcard-rule"></div>
+        <p>立教大学大学院ビジネスデザイン研究科修了、経営管理修士（MBA）取得。ヤフー株式会社（現LINEヤフー株式会社）にデザイナーとして入社後、各種Webサービスのサービス企画・事業企画・プロジェクトマネージャーへとキャリアを重ねました。15年以上の在職中にFP資格を取得し、サイドFIREを実現。2027年にNudge Rogue合同会社を設立しました。</p>
+        <div class="tl">
+          <div class="tl-row"><span class="tl-y">2010</span><span class="tl-t">ヤフー株式会社 入社。デザイナーとして会員系サービスを担当</span></div>
+          <div class="tl-row"><span class="tl-y">2016</span><span class="tl-t">経営管理修士号（MBA）取得</span></div>
+          <div class="tl-row"><span class="tl-y">2010s</span><span class="tl-t">サービス企画・事業企画・プロジェクトマネージャーへ。大規模Webサービスの立ち上げに複数参画</span></div>
+          <div class="tl-row"><span class="tl-y">2026</span><span class="tl-t">LINEヤフー株式会社を退職・独立</span></div>
+          <div class="tl-row"><span class="tl-y">2027</span><span class="tl-t">Nudge Rogue合同会社 設立</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="pcard">
+      <div class="pcard-img">
+        <img onload="this.classList.add('loaded')" src="https://raw.githubusercontent.com/memetomamoru-maker/corp/main/images/yuki.png" alt="池田祐来">
+        <div class="pcard-img-placeholder"><div class="pcard-img-initials">Y.I.</div></div></div>
+      <div class="pcard-body">
+        <div class="pcard-role">運営・窓口担当</div>
+        <div class="pcard-name">池田 祐来</div>
+        <div class="pcard-en">Yuki Ikeda — Operations</div>
+        <div class="pcard-pen">&nbsp;</div>
+        <div class="pcard-rule"></div>
+        <p>大学卒業後、テレビ制作会社を経てFOXインターナショナル・チャンネルズ株式会社（現：ウォルト・ディズニー・ジャパン株式会社）に入社。ナショナル ジオグラフィックをはじめとする海外チャンネルのアシスタント・プロデューサーとして、コンテンツ制作・番組編成に携わりました。現在は子育てとキャリアを両立しながら、Nudge Rogueの共同創業者として、生活者の視点から事業を支えています。</p>
+        <div class="tl">
+          <div class="tl-row"><span class="tl-y" style="color:var(--gp)">・</span><span class="tl-t">テレビ制作会社にて番組制作に従事</span></div>
+          <div class="tl-row"><span class="tl-y" style="color:var(--gp)">・</span><span class="tl-t">FOXインターナショナル・チャンネルズ株式会社 入社。ナショナル ジオグラフィック等のAP業務に携わる</span></div>
+          <div class="tl-row"><span class="tl-y">2027</span><span class="tl-t">Nudge Rogue合同会社 共同創業者として参画</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="padding:0 var(--H) 48px; max-width:1200px; margin:0 auto;">
+    <div class="profile-note-link">
+      <a href="https://note.com/memetomamoru" target="_blank" class="note-link"><span class="note-icon">n</span>代表のnoteを読む</a>
+      <span class="note-sub">FIRE・キャリア・お金の話を個人発信しています</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- FAQ -->
+<section class="faq sec" id="faq">
+  <span class="lbl">FAQ</span>
+  <h2 class="ttl">よくある<b>ご質問</b></h2>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary class="faq-q">「無料相談」と書いてあるFPと、何が違うのですか？</summary>
+      <div class="faq-a"><p>一般的な「無料相談FP」は、保険や投資信託の手数料が収益源です。相談は無料でも、最終的に商品を購入してもらうことが前提になっています。Nudge Rogueは報酬を相談料のみとしており、商品の販売・紹介は一切しません。「売る理由がない」という構造が根本的に異なります。</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">どこに住んでいても相談できますか？</summary>
+      <div class="faq-a"><p>はい。ZoomまたはGoogle Meetを使ったオンライン相談に対応しています。全国どこからでもご相談いただけます。画面共有を使いながら資料を一緒に確認することも可能です。</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">FIREに興味がない人でも相談できますか？</summary>
+      <div class="faq-a"><p>もちろんです。「独立・転職の資金計画を立てたい」「お金の不安を整理したい」「将来のキャッシュフローを確認したい」など、FIREに限らずお金と人生の選択に関わる相談であればお受けしています。</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">1回だけ相談して、継続しなくても失礼ではないですか？</summary>
+      <div class="faq-a"><p>まったく問題ありません。むしろ、1回で整理がついてそれで十分という方も多くいます。「継続しないと申し訳ない」という気持ちは不要です。継続をお勧めすることはありますが、強制も期待もしていません。</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">相談前に何を準備すればいいですか？</summary>
+      <div class="faq-a"><p>特別な準備は不要です。「なんとなく不安」という状態でも大丈夫です。ただ、資産状況（預貯金・投資額など）や月々の収支をざっくり把握していると、より具体的なお話ができます。</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">話した内容は、どこかに漏れませんか？</summary>
+      <div class="faq-a"><p>ご相談いただいた内容・個人情報は、返信以外の目的には使用せず、第三者に提供することもありません。安心してお話しください。</p></div>
+    </details>
+  </div>
+</section>
+
+<div class="divline"></div>
+<!-- NAME ORIGIN -->
+<section class="nameorigin sec" id="about">
+  <span class="lbl" style="color:rgba(200,240,210,.6);">The Name</span>
+  <h2 class="ttl" style="color:#fff;">社名に込めたこと</h2>
+  <div class="nameorigin-inner">
+    <div class="no-item">
+      <div class="no-word">NUDGE</div>
+      <div class="no-read">ナッジ</div>
+      <div class="no-def">そっと、背中を押す。</div>
+      <div class="no-body">強制でも説得でもなく、ただ隣に立って一緒に考える。気づいたときには、自然と一歩踏み出せていた。そういう関係性を、Nudgeと呼びます。</div>
+    </div>
+    <div class="no-item">
+      <div class="no-word">ROGUE</div>
+      <div class="no-read">ローグ</div>
+      <div class="no-def">型破り。はみ出し者。</div>
+      <div class="no-body">商品を売らない。スーツを着ない。さわやかな営業スマイルもない。一般的なFPとは少し違います。ありのままで接する。それが、本音で話せる関係につながると信じているから。</div>
+    </div>
+  </div>
+  <div class="no-close">
+    型にはまらない経験と生き方が、誰かの決断をそっと後押しする力になる。<br>それがNudge Rogueの出発点です。
+  </div>
+</section>
+
+<div class="divline"></div>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy sec" id="philosophy">
+  <span class="lbl">Why We Exist</span>
+  <h2 class="ttl">私たちが<br><b>大切にしていること</b></h2>
+  <div class="philo-g">
+    <div class="phi"><div class="phi-n">01</div><h3>利益相反を持ち込まない</h3><p>保険・金融商品の販売は行いません。報酬は相談料のみです。お客様の利益と当社の利益が一致する関係を、構造として維持することを大切にしています。</p></div>
+    <div class="phi"><div class="phi-n">02</div><h3>当事者の言葉でお話しする</h3><p>資産形成も、キャリアの転換も、すべて自分自身が経験してきたことです。理論だけでなく、実感を持ってお話しできることに価値があると考えています。</p></div>
+    <div class="phi"><div class="phi-n">03</div><h3>誠実に、正直に</h3><p>耳ざわりのよい言葉よりも、本当のことをお伝えできる関係の方が長期的に価値があります。不都合な事実も、丁寧にお伝えします。</p></div>
+    <div class="phi"><div class="phi-n">04</div><h3>お互いに合う関係を大切にする</h3><p>すべての方にご対応できるとは思っていません。価値観や目標の方向性が合わない場合は、率直にお伝えすることがあります。それが双方にとって誠実な姿勢だと考えています。</p></div>
+    <div class="phi"><div class="phi-n">05</div><h3>小さくても、意味のある会社であること</h3><p>規模の拡大よりも、関わる一人ひとりとの関係の質を大切にしています。「こういう会社が一つぐらいあってもいい」と思っていただけるような存在であり続けたいと思っています。</p></div>
+    <div class="phi" style="display:flex;align-items:center;justify-content:center;border-color:transparent;box-shadow:none">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:.14em;color:var(--gp);line-height:1.35;text-align:center">NUDGE<br>ROGUE</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CONTACT -->
+<section class="contact-sec sec" id="contact-form">
+  <span class="lbl">Contact</span>
+  <h2 class="ttl">お問い合わせ・<br><b>初回無料相談</b>のご予約</h2>
+  <div class="sns-row">
+    <a href="#" class="sns-link"><span class="sns-link-icon">✉</span>メールで相談</a>
+    <a href="#" class="sns-link"><span class="sns-link-icon">💬</span>LINEで相談</a>
+    <a href="#" class="sns-link"><span class="sns-link-icon">𝕏</span>Xでも受付中</a>
+  </div>
+  <p style="font-size:.84rem;color:var(--tx2);margin-top:12px;margin-bottom:32px;">気軽に使えるチャンネルからどうぞ。フォームでなくても構いません。</p>
+  <p class="contact-lead">「まだ相談内容が決まっていない」「本当に申し込んでいいのか迷っている」。そういう状態でも、そのままフォームに書いて送ってください。それが一番よくあるパターンです。通常2営業日以内にご返信します。</p>
+  <div class="cform-wrap">
+    <form class="cform" id="cform">
+      <div class="cform-row">
+        <label class="cform-label">お名前 <span class="req">必須</span></label>
+        <input class="cform-input" type="text" name="name" placeholder="山田 太郎" required>
+      </div>
+      <div class="cform-row">
+        <label class="cform-label">メールアドレス <span class="req">必須</span></label>
+        <input class="cform-input" type="email" name="email" placeholder="example@email.com" required>
+      </div>
+      <div class="cform-row">
+        <label class="cform-label">ご相談の種別</label>
+        <select class="cform-input cform-select" name="type">
+          <option value="">選択してください</option>
+          <option>FP相談（FIRE・ライフプラン）</option>
+          <option>Webコンサルティング</option>
+          <option>アプリ開発</option>
+          <option>執筆・コンテンツ制作</option>
+          <option>その他・まだ決まっていない</option>
+        </select>
+      </div>
+      <div class="cform-row">
+        <label class="cform-label">ご相談内容・ご希望日時</label>
+        <textarea class="cform-input cform-textarea" name="message" placeholder="例：「将来が漠然と不安で、何から始めればいいかわからない」「FIREを目指しているが試算を一緒にしてほしい」「サイトを作ったが成果が出ない」など、どんな内容でも大丈夫です。"></textarea>
+      </div>
+      <div class="cform-foot">
+        <p class="cform-note">ご入力いただいた情報は、お問い合わせへの返信以外の目的には使用しません。</p>
+        <button class="cform-btn" type="submit">送信する</button>
+      </div>
+    </form>
+    <div class="cform-success" id="cformSuccess">
+      <p>お問い合わせありがとうございます。<br>2営業日以内にご連絡いたします。</p>
+    </div>
+  </div>
+</section>
+
+<div class="divline"></div>
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div>
+    <h2>「誰に相談すれば<br>いいかわからない」<br>その一言で十分です。</h2>
+    <p>準備不要。資料不要。決断も不要です。まず30分、話してみてください。何も売りません。ただ、聞きます。</p>
+  </div>
+  <div class="cta-r">
+    <a href="#contact-form" class="cta-btn">無料相談を予約する</a>
+    <span class="cta-note">Nudge Rogue KOBE · Est. 2027</span>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">NUDGE ROGUE KOBE <small>合同会社</small></div>
+  <div class="f-sns">
+    <a href="#">LINE</a>
+    <a href="#">X (Twitter)</a>
+    <a href="#">note</a>
+  </div>
+  <div class="f-copy">© 2027 Nudge Rogue 合同会社　Kobe, Japan</div>
+</footer>
+
+<script>
+// NAV scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('on', scrollY > 60), { passive:true });
+
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+let menuOpen = false;
+
+function openMenu() {
+  menuOpen = true;
+  hamburger.classList.add('open');
+  mobileMenu.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMenu() {
+  menuOpen = false;
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+}
+hamburger.addEventListener('click', () => menuOpen ? closeMenu() : openMenu());
+
+// Particles
+const hp = document.getElementById('hp');
+for (let i = 0; i < 34; i++) {
+  const p = document.createElement('div'); p.className = 'hp';
+  const sz = Math.random()*3+1, dl = Math.random()*12, dr = Math.random()*10+8;
+  p.style.cssText = `width:${sz}px;height:${sz}px;left:${Math.random()*100}%;bottom:0;--drift:${(Math.random()-.5)*100}px;animation-duration:${dr}s;animation-delay:-${dl}s;opacity:${Math.random()*.5+.2};filter:blur(${Math.random()*.8}px)`;
+  hp.appendChild(p);
+}
+// Butterflies
+const hb = document.getElementById('hb');
+for (let i = 0; i < 7; i++) {
+  const b = document.createElement('div'); b.className = 'hb';
+  const sx=Math.random()*80+10, sy=Math.random()*60+20, ex=Math.random()*80+10, ey=Math.random()*60+10;
+  const mx=(sx+ex)/2+(Math.random()-.5)*26, my=Math.min(sy,ey)-Math.random()*16-6;
+  b.style.cssText = `--sx:${sx}vw;--sy:${sy}vh;--mx:${mx}vw;--my:${my}vh;--ex:${ex}vw;--ey:${ey}vh;--mr:${(Math.random()-.5)*26}deg;--er:${(Math.random()-.5)*16}deg;animation-duration:${Math.random()*14+10}s;animation-delay:-${Math.random()*10}s;left:0;top:0;transform:translate(${sx}vw,${sy}vh)`;
+  hb.appendChild(b);
+}
+
+document.getElementById('cform').addEventListener('submit', function(e){
+  e.preventDefault();
+  this.style.display = 'none';
+  document.getElementById('cformSuccess').style.display = 'block';
+});
+
+
+// Floating CTA: 常時表示
+
+</script>
+
+<!-- FLOATING CTA -->
+<div class="float-cta" id="floatCta">
+  <a href="#contact-form" class="float-cta-btn" id="floatCtaBtn">まず30分、話してみる</a>
+  <span class="float-cta-note">完全無料 · 勧誘なし</span>
+</div>
+
+
+
+
+
+
+<script>
+(function(){
+  var canvas = document.getElementById('hero-canvas');
+  if(!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var stars = [];
+  var W = 0, H = 0;
+
+  function resize(){
+    var rect = canvas.parentElement.getBoundingClientRect();
+    W = canvas.width  = rect.width  || window.innerWidth;
+    H = canvas.height = rect.height || window.innerHeight;
+  }
+
+  function rand(min, max){ return Math.random()*(max-min)+min; }
+
+  function createStar(){
+    var isGreen = Math.random() < 0.15;
+    return {
+      x: rand(0, W), y: rand(0, H),
+      r: isGreen ? rand(1.2, 2.4) : rand(0.4, 1.4),
+      targetAlpha: rand(0.3, isGreen ? 0.7 : 0.9),
+      speed: rand(0.004, 0.012),
+      phase: rand(0, Math.PI * 2),
+      isGreen: isGreen
+    };
+  }
+
+  for(var i = 0; i < 120; i++) stars.push(createStar());
+
+  var t = 0;
+  function loop(){
+    ctx.clearRect(0, 0, W, H);
+    t += 0.016;
+    for(var i = 0; i < stars.length; i++){
+      var s = stars[i];
+      var a = s.targetAlpha * (0.5 + 0.5 * Math.sin(t * s.speed * 60 + s.phase));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      if(s.isGreen){
+        ctx.fillStyle = 'rgba(160,230,180,' + a + ')';
+        ctx.shadowColor = 'rgba(100,200,130,0.6)';
+        ctx.shadowBlur = 6;
+      } else {
+        ctx.fillStyle = 'rgba(240,250,245,' + a + ')';
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
+      }
+      ctx.fill();
+    }
+    ctx.shadowBlur = 0;
+    requestAnimationFrame(loop);
+  }
+
+  window.addEventListener('load', function(){ resize(); loop(); });
+  window.addEventListener('resize', function(){
+    resize();
+    for(var i = 0; i < stars.length; i++){
+      stars[i].x = rand(0, W);
+      stars[i].y = rand(0, H);
+    }
+  });
+})();
+</script>
+</body>
+</html>
