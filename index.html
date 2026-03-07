@@ -153,7 +153,24 @@ nav.on .hamburger span { background:var(--ink); }
 
 /* ── SECTIONS ── */
 .sec { padding:var(--V) var(--H); }
-.lbl { font-weight:500; display:block; font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-style:italic; letter-spacing:.28em; color:var(--green); margin-bottom:14px; }
+.lbl {
+  font-weight:600;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;
+  font-style:italic;
+  letter-spacing:.3em;
+  color:var(--green);
+  margin-bottom:14px;
+  text-transform:uppercase;
+}
+.lbl::before {
+  content:'';display:block;
+  width:24px;height:1px;
+  background:var(--green);flex-shrink:0;
+}
 .ttl { font-family:'Cormorant Garamond',serif; font-size:clamp(2.40rem,4.5vw,3.40rem); font-weight:300; line-height:1.35; letter-spacing:.02em; color:var(--ink); }
 .ttl b { font-weight:600; }
 .divline { height:1px; background:rgba(0,0,0,.09); margin:0 var(--H); }
@@ -197,7 +214,7 @@ nav.on .hamburger span { background:var(--ink); }
 .story-r > p { font-size:.95rem; line-height:2.2; color:var(--tx); overflow-wrap:anywhere; word-break:auto-phrase; text-align:left; }
 
 /* ── SERVICES ── */
-.services { background:var(--gm); }
+.services { background:var(--white); }
 .ps-head h3 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.55rem,3vw,1.95rem); font-weight:400; color:var(--ink); margin-bottom:5px; }
 .ptable { width:100%; border-collapse:collapse; background:white; border:1px solid var(--gp); }
 .ptable th { font-family:'Cormorant Garamond',serif; font-size:.88rem; font-style:italic; letter-spacing:.13em; color:var(--green); font-weight:400; padding:13px 20px; text-align:left; border-bottom:2px solid var(--gp); background:var(--gm); }
@@ -321,10 +338,10 @@ footer { background:var(--ink); padding:44px var(--H); display:flex; justify-con
 .trust-inner { display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:0; }
 .trust-item { padding:44px 44px; border-right:1px solid rgba(255,255,255,.1); text-align:center; }
 .trust-item:last-child { border-right:none; }
-.trust-num { font-family:'Bebas Neue',sans-serif; font-size:clamp(3.00rem,5vw,4.40rem); color:var(--gp); line-height:1; margin-bottom:10px; letter-spacing:.04em; }
+.trust-num { font-family:'Bebas Neue',sans-serif; font-size:clamp(3.8rem,6vw,5.8rem); color:#b8d8c0; line-height:1; margin-bottom:14px; letter-spacing:.03em; font-style:normal; }
 .trust-num span { font-size:.46em; vertical-align:baseline; letter-spacing:0; }
-.trust-label { font-family:'Shippori Mincho',serif; font-size:.92rem; color:rgba(246,242,235,.78); line-height:2; }
-.trust-source { font-family:'Cormorant Garamond',serif; font-size:.82rem; font-style:italic; color:rgba(246,242,235,.45); margin-top:8px; letter-spacing:.08em; }
+.trust-label { font-family:'Shippori Mincho',serif; font-size:1.05rem; color:rgba(246,242,235,.78); line-height:2; }
+.trust-source { font-family:'Noto Serif JP',serif; font-size:.92rem;  color:rgba(246,242,235,.45); margin-top:8px; letter-spacing:.08em; }
 
 /* ─ HOW IT WORKS ─ */
 .flow { background:var(--cream); }
@@ -926,25 +943,29 @@ body { font-size:18px; }
   margin-top:52px;
 }
 .svc-card {
-  background:var(--white);
+  background:var(--cream);
   padding:44px 40px;
   display:flex;flex-direction:column;
-  transition:background .25s;
+  transition:box-shadow .25s, transform .25s;
+  border-left:3px solid transparent;
 }
-.svc-card:hover{background:var(--gm);}
+.svc-card:hover{ border-left-color:var(--green); transform:translateY(-3px); box-shadow:0 8px 32px rgba(74,140,101,.1); }
 .svc-num {
   font-family:'Bebas Neue',sans-serif;
-  font-size:3.5rem;color:rgba(200,216,192,.3);
-  line-height:1;margin-bottom:12px;letter-spacing:.05em;
+  font-size:4rem;color:rgba(74,140,101,.2);
+  line-height:1;margin-bottom:16px;letter-spacing:.05em;
 }
 .svc-cat {
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.15rem;font-style:italic;
-  letter-spacing:.12em;color:var(--ink);
-  font-weight:600;margin-bottom:6px;
+  font-family:'Shippori Mincho',serif;
+  font-size:1.15rem;
+  font-style:normal;
+  letter-spacing:.1em;
+  color:var(--ink);
+  font-weight:700;
+  margin-bottom:6px;
 }
 .svc-sub {
-  font-size:.84rem;color:var(--tx2);
+  font-size:.94rem;color:var(--tx2);
   letter-spacing:.04em;margin-bottom:20px;
 }
 .svc-divider {
