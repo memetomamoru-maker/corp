@@ -171,7 +171,7 @@ nav.on .hamburger span { background:var(--ink); }
   width:24px;height:1px;
   background:var(--green);flex-shrink:0;
 }
-.ttl { font-family:'Cormorant Garamond',serif; font-size:clamp(2.40rem,4.5vw,3.40rem); font-weight:300; line-height:1.35; letter-spacing:.02em; color:var(--ink); }
+.ttl { font-family:'Shippori Mincho','Noto Serif JP',serif; font-size:clamp(2.40rem,4.5vw,3.40rem); font-weight:500; line-height:1.35; letter-spacing:.02em; color:var(--ink); }
 .ttl b { font-weight:600; }
 .divline { height:1px; background:rgba(0,0,0,.09); margin:0 var(--H); }
 
@@ -1057,6 +1057,16 @@ body { font-size:18px; }
   margin-top:8px;
 }
 
+
+.pcard-catch {
+  font-size:1rem;
+  line-height:1.9;
+  color:var(--tx);
+  font-family:'Shippori Mincho',serif;
+  margin-bottom:28px;
+  font-weight:500;
+}
+
 </style>
 </head>
 <body>
@@ -1340,17 +1350,18 @@ body { font-size:18px; }
         <img onload="this.classList.add('loaded')" src="https://raw.githubusercontent.com/memetomamoru-maker/corp/main/images/mamoru.png" alt="池田直也">
       </div>
       <div class="pcard-body">
-        <div class="pcard-role">代表</div>
+        <div class="pcard-role">代表 / 共同設立者</div>
         <div class="pcard-name">池田 直也</div>
         <div class="pcard-en">Naoya Ikeda — Representative</div>
         <div class="pcard-pen">筆名：芽芽斗 守（noteにてエッセイを執筆）</div>
         <div class="pcard-rule"></div>
-        <p>立教大学大学院ビジネスデザイン研究科修了、経営管理学修士（MBA）取得。ヤフー株式会社（現LINEヤフー株式会社）にデザイナーとして入社後、各種Webサービスのサービス企画・事業企画・プロジェクトマネージャーへとキャリアを重ねました。15年以上の在職中にFP資格を取得し、サイドFIREを実現。2027年にNudge Rogue合同会社を設立しました。</p>
+        <p class="pcard-catch">大手IT出身・MBAホルダーのFP資格保有者が、サイドFIRE当事者として向き合います。</p>
         <div class="tl">
-          <div class="tl-row"><span class="tl-y">2010</span><span class="tl-t">ヤフー株式会社 入社。デザイナーとして会員系サービスを担当</span></div>
+          <div class="tl-row"><span class="tl-y">2010</span><span class="tl-t">ヤフー株式会社 入社</span></div>
+          <div class="tl-row"><span class="tl-y">2010s</span><span class="tl-t">デザイナーとして会員系・新規サービスを担当</span></div>
           <div class="tl-row"><span class="tl-y">2016</span><span class="tl-t">経営管理学修士（MBA）取得</span></div>
-          <div class="tl-row"><span class="tl-y">2010s</span><span class="tl-t">サービス企画・事業企画・プロジェクトマネージャーへ。大規模Webサービスの立ち上げに複数参画</span></div>
-          <div class="tl-row"><span class="tl-y">2026</span><span class="tl-t">LINEヤフー株式会社を退職・独立</span></div>
+          <div class="tl-row"><span class="tl-y">2016s</span><span class="tl-t">プランナーにキャリアチェンジ。サービス企画・事業企画・PMとして大規模サービス複数立ち上げ</span></div>
+          <div class="tl-row"><span class="tl-y">2026</span><span class="tl-t">LINEヤフー株式会社 退職・独立</span></div>
           <div class="tl-row"><span class="tl-y">2027</span><span class="tl-t">Nudge Rogue合同会社 設立</span></div>
         </div>
       </div>
@@ -1360,15 +1371,15 @@ body { font-size:18px; }
         <img onload="this.classList.add('loaded')" src="https://raw.githubusercontent.com/memetomamoru-maker/corp/main/images/yuki.png" alt="池田祐来">
       </div>
       <div class="pcard-body">
-        <div class="pcard-role">運営・窓口担当</div>
+        <div class="pcard-role">運営担当 / 共同設立者</div>
         <div class="pcard-name">池田 祐来</div>
-        <div class="pcard-en">Yuki Ikeda — Operations</div>
+        <div class="pcard-en">Yuki Ikeda — Co-Founder &amp; Operations</div>
         <div class="pcard-rule"></div>
-        <p>大学卒業後、テレビ制作会社を経てFOXインターナショナル・チャンネルズ株式会社（現：ウォルト・ディズニー・ジャパン株式会社）に入社。ナショナル ジオグラフィックをはじめとする海外チャンネルのアシスタント・プロデューサーとして、コンテンツ制作・番組編成に携わりました。現在は子育てとキャリアを両立しながら、Nudge Rogueの共同創業者として、生活者の視点から事業を支えています。</p>
+        <p class="pcard-catch">生活者の視点と、メディア制作の現場経験から、Nudge Rogueの運営を支えます。</p>
         <div class="tl">
           <div class="tl-row"><span class="tl-y" style="color:var(--gp)">・</span><span class="tl-t">テレビ制作会社にて番組制作に従事</span></div>
           <div class="tl-row"><span class="tl-y" style="color:var(--gp)">・</span><span class="tl-t">FOXインターナショナル・チャンネルズ株式会社 入社。ナショナル ジオグラフィック等のAP業務に携わる</span></div>
-          <div class="tl-row"><span class="tl-y">2027</span><span class="tl-t">Nudge Rogue合同会社 共同創業者として参画</span></div>
+          <div class="tl-row"><span class="tl-y">2027</span><span class="tl-t">Nudge Rogue合同会社 共同設立者として参画</span></div>
         </div>
       </div>
     </div>
