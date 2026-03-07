@@ -153,7 +153,7 @@ nav.on .hamburger span { background:var(--ink); }
 
 /* ── SECTIONS ── */
 .sec { padding:var(--V) var(--H); }
-.lbl { display:block; font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; letter-spacing:.26em; color:var(--green); margin-bottom:14px; }
+.lbl { font-weight:500; display:block; font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-style:italic; letter-spacing:.28em; color:var(--green); margin-bottom:14px; }
 .ttl { font-family:'Cormorant Garamond',serif; font-size:clamp(2.40rem,4.5vw,3.40rem); font-weight:300; line-height:1.35; letter-spacing:.02em; color:var(--ink); }
 .ttl b { font-weight:600; }
 .divline { height:1px; background:rgba(0,0,0,.09); margin:0 var(--H); }
@@ -1007,13 +1007,14 @@ body { font-size:18px; }
 
 .story-quote {
   font-family:'Shippori Mincho',serif;
-  font-size:clamp(1.15rem,2.2vw,1.5rem);
-  font-weight:500;line-height:1.85;
+  font-size:clamp(1.1rem,2vw,1.4rem);
+  font-weight:500;
+  line-height:2.0;
   color:var(--ink);
   border-left:3px solid var(--green);
-  padding-left:20px;
-  margin-bottom:36px;
-  letter-spacing:.04em;
+  padding:4px 0 4px 20px;
+  margin:32px 0;
+  letter-spacing:.05em;
 }
 
 
@@ -1025,6 +1026,16 @@ body { font-size:18px; }
   font-weight:500;
   font-family:'Shippori Mincho',serif;
 }
+
+.story-sub-ttl {
+  display:block;
+  font-size:.52em;
+  letter-spacing:.06em;
+  font-weight:400;
+  color:var(--tx2);
+  margin-top:8px;
+}
+
 </style>
 </head>
 <body>
@@ -1134,15 +1145,14 @@ body { font-size:18px; }
 <!-- STORY -->
 <section class="story sec" id="vision">
   <span class="lbl">Our Story</span>
-  <h2 class="ttl">FPに相談したら<br><b>保険を勧められた。</b><br><span style="font-size:.6em;letter-spacing:.05em;">私もそうでした。</span></h2>
+  <h2 class="ttl">FPに相談したら<br><b>保険を勧められた。</b><br><span class="story-sub-ttl">私もそうでした。</span></h2>
   <div class="story-inner">
     <div class="story-l">
+      <p>資産形成を始めたころ、お金のことを相談できる相手がいませんでした。YouTuberの情報は参考にはなっても、自分の数字とは遠かった。FP事務所を訪ねれば、いつのまにか保険の話になっていた。IFAは投資商品が前提にある。友人には話しにくかった。結局、FPの資格を自分で取りながら、一人で資産形成を進めました。</p>
+      <p>サイドFIREを実現するとき、もともとはWebコンサルを軸に考えていました。でもそのとき、ふと思ったんです。私があのとき必要としていた人物に、私自身がなれるんじゃないか、と。</p>
       <blockquote class="story-quote">
         あのとき、隣にいてくれたら。<br>その思いが、この会社になった。
       </blockquote>
-      <p>資産形成を始めたころ、お金のことを相談できる相手がいませんでした。YouTuberの情報は参考にはなっても、自分の数字とは遠かった。FP事務所を訪ねれば、いつのまにか保険の話になっていた。IFAは投資商品が前提にある。友人には話しにくかった。結局、FPの資格を自分で取りながら、一人で資産形成を進めました。</p>
-      <p>サイドFIREを実現するとき、もともとはWebコンサルを軸に考えていました。でもそのとき、ふと思ったんです。私があのとき必要としていた人物に、私自身がなれるんじゃないか、と。</p>
-      <p>相談を通じて信頼を積み重ねることが、事業全体の土台だと考えています。</p>
       <p class="story-fire-note">FIREという選択肢に向き合うとき、一人で考え込まなくていい。あなたの状況を、あなたの言葉で話せる場所がここにある。</p>
     </div>
     <div class="story-r">
