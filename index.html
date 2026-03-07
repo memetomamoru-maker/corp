@@ -22,7 +22,7 @@ html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
 body {
   font-family:'Noto Serif JP',serif;
   background:var(--white); color:var(--ink);
-  font-size:16px; line-height:2.0;
+  font-size:18px; line-height:2.0;
   overflow-wrap:anywhere;
 }
 
@@ -94,7 +94,7 @@ nav.on .hamburger span { background:var(--ink); }
 .mobile-menu.open { opacity:1; }
 .mobile-menu a {
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1.4rem,4vw,2.2rem); font-style:italic; letter-spacing:.18em;
+  font-size:clamp(1.60rem,4vw,2.40rem); font-style:italic; letter-spacing:.18em;
   color:var(--ink); text-decoration:none; opacity:.75; transition:opacity .3s;
 }
 .mobile-menu a:hover { opacity:1; }
@@ -141,7 +141,7 @@ nav.on .hamburger span { background:var(--ink); }
 .htitle { font-family:'Bebas Neue',sans-serif; font-size:clamp(4rem,14vw,10rem); line-height:.88; letter-spacing:.04em; color:#fff; text-shadow:0 4px 40px rgba(0,0,0,.5), 0 2px 8px rgba(0,0,0,.3); opacity:0; animation:hup 1.2s ease forwards 1.1s; }
 .htitle em { display:block; font-style:normal; font-size:.44em; letter-spacing:.22em; color:rgba(220,248,232,.95); margin-top:10px; text-shadow:0 2px 12px rgba(0,0,0,.4); }
 .hcatch { margin-top:36px; opacity:0; animation:hup 1.2s ease forwards 1.5s; }
-.hcatch .main { font-family:'Shippori Mincho',serif; font-size:clamp(1.05rem,3vw,1.3rem); line-height:2.5; font-weight:500; color:#fff; text-shadow:0 2px 20px rgba(0,0,0,.55), 0 1px 4px rgba(0,0,0,.4); }
+.hcatch .main { font-family:'Shippori Mincho',serif; font-size:clamp(1.25rem,3vw,1.50rem); line-height:2.5; font-weight:500; color:#fff; text-shadow:0 2px 20px rgba(0,0,0,.55), 0 1px 4px rgba(0,0,0,.4); }
 .hcatch .sub  { font-size:clamp(.92rem,2.4vw,1rem); line-height:2.2; color:rgba(235,255,243,.88); margin-top:8px; text-shadow:0 2px 16px rgba(0,0,0,.45); }
 .htags { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:32px; opacity:0; animation:hup 1.2s ease forwards 1.9s; position:relative; z-index:11; }
 .htag { font-family:'Cormorant Garamond',serif; font-size:.88rem; font-style:italic; letter-spacing:.11em; color:rgba(230,252,238,.95); border:1px solid rgba(175,238,200,.5); padding:7px 18px; border-radius:1px; backdrop-filter:blur(6px); background:rgba(0,0,0,.15); transition:all .35s; }
@@ -154,7 +154,7 @@ nav.on .hamburger span { background:var(--ink); }
 /* ── SECTIONS ── */
 .sec { padding:var(--V) var(--H); }
 .lbl { display:block; font-family:'Cormorant Garamond',serif; font-size:1rem; font-style:italic; letter-spacing:.26em; color:var(--green); margin-bottom:14px; }
-.ttl { font-family:'Cormorant Garamond',serif; font-size:clamp(2.2rem,4.5vw,3.2rem); font-weight:300; line-height:1.35; letter-spacing:.02em; color:var(--ink); }
+.ttl { font-family:'Cormorant Garamond',serif; font-size:clamp(2.40rem,4.5vw,3.40rem); font-weight:300; line-height:1.35; letter-spacing:.02em; color:var(--ink); }
 .ttl b { font-weight:600; }
 .divline { height:1px; background:rgba(0,0,0,.09); margin:0 var(--H); }
 
@@ -168,7 +168,7 @@ nav.on .hamburger span { background:var(--ink); }
 .concept-r { padding:52px; background:var(--gm); display:flex; align-items:center; }
 .cquote { position:relative; width:100%; padding:44px 40px 40px; background:white; border:1px solid var(--gp); border-radius:2px; overflow:hidden; }
 .cquote::before { content:'"'; position:absolute; top:-8px; left:18px; font-family:'Cormorant Garamond',serif; font-size:5rem; line-height:1; color:var(--gp); font-style:italic; pointer-events:none; }
-.cquote p { font-family:'Shippori Mincho',serif; font-size:clamp(1.05rem,2.2vw,1.3rem); line-height:2.1; font-weight:500; color:var(--ink); letter-spacing:.04em; }
+.cquote p { font-family:'Shippori Mincho',serif; font-size:clamp(1.25rem,2.2vw,1.50rem); line-height:2.1; font-weight:500; color:var(--ink); letter-spacing:.04em; }
 .cquote cite { display:block; margin-top:18px; font-family:'Cormorant Garamond',serif; font-size:.82rem; font-style:italic; color:var(--green); letter-spacing:.1em; }
 
 /* ── TARGET ── */
@@ -193,12 +193,12 @@ nav.on .hamburger span { background:var(--ink); }
   object-fit:cover; object-position:center 20%;
   display:block;
 }
-.story-r blockquote { font-family:'Shippori Mincho',serif; font-size:clamp(1.1rem,2.6vw,1.45rem); line-height:1.9; font-weight:500; color:var(--ink); margin:0 0 26px 0; padding:0; text-align:left; display:block; }
+.story-r blockquote { font-family:'Shippori Mincho',serif; font-size:clamp(1.30rem,2.6vw,1.65rem); line-height:1.9; font-weight:500; color:var(--ink); margin:0 0 26px 0; padding:0; text-align:left; display:block; }
 .story-r > p { font-size:.95rem; line-height:2.2; color:var(--tx); overflow-wrap:anywhere; word-break:auto-phrase; text-align:left; }
 
 /* ── SERVICES ── */
 .services { background:var(--gm); }
-.ps-head h3 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.35rem,3vw,1.75rem); font-weight:400; color:var(--ink); margin-bottom:5px; }
+.ps-head h3 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.55rem,3vw,1.95rem); font-weight:400; color:var(--ink); margin-bottom:5px; }
 .ptable { width:100%; border-collapse:collapse; background:white; border:1px solid var(--gp); }
 .ptable th { font-family:'Cormorant Garamond',serif; font-size:.88rem; font-style:italic; letter-spacing:.13em; color:var(--green); font-weight:400; padding:13px 20px; text-align:left; border-bottom:2px solid var(--gp); background:var(--gm); }
 .ptable td { padding:18px 20px; border-bottom:1px solid rgba(196,224,206,.4); font-size:.92rem; color:var(--tx); vertical-align:top; line-height:2.0; }
@@ -247,7 +247,7 @@ nav.on .hamburger span { background:var(--ink); }
 
 /* ── CTA ── */
 .cta { background:var(--gm); display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center; padding:var(--V) var(--H); }
-.cta h2 { font-family:'Shippori Mincho',serif; font-size:clamp(1.5rem,3.2vw,2.5rem); font-weight:500; line-height:2; color:var(--ink); margin-bottom:22px; }
+.cta h2 { font-family:'Shippori Mincho',serif; font-size:clamp(1.70rem,3.2vw,2.70rem); font-weight:500; line-height:2; color:var(--ink); margin-bottom:22px; }
 .cta > div > p { font-size:.95rem; line-height:2.7; color:var(--tx); }
 .cta-r { display:flex; flex-direction:column; align-items:flex-start; gap:22px; }
 .cta-btn { display:inline-block; padding:20px 52px; background:var(--green); color:#fff; text-decoration:none; font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; letter-spacing:.16em; border:1px solid var(--green); transition:all .35s; }
@@ -321,7 +321,7 @@ footer { background:var(--ink); padding:44px var(--H); display:flex; justify-con
 .trust-inner { display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:0; }
 .trust-item { padding:44px 44px; border-right:1px solid rgba(255,255,255,.1); text-align:center; }
 .trust-item:last-child { border-right:none; }
-.trust-num { font-family:'Bebas Neue',sans-serif; font-size:clamp(2.8rem,5vw,4.2rem); color:var(--gp); line-height:1; margin-bottom:10px; letter-spacing:.04em; }
+.trust-num { font-family:'Bebas Neue',sans-serif; font-size:clamp(3.00rem,5vw,4.40rem); color:var(--gp); line-height:1; margin-bottom:10px; letter-spacing:.04em; }
 .trust-num span { font-size:.46em; vertical-align:baseline; letter-spacing:0; }
 .trust-label { font-family:'Shippori Mincho',serif; font-size:.92rem; color:rgba(246,242,235,.78); line-height:2; }
 .trust-source { font-family:'Cormorant Garamond',serif; font-size:.82rem; font-style:italic; color:rgba(246,242,235,.45); margin-top:8px; letter-spacing:.08em; }
@@ -508,7 +508,7 @@ footer { background:var(--ink); padding:44px var(--H); display:flex; justify-con
   background:var(--ink); padding:72px var(--H);
   text-align:center;
 }
-.mid-cta h3 { font-family:'Shippori Mincho',serif; font-size:clamp(1.3rem,3vw,1.9rem); font-weight:500; color:#fff; line-height:1.9; margin-bottom:20px; }
+.mid-cta h3 { font-family:'Shippori Mincho',serif; font-size:clamp(1.50rem,3vw,2.10rem); font-weight:500; color:#fff; line-height:1.9; margin-bottom:20px; }
 .mid-cta p { font-size:.94rem; color:rgba(246,242,235,.65); line-height:2.2; margin-bottom:32px; overflow-wrap:anywhere; }
 .mid-cta-btn {
   display:inline-block; padding:18px 52px;
@@ -736,7 +736,7 @@ footer { background:var(--ink); padding:44px var(--H); display:flex; justify-con
    ════════════════════════════════ */
 
 /* ベース本文サイズを16pxに引き上げ */
-body { font-size: 16px; }
+body { font-size:18px; }
 
 /* 本文の最大行長を制限（1行60〜70字） */
 .ps-body, .story-l p, .story-r p,
