@@ -198,11 +198,7 @@ nav.on .hamburger span { background:var(--ink); }
 
 /* ── SERVICES ── */
 .services { background:var(--gm); }
-.ps { margin-top:60px; }
-.ps-head { margin-bottom:22px; }
 .ps-head h3 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.35rem,3vw,1.75rem); font-weight:400; color:var(--ink); margin-bottom:5px; }
-.ps-sub { font-family:'Shippori Mincho',serif; font-size:.88rem; color:var(--green); letter-spacing:.04em; }
-.ps-body { font-size:.95rem; line-height:2.5; color:var(--tx); margin-bottom:26px; max-width:640px; overflow-wrap:anywhere; }
 .ptable { width:100%; border-collapse:collapse; background:white; border:1px solid var(--gp); }
 .ptable th { font-family:'Cormorant Garamond',serif; font-size:.88rem; font-style:italic; letter-spacing:.13em; color:var(--green); font-weight:400; padding:13px 20px; text-align:left; border-bottom:2px solid var(--gp); background:var(--gm); }
 .ptable td { padding:18px 20px; border-bottom:1px solid rgba(196,224,206,.4); font-size:.92rem; color:var(--tx); vertical-align:top; line-height:2.0; }
@@ -585,20 +581,8 @@ footer { background:var(--ink); padding:44px var(--H); display:flex; justify-con
 
 
 /* ── PS VALUE POINTS ── */
-.ps-value-points {
-  display:flex; flex-wrap:wrap; gap:8px 20px;
-  margin:20px 0 28px;
-}
-.ps-vp {
-  display:flex; align-items:center; gap:7px;
-  font-size:.88rem; color:var(--tx); line-height:1.6;
-}
-.ps-vp-icon {
-  color:var(--green); font-weight:700; font-size:.9rem; flex-shrink:0;
-}
 @media(max-width:768px){
-  .ps-value-points { flex-direction:column; gap:8px; }
-}
+  }
 
 
 /* ── SNS LINKS ── */
@@ -765,7 +749,6 @@ body { font-size: 16px; }
 }
 
 /* セクション本文のフォントサイズを引き上げ */
-.ps-body   { font-size: .98rem; }
 .no-body   { font-size: .94rem; }
 .case-sol  { font-size: .92rem; }
 .s-body    { font-size: .92rem; }
@@ -793,12 +776,6 @@ body { font-size: 16px; }
 }
 
 /* セクション本文エリアに最大幅 */
-.ps-body-wrap { max-width: 760px; }
-
-
-
-
-
 /* ── CANVAS Z-INDEX FIX ── */
 
 
@@ -938,6 +915,93 @@ body { font-size: 16px; }
   .pcard-img { height:260px; }
   .pcard-body { padding:24px 24px 32px; }
   .pcard-name { font-size:1.5rem; }
+}
+
+
+/* ── SERVICES GRID ── */
+.svc-grid {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1px;background:var(--gp);
+  margin-top:52px;
+}
+.svc-card {
+  background:var(--white);
+  padding:44px 40px;
+  display:flex;flex-direction:column;
+  transition:background .25s;
+}
+.svc-card:hover{background:var(--gm);}
+.svc-num {
+  font-family:'Bebas Neue',sans-serif;
+  font-size:3.5rem;color:rgba(200,216,192,.3);
+  line-height:1;margin-bottom:12px;letter-spacing:.05em;
+}
+.svc-cat {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.15rem;font-style:italic;
+  letter-spacing:.12em;color:var(--ink);
+  font-weight:600;margin-bottom:6px;
+}
+.svc-sub {
+  font-size:.84rem;color:var(--tx2);
+  letter-spacing:.04em;margin-bottom:20px;
+}
+.svc-divider {
+  width:28px;height:1px;
+  background:var(--green);margin-bottom:20px;
+}
+.svc-body {
+  font-size:.95rem;line-height:2.2;
+  color:var(--tx);margin-bottom:24px;flex:1;
+}
+.svc-points {
+  display:flex;flex-direction:column;gap:8px;
+  margin-bottom:28px;
+}
+.svc-pt {
+  font-size:.88rem;color:var(--tx2);
+  line-height:1.7;letter-spacing:.02em;
+}
+.svc-foot {
+  display:flex;flex-direction:column;gap:6px;
+  margin-top:auto;
+}
+.svc-link {
+  font-family:'Shippori Mincho',serif;
+  font-size:.9rem;color:var(--green);
+  text-decoration:none;font-weight:700;
+  letter-spacing:.06em;transition:color .2s;
+}
+.svc-link:hover{color:var(--green-d);}
+.svc-note {
+  font-size:.78rem;color:var(--tx2);
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;letter-spacing:.1em;
+}
+.svc-apps {
+  display:flex;flex-direction:column;
+  gap:10px;margin-top:auto;
+}
+.svc-app {
+  display:flex;flex-direction:column;gap:3px;
+  padding:14px 16px;background:var(--gm);
+  border:1px solid var(--gp);border-radius:2px;
+  text-decoration:none;transition:background .2s;
+}
+.svc-app:hover{background:var(--gp);}
+.svc-app-name {
+  font-family:'Shippori Mincho',serif;
+  font-size:.95rem;font-weight:700;color:var(--ink);
+}
+.svc-app-url {
+  font-size:.78rem;color:var(--green);
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;letter-spacing:.08em;
+}
+@media(max-width:768px){
+  .svc-grid{grid-template-columns:1fr;}
+  .svc-card{padding:36px 24px;}
 }
 
 </style>
@@ -1131,71 +1195,74 @@ body { font-size: 16px; }
 <section class="services sec" id="services">
   <span class="lbl">Services</span>
   <h2 class="ttl">4つの<b>事業領域</b></h2>
+  <div class="svc-grid">
 
-  <div class="ps">
-    <div class="ps-head"><h3>01 &nbsp; Financial Planning</h3><div class="ps-sub">お金と人生の相談 / FIRE伴走 / 壁打ち</div></div>
-    <p class="ps-body">保険も投資信託も売りません。収益源は相談料のみ。だから、あなたの利益だけを考えたアドバイスができます。「FIRE・早期退職を考えている」「将来が漠然と不安」「誰にも話せなかった」。型にはめず、あなたの状況に合わせてオーダーメイドで向き合います。まず30分の壁打ちから気軽にどうぞ。</p>
-
-    <div class="ps-value-points">
-      <div class="ps-vp"><span class="ps-vp-icon">✓</span>サイドFIREを実現した当事者が対応</div>
-      <div class="ps-vp"><span class="ps-vp-icon">✓</span>有料相談のみで成立する、利益相反ゼロの構造</div>
-      <div class="ps-vp"><span class="ps-vp-icon">✓</span>担当替えなし。代表が一貫して担当します</div>
-    </div>
-
-        <div class="lp-cta-wrap">
-      <a href="./fp_lp.html" class="lp-cta-btn">料金・相談プランを見る</a>
-      <span class="lp-cta-note">壁打ち30分 ¥5,000〜 · 初回無料ヒアリングあり</span>
-    </div>
-  </div>
-
-    <div class="ps">
-    <div class="ps-head"><h3>02 &nbsp; Web Consulting</h3><div class="ps-sub">LINEヤフー15年の知見を、あなたのサイトへ</div></div>
-    <p class="ps-body">ヤフー株式会社（現LINEヤフー）で15年以上、大規模Webサービスの新規立ち上げ・UI/UX設計・グロース・PMを担当してきた経験をそのまま活かします。「作ったけれど成果が出ない」「何を改善すればいいかわからない」。FIRE・資産形成に限らず、Web事業の成長を本気で考えている方はぜひ。まず45分の壁打ち診断で、課題を一緒に言語化するところから始めましょう。</p>
-
-    <div class="ps-value-points">
-      <div class="ps-vp"><span class="ps-vp-icon">✓</span>大手IT企業15年のグロース・UX実戦経験</div>
-      <div class="ps-vp"><span class="ps-vp-icon">✓</span>「何が問題かわからない」状態から一緒に整理</div>
-      <div class="ps-vp"><span class="ps-vp-icon">✓</span>FP視点での収益設計まで一気通貫で対応可能</div>
-    </div>
-
-        <div class="lp-cta-wrap">
-      <a href="./web_lp.html" class="lp-cta-btn">料金・サービス詳細を見る</a>
-      <span class="lp-cta-note">壁打ち診断 ¥10,000〜 · 初回30分無料ヒアリング</span>
-    </div>
-  </div>
-
-    <div class="ps">
-    <div class="ps-head"><h3>03 &nbsp; Apps</h3><div class="ps-sub">自社プロダクト / 公開中</div></div>
-    <p class="ps-body">受託開発ではありません。自分たちが必要だと思ったものを、自分たちで作って公開しています。FIREシミュレーターから子ども向け学習アプリまで。小さくても、誰かの役に立つプロダクトを作り続けます。</p>
-    <div class="app-grid">
-      <div class="app-card">
-        <div class="app-cat">Finance / Simulation</div>
-        <div class="app-name">FIRE COMPASS</div>
-        <div class="app-url">fire-compass-seven.vercel.app</div>
-        <div class="app-divider"></div>
-        <p class="app-desc">「経済的自由への羅針盤」をコンセプトにしたFIREシミュレーター。資産額・生活費・運用利率を入力することで、FIREまでの道筋を可視化します。自分の数字と向き合う最初の一歩に。</p>
-        <a href="https://fire-compass-seven.vercel.app" target="_blank" class="app-link">アプリを見る →</a>
+    <div class="svc-card">
+      <div class="svc-num">01</div>
+      <div class="svc-cat">Financial Planning</div>
+      <div class="svc-sub">お金と人生の相談 / FIRE伴走 / 壁打ち</div>
+      <div class="svc-divider"></div>
+      <p class="svc-body">保険も投資信託も売りません。収益源は相談料のみ。だから、あなたの利益だけを考えたアドバイスができます。「FIRE・早期退職を考えている」「将来が漠然と不安」「誰にも話せなかった」。型にはめず、あなたの状況に合わせてオーダーメイドで向き合います。</p>
+      <div class="svc-points">
+        <div class="svc-pt">✓ サイドFIREを実現した当事者が対応</div>
+        <div class="svc-pt">✓ 有料相談のみ。利益相反ゼロの構造</div>
+        <div class="svc-pt">✓ 担当替えなし。代表が一貫して担当</div>
       </div>
-      <div class="app-card">
-        <div class="app-cat">Education / Kids</div>
-        <div class="app-name">ムシ算</div>
-        <div class="app-url">mushisan.vercel.app</div>
-        <div class="app-divider"></div>
-        <p class="app-desc">むしを集めながら算数を学ぶ、子ども向け学習アプリ。1〜6年生のレベル別問題に正解するとポイントがもらえ、ガチャでレアなむしをゲットできます。学ぶ楽しさを体験してもらうために生まれました。</p>
-        <a href="https://mushisan.vercel.app" target="_blank" class="app-link">アプリを見る →</a>
+      <div class="svc-foot">
+        <a href="./fp_lp.html" class="svc-link">料金・相談プランを見る →</a>
+        <span class="svc-note">壁打ち30分 ¥5,000〜 · 初回無料ヒアリングあり</span>
       </div>
     </div>
-  </div>
 
-  <div class="ps">
-    <div class="ps-head"><h3>04 &nbsp; Writing</h3><div class="ps-sub">執筆・コンテンツ制作</div></div>
-    <p class="ps-body" style="margin-bottom:0">資産形成、キャリアの転換、子育て、AI活用。いずれも当事者として経験してきた領域を、内側から書きます。noteでの継続的な発信を基盤に、企業向けコンテンツ制作や小説・エッセイの執筆にも対応しています。料金は内容・量・媒体により、個別にお見積りします。</p>
+    <div class="svc-card">
+      <div class="svc-num">02</div>
+      <div class="svc-cat">Web Consulting</div>
+      <div class="svc-sub">大手IT企業15年の知見を、あなたのサイトへ</div>
+      <div class="svc-divider"></div>
+      <p class="svc-body">大規模Webサービスの新規立ち上げ・UI/UX設計・グロース・PMを担当してきた経験をそのまま活かします。「作ったけれど成果が出ない」「何を改善すればいいかわからない」。Web事業の成長を本気で考えている方はぜひ。</p>
+      <div class="svc-points">
+        <div class="svc-pt">✓ 大手IT企業15年のグロース・UX実戦経験</div>
+        <div class="svc-pt">✓ 「何が問題かわからない」状態から一緒に整理</div>
+        <div class="svc-pt">✓ FP視点での収益設計まで一気通貫で対応</div>
+      </div>
+      <div class="svc-foot">
+        <a href="./web_lp.html" class="svc-link">料金・サービス詳細を見る →</a>
+        <span class="svc-note">壁打ち診断 ¥10,000〜 · 初回30分無料ヒアリング</span>
+      </div>
+    </div>
+
+    <div class="svc-card">
+      <div class="svc-num">03</div>
+      <div class="svc-cat">Apps</div>
+      <div class="svc-sub">自社プロダクト / 公開中</div>
+      <div class="svc-divider"></div>
+      <p class="svc-body">受託開発ではありません。自分たちが必要だと思ったものを、自分たちで作って公開しています。FIREシミュレーターから子ども向け学習アプリまで。小さくても、誰かの役に立つプロダクトを作り続けます。</p>
+      <div class="svc-apps">
+        <a href="https://fire-compass-seven.vercel.app" target="_blank" class="svc-app">
+          <span class="svc-app-name">FIRE COMPASS</span>
+          <span class="svc-app-url">fire-compass-seven.vercel.app →</span>
+        </a>
+        <a href="https://mushisan.vercel.app" target="_blank" class="svc-app">
+          <span class="svc-app-name">ムシ算</span>
+          <span class="svc-app-url">mushisan.vercel.app →</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="svc-card">
+      <div class="svc-num">04</div>
+      <div class="svc-cat">Writing</div>
+      <div class="svc-sub">執筆・コンテンツ制作</div>
+      <div class="svc-divider"></div>
+      <p class="svc-body">資産形成、キャリアの転換、子育て、AI活用。いずれも当事者として経験してきた領域を、内側から書きます。noteでの継続的な発信を基盤に、企業向けコンテンツ制作や小説・エッセイの執筆にも対応しています。</p>
+      <div class="svc-foot">
+        <a href="https://note.com/memetomamoru" target="_blank" class="svc-link">noteを読む →</a>
+        <span class="svc-note">料金は内容・量・媒体により個別お見積り</span>
+      </div>
+    </div>
+
   </div>
 </section>
-
-
-
-<div class="divline"></div>
 
 <!-- MID CTA -->
 <div class="mid-cta" id="mid-cta">
