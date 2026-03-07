@@ -659,12 +659,12 @@ footer { background:var(--ink); padding:44px var(--H); display:flex; justify-con
 }
 .no-item {
   padding:52px 52px;
-  border-right:1px solid rgba(255,255,255,.08);
+  border-right:1px solid var(--gp);
 }
 .no-item:last-child { border-right:none; }
 .no-word {
   font-family:'Bebas Neue',sans-serif; font-size:3rem;
-  letter-spacing:.18em; color:rgba(255,255,255,.12);
+  letter-spacing:.18em; color:rgba(74,140,101,.2);
   line-height:1; margin-bottom:6px;
 }
 .no-read {
@@ -674,18 +674,18 @@ footer { background:var(--ink); padding:44px var(--H); display:flex; justify-con
 }
 .no-def {
   font-family:'Shippori Mincho',serif; font-size:1.05rem;
-  font-weight:500; color:#fff; line-height:2.0; margin-bottom:16px;
+  font-weight:500; color:var(--ink); line-height:2.0; margin-bottom:16px;
 }
 .no-body {
-  font-size:.88rem; line-height:2.2; color:rgba(246,242,235,.55);
+  font-size:.88rem; line-height:2.2; color:var(--tx);
   overflow-wrap:anywhere;
 }
 .no-close {
   max-width:960px; margin:0 auto;
   padding:0 52px 56px;
   font-family:'Shippori Mincho',serif; font-size:.92rem;
-  font-weight:500; color:rgba(246,242,235,.6); line-height:2.2;
-  border-top:1px solid rgba(255,255,255,.08); padding-top:36px; margin-top:0;
+  font-weight:500; color:var(--tx); line-height:2.2;
+  border-top:1px solid var(--gp); padding-top:36px; margin-top:0;
 }
 @media(max-width:768px){
   .nameorigin-inner { grid-template-columns:1fr; }
@@ -1076,11 +1076,11 @@ background:rgba(26,40,32,.5);backdrop-filter:blur(8px);}
 
 
 .sec-bg-cream { background:var(--cream); }
-.philosophy h2.ttl { color:#fff; }
-.philosophy .lbl { color:rgba(200,230,210,.6); }
-.philosophy .phi h3 { color:#fff; }
-.philosophy .phi p { color:rgba(255,255,255,.75); }
-.philosophy .phi-n { color:rgba(200,230,210,.2); }
+.philosophy h2.ttl { color:var(--ink); }
+.philosophy .lbl { color:var(--tx2); }
+.philosophy .phi h3 { color:var(--ink); }
+.philosophy .phi p { color:var(--tx); }
+.philosophy .phi-n { color:rgba(74,140,101,.15); }
 
 
 .nameorigin .lbl { color:var(--tx2); }
