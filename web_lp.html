@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Webコンサルティング | Nudge Rogue KOBE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Bebas+Neue&family=Shippori+Mincho:wght@400;500;700&family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --ink:#1a2820; --green:#4a8c65; --gp:#c8d8c0; --gm:#edf4ef;
+  --cream:#f6f2eb; --white:#ffffff; --tx:#2c3830; --tx2:#6b7c6f;
+  --H:clamp(24px,5vw,80px);
+}
+html{overflow-x:hidden;scroll-behavior:smooth;}
+body{font-family:'Noto Serif JP',serif;font-size:16px;background:var(--cream);color:var(--tx);line-height:2.0;overflow-x:hidden;}
+
+/* ══════════════ NAV ══════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 var(--H);height:64px;
+  background:rgba(26,40,32,.96);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(200,216,192,.08);
+}
+.nav-logo{
+  font-family:'Bebas Neue',sans-serif;font-size:1.15rem;
+  letter-spacing:.2em;color:#fff;line-height:1;
+  text-decoration:none;
+}
+.nav-logo small{
+  display:block;font-family:'Noto Serif JP',serif;
+  font-size:.32em;letter-spacing:.28em;
+  color:rgba(255,255,255,.4);font-weight:300;margin-top:2px;
+}
+.nav-right{display:flex;align-items:center;gap:28px;}
+.nav-cta{
+  padding:10px 24px;background:var(--green);color:#fff;
+  text-decoration:none;font-family:'Shippori Mincho',serif;
+  font-size:.84rem;letter-spacing:.06em;border-radius:1px;
+  transition:all .3s;white-space:nowrap;
+}
+.nav-cta:hover{background:#3d7050;transform:translateY(-1px);}
+.nav-back{
+  font-size:.78rem;color:rgba(255,255,255,.4);
+  text-decoration:none;letter-spacing:.1em;
+  transition:color .3s;white-space:nowrap;
+}
+.nav-back:hover{color:rgba(255,255,255,.75);}
+
+/* ══════════════ HERO ══════════════ */
+.lp-hero{
+  min-height:100vh;
+  background:var(--ink);
+  display:flex;align-items:center;
+  padding:120px var(--H) 80px;
+  position:relative;overflow:hidden;
+}
+.lp-hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 80% at 80% 20%,rgba(74,140,101,.1) 0%,transparent 65%),
+    radial-gradient(ellipse 50% 60% at 20% 80%,rgba(30,60,40,.6) 0%,transparent 60%);
+}
+#hero-canvas{
+  position:absolute;top:0;left:0;
+  width:100%;height:100%;
+  pointer-events:none;z-index:2;display:block;
+}
+.hero-inner{
+  position:relative;z-index:10;
+  max-width:720px;
+}
+.hero-eyebrow{
+  font-family:'Cormorant Garamond',serif;font-size:.92rem;
+  font-style:italic;letter-spacing:.32em;
+  color:rgba(180,230,200,.6);margin-bottom:28px;display:block;
+}
+.hero-h1{
+  font-family:'Shippori Mincho',serif;
+  font-size:clamp(2rem,4.5vw,3.4rem);
+  font-weight:500;color:#fff;line-height:1.6;margin-bottom:28px;
+}
+.hero-h1 b{color:rgba(160,230,180,.9);font-weight:700;}
+.hero-sub{
+  font-size:1.02rem;color:rgba(215,245,228,.7);
+  line-height:2.3;margin-bottom:44px;max-width:500px;
+}
+.hero-cta-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:14px;}
+.hero-btn{
+  display:inline-flex;align-items:center;gap:14px;
+  padding:18px 48px;background:var(--green);color:#fff;
+  text-decoration:none;font-family:'Shippori Mincho',serif;
+  font-size:1rem;font-weight:500;letter-spacing:.1em;
+  border-radius:1px;transition:all .35s;
+}
+.hero-btn::after{content:'→';font-size:.9em;transition:transform .3s;}
+.hero-btn:hover{background:#3d7050;transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.35);}
+.hero-btn:hover::after{transform:translateX(4px);}
+.hero-note{
+  font-size:.8rem;color:rgba(180,230,200,.4);
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  letter-spacing:.14em;
+}
+
+/* ══════════════ SECTION COMMON ══════════════ */
+.sec{padding:108px var(--H);}
+.sec-bg-white{background:var(--white);}
+.sec-bg-cream{background:var(--cream);}
+.sec-bg-gm{background:var(--gm);}
+.sec-bg-ink{background:var(--ink);}
+
+.lbl{
+  display:flex;align-items:center;gap:16px;
+  font-family:'Cormorant Garamond',serif;font-size:.9rem;
+  font-style:italic;letter-spacing:.34em;color:var(--green);
+  margin-bottom:20px;text-transform:uppercase;
+}
+.lbl::before{
+  content:'';flex-shrink:0;
+  width:28px;height:1px;background:var(--green);
+}
+.ttl{
+  font-family:'Shippori Mincho',serif;
+  font-size:clamp(1.75rem,3.5vw,2.5rem);
+  font-weight:500;line-height:1.72;color:var(--ink);
+  margin-bottom:0;letter-spacing:.02em;
+}
+.ttl b{font-weight:700;}
+.sec-header{margin-bottom:64px;}
+
+/* ══════════════ WHY US ══════════════ */
+.strength-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--gp);border:1px solid var(--gp);
+}
+.strength-item{
+  background:var(--white);padding:44px 36px;
+  transition:background .25s;
+}
+.strength-item:hover{background:var(--gm);}
+.s-num{
+  font-family:'Bebas Neue',sans-serif;font-size:4rem;
+  color:var(--gp);letter-spacing:.08em;line-height:1;
+  margin-bottom:20px;display:block;
+}
+.s-title{
+  font-family:'Shippori Mincho',serif;font-size:1.08rem;
+  font-weight:700;color:var(--ink);margin-bottom:14px;line-height:1.7;
+}
+.s-body{font-size:.95rem;line-height:2.2;color:var(--tx2);}
+
+/* ══════════════ CASES ══════════════ */
+.cases-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
+  background:var(--gp);border:1px solid var(--gp);
+}
+.case-card{
+  background:var(--white);padding:44px 40px;
+  transition:background .25s;
+}
+.case-card:hover{background:var(--gm);}
+.case-n{
+  font-family:'Bebas Neue',sans-serif;font-size:4.5rem;
+  color:rgba(200,216,192,.35);line-height:1;
+  margin-bottom:20px;display:block;letter-spacing:.04em;
+}
+.case-top{
+  padding-bottom:22px;
+  border-bottom:1px solid var(--gp);
+  margin-bottom:22px;
+}
+.case-tag{
+  font-size:.78rem;font-weight:700;letter-spacing:.18em;
+  color:var(--tx2);text-transform:uppercase;
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  display:block;margin-bottom:10px;
+}
+.case-issue{
+  font-family:'Shippori Mincho',serif;font-size:1.18rem;
+  font-weight:700;color:var(--ink);line-height:1.65;
+}
+.case-tag-sol{
+  font-size:.78rem;font-weight:700;letter-spacing:.18em;
+  color:var(--green);text-transform:uppercase;
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  display:block;margin-bottom:10px;
+}
+.case-sol{font-size:.97rem;line-height:2.15;color:var(--tx2);}
+
+/* ══════════════ PRICE ══════════════ */
+.price-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+}
+.price-card{
+  padding:40px 32px;border:1px solid var(--gp);
+  border-radius:2px;background:var(--gm);
+  display:flex;flex-direction:column;
+}
+.price-card.featured{
+  background:var(--white);
+  border-color:var(--green);
+  box-shadow:0 4px 32px rgba(74,140,101,.12);
+  position:relative;
+}
+.price-card.featured::before{
+  content:'おすすめ';position:absolute;top:-1px;left:32px;
+  font-family:'Shippori Mincho',serif;font-size:.72rem;
+  letter-spacing:.1em;padding:4px 12px;
+  background:var(--green);color:#fff;border-radius:0 0 2px 2px;
+}
+.pc-label{
+  font-family:'Cormorant Garamond',serif;font-size:.82rem;
+  font-style:italic;letter-spacing:.2em;color:var(--green);
+  margin-bottom:12px;
+}
+.pc-name{
+  font-family:'Shippori Mincho',serif;font-size:1.15rem;
+  font-weight:700;margin-bottom:6px;line-height:1.6;color:var(--ink);
+}
+.pc-detail{font-size:.84rem;color:var(--tx2);margin-bottom:20px;letter-spacing:.04em;}
+.pc-price{
+  font-family:'Cormorant Garamond',serif;font-size:2.6rem;
+  font-style:italic;color:var(--ink);margin-bottom:16px;
+  letter-spacing:-.01em;line-height:1;
+}
+.pc-price small{font-size:.85rem;font-style:normal;letter-spacing:0;}
+.pc-desc{font-size:.93rem;line-height:2.1;color:var(--tx2);margin-top:auto;}
+.price-note{
+  margin-top:32px;font-size:.88rem;color:var(--tx2);
+  font-style:italic;line-height:2.1;
+  padding-top:24px;border-top:1px solid var(--gp);
+}
+
+/* ══════════════ FLOW ══════════════ */
+.flow-wrap{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:0;
+}
+.flow-item{
+  padding:44px 36px;background:var(--white);
+  border:1px solid var(--gp);position:relative;
+}
+.flow-item+.flow-item{border-left:none;}
+.flow-arrow{
+  position:absolute;right:-18px;top:50%;
+  transform:translateY(-50%);
+  font-size:1.2rem;color:rgba(200,216,192,.7);
+  z-index:2;font-family:'Cormorant Garamond',serif;
+}
+.flow-n{
+  font-family:'Bebas Neue',sans-serif;font-size:2.8rem;
+  color:var(--gp);letter-spacing:.1em;margin-bottom:10px;line-height:1;
+}
+.flow-badge{
+  display:inline-block;font-family:'Shippori Mincho',serif;
+  font-size:.76rem;padding:4px 12px;background:var(--green);
+  color:#fff;border-radius:1px;margin-bottom:12px;letter-spacing:.06em;
+}
+.flow-title{
+  font-family:'Shippori Mincho',serif;font-size:1.08rem;
+  font-weight:700;margin-bottom:10px;color:var(--ink);
+}
+.flow-sub{font-size:.93rem;color:var(--tx2);line-height:2.1;}
+
+/* ══════════════ PROFILE ══════════════ */
+.profile-card{
+  display:flex;gap:48px;align-items:flex-start;
+  background:var(--white);border:1px solid var(--gp);
+  padding:52px 52px;border-radius:2px;
+}
+.profile-img-wrap{flex-shrink:0;}
+.profile-img-wrap img{
+  width:120px;height:120px;border-radius:50%;
+  object-fit:cover;object-position:center 15%;
+  display:block;
+  border:3px solid var(--gp);
+}
+.profile-body h3{
+  font-family:'Shippori Mincho',serif;font-size:1.2rem;
+  font-weight:700;margin-bottom:6px;letter-spacing:.04em;
+}
+.profile-body .role{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:.9rem;color:var(--green);letter-spacing:.1em;
+  margin-bottom:20px;display:block;
+}
+.profile-body p{
+  font-size:.97rem;line-height:2.2;color:var(--tx2);max-width:580px;
+}
+
+/* ══════════════ MID CTA ══════════════ */
+.cta-sec{
+  background:var(--ink);padding:108px var(--H);text-align:center;
+  position:relative;overflow:hidden;
+}
+.cta-sec::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(74,140,101,.08) 0%,transparent 70%);
+}
+.cta-inner{position:relative;z-index:2;}
+.cta-eyebrow{
+  font-family:'Cormorant Garamond',serif;font-size:.9rem;
+  font-style:italic;letter-spacing:.3em;color:rgba(180,230,200,.5);
+  margin-bottom:24px;display:block;
+}
+.cta-sec h2{
+  font-family:'Shippori Mincho',serif;
+  font-size:clamp(1.5rem,3vw,2.2rem);
+  font-weight:500;color:#fff;line-height:1.85;margin-bottom:20px;
+}
+.cta-sec p{
+  font-size:1rem;color:rgba(246,242,235,.6);
+  line-height:2.3;margin-bottom:40px;
+  max-width:480px;margin-left:auto;margin-right:auto;
+}
+.cta-btn{
+  display:inline-flex;align-items:center;gap:14px;
+  padding:20px 60px;background:var(--green);color:#fff;
+  text-decoration:none;font-family:'Shippori Mincho',serif;
+  font-size:1rem;font-weight:500;letter-spacing:.1em;
+  border-radius:1px;transition:all .35s;
+}
+.cta-btn::after{content:'→';transition:transform .3s;}
+.cta-btn:hover{background:#3d7050;transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.4);}
+.cta-btn:hover::after{transform:translateX(4px);}
+.cta-sub{
+  display:block;margin-top:18px;font-size:.8rem;
+  color:rgba(246,242,235,.35);font-family:'Cormorant Garamond',serif;
+  font-style:italic;letter-spacing:.16em;
+}
+
+/* ══════════════ FORM ══════════════ */
+.form-sec{background:var(--white);padding:108px var(--H);}
+.form-wrap{max-width:580px;margin:0 auto;}
+.form-lead{
+  font-size:.97rem;color:var(--tx2);line-height:2.3;margin-bottom:40px;
+}
+.frow{margin-bottom:24px;}
+.frow label{
+  display:block;font-size:.86rem;font-weight:700;
+  color:var(--ink);margin-bottom:8px;letter-spacing:.06em;
+}
+.frow input,.frow select,.frow textarea{
+  width:100%;padding:14px 16px;border:1px solid var(--gp);
+  border-radius:1px;font-family:'Noto Serif JP',serif;font-size:.93rem;
+  background:var(--cream);color:var(--tx);
+  transition:border-color .3s;appearance:none;
+}
+.frow input:focus,.frow select:focus,.frow textarea:focus{
+  outline:none;border-color:var(--green);background:var(--white);
+}
+.frow textarea{resize:vertical;min-height:130px;}
+.req{color:var(--green);font-size:.75rem;margin-left:6px;letter-spacing:.04em;}
+.form-btn{
+  width:100%;padding:18px;background:var(--green);color:#fff;
+  border:none;font-family:'Shippori Mincho',serif;font-size:1rem;
+  font-weight:500;letter-spacing:.1em;cursor:pointer;
+  transition:all .3s;border-radius:1px;
+}
+.form-btn:hover{background:#3d7050;}
+.form-success{
+  display:none;text-align:center;padding:56px 40px;
+  background:var(--gm);border:1px solid var(--gp);border-radius:2px;
+}
+.form-success h3{
+  font-family:'Shippori Mincho',serif;font-size:1.2rem;
+  margin-bottom:12px;color:var(--ink);
+}
+.form-success p{font-size:.93rem;color:var(--tx2);line-height:2.0;}
+
+/* ══════════════ FLOAT ══════════════ */
+.float-cta{position:fixed;bottom:28px;right:28px;z-index:500;display:flex;flex-direction:column;align-items:flex-end;}
+.float-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 24px;background:var(--green);color:#fff;
+  text-decoration:none;font-family:'Shippori Mincho',serif;
+  font-size:.88rem;font-weight:500;border-radius:24px;
+  box-shadow:0 4px 24px rgba(74,140,101,.5);transition:all .3s;
+}
+.float-btn:hover{background:#3d7050;transform:translateY(-2px);}
+.float-note{
+  font-size:.7rem;color:var(--green);margin-top:5px;
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  letter-spacing:.1em;text-align:right;
+}
+
+/* ══════════════ FOOTER ══════════════ */
+footer{
+  background:#0f1a12;padding:32px var(--H);
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:12px;
+}
+.f-logo{
+  font-family:'Bebas Neue',sans-serif;font-size:1rem;
+  letter-spacing:.2em;color:rgba(255,255,255,.3);
+}
+.f-copy{font-size:.74rem;color:rgba(255,255,255,.2);letter-spacing:.08em;}
+.f-back{
+  font-size:.78rem;color:rgba(255,255,255,.35);
+  text-decoration:none;letter-spacing:.1em;transition:color .3s;
+}
+.f-back:hover{color:rgba(255,255,255,.7);}
+
+/* ══════════════ RESPONSIVE ══════════════ */
+@media(max-width:960px){
+  .strength-grid{grid-template-columns:1fr;}
+  .price-grid{grid-template-columns:1fr;}
+}
+@media(max-width:768px){
+  .lp-hero{min-height:90vh;padding:100px var(--H) 60px;}
+  .cases-grid{grid-template-columns:1fr;gap:1px;}
+  .flow-wrap{grid-template-columns:1fr;}
+  .flow-item+.flow-item{border-left:1px solid var(--gp);border-top:none;}
+  .flow-arrow{display:none;}
+  .profile-card{flex-direction:column;gap:24px;padding:32px 24px;}
+  .case-card{padding:32px 24px;}
+  .strength-item{padding:32px 24px;}
+  footer{flex-direction:column;text-align:center;gap:8px;}
+  .float-cta{bottom:16px;right:16px;}
+  .nav-back{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="nudge_rogue_v20.html" class="nav-logo">NUDGE ROGUE<small>KOBE</small></a>
+  <div class="nav-right">
+    <a href="nudge_rogue_v20.html" class="nav-back">← コーポレートサイト</a>
+    <a href="#contact-form" class="nav-cta">無料相談を予約する</a>
+  </div>
+</nav>
+
+<section class="lp-hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-inner">
+    <span class="hero-eyebrow">Web Consulting — Nudge Rogue KOBE</span>
+    <h1 class="hero-h1">そのサイト、<br><b>放置していませんか。</b></h1>
+    <p class="hero-sub">作ったはいいが、成果が見えない。何が問題かもわからない。<br>大手IT企業15年の視点で、課題をまず言語化します。</p>
+    <div class="hero-cta-wrap">
+      <a href="#contact-form" class="hero-btn">壁打ち診断を予約する</a>
+      <span class="hero-note">初回ヒアリング30分・無料 ·全国オンライン対応</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="sec sec-bg-white">
+  <div class="sec-header">
+    <span class="lbl">Why Us</span>
+    <h2 class="ttl">一般的な制作会社と、<br><b>何が違うのか。</b></h2>
+  </div>
+  <div class="strength-grid">
+    <div class="strength-item">
+      <span class="s-num">15</span>
+      <div class="s-title">大手ITでの実戦経験</div>
+      <div class="s-body">LINEヤフーで15年以上、大規模Webサービスの新規立ち上げ・UI/UX設計・グロース・PMを担当。理論ではなく現場で培った視点でお答えします。</div>
+    </div>
+    <div class="strength-item">
+      <span class="s-num">→</span>
+      <div class="s-title">「何が問題かわからない」から始められる</div>
+      <div class="s-body">課題が言語化できていない状態でも大丈夫です。壁打ち診断45分で、問題を一緒に整理するところから始めます。</div>
+    </div>
+    <div class="strength-item">
+      <span class="s-num">FP</span>
+      <div class="s-title">収益設計まで一気通貫</div>
+      <div class="s-body">FP資格も持つため、サイトのマネタイズ・収益構造まで踏み込んだ提案ができます。「育てる視点」と「稼がせる視点」を両方持っています。</div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section class="sec sec-bg-cream">
+  <div class="sec-header">
+    <span class="lbl">Use Cases</span>
+    <h2 class="ttl">こんな状況、<br><b>ありませんか。</b></h2>
+  </div>
+  <div class="cases-grid">
+    <div class="case-card">
+      <span class="case-n">01</span>
+      <div class="case-top">
+        <span class="case-tag">Situation</span>
+        <div class="case-issue">サイトを作ったが、成果が出ない</div>
+      </div>
+      <span class="case-tag-sol">Approach</span>
+      <div class="case-sol">UI/UX・マネタイズ・導線設計の観点から現状を診断。何が問題で、どこから手をつければいいかを優先度マップで整理します。</div>
+    </div>
+    <div class="case-card">
+      <span class="case-n">02</span>
+      <div class="case-top">
+        <span class="case-tag">Situation</span>
+        <div class="case-issue">制作会社に任せきりで、数字が見えない</div>
+      </div>
+      <span class="case-tag-sol">Approach</span>
+      <div class="case-sol">Googleアナリティクスの読み方から、改善の仮説立て・検証まで一緒に進めます。</div>
+    </div>
+    <div class="case-card">
+      <span class="case-n">03</span>
+      <div class="case-top">
+        <span class="case-tag">Situation</span>
+        <div class="case-issue">リニューアルしたいが、何から始めればいいかわからない</div>
+      </div>
+      <span class="case-tag-sol">Approach</span>
+      <div class="case-sol">現状分析から要件整理まで。制作会社への発注前の「整理役」として入ることで、無駄なコストを防げます。</div>
+    </div>
+    <div class="case-card">
+      <span class="case-n">04</span>
+      <div class="case-top">
+        <span class="case-tag">Situation</span>
+        <div class="case-issue">集客はできているが、収益につながらない</div>
+      </div>
+      <span class="case-tag-sol">Approach</span>
+      <div class="case-sol">マネタイズ構造・LPの訴求・価格設計まで踏み込んで見直します。FP視点での収益設計も合わせて対応できます。</div>
+    </div>
+    <div class="case-card">
+      <span class="case-n">05</span>
+      <div class="case-top">
+        <span class="case-tag">Situation</span>
+        <div class="case-issue">社内に相談できる人間がいない</div>
+      </div>
+      <span class="case-tag-sol">Approach</span>
+      <div class="case-sol">週次・月次で「壁打ち相手」として入ります。意思決定の前に話せる場所があるだけで、動くスピードが変わります。</div>
+    </div>
+    <div class="case-card">
+      <span class="case-n">06</span>
+      <div class="case-top">
+        <span class="case-tag">Situation</span>
+        <div class="case-issue">LPを作ったが、反応が薄い</div>
+      </div>
+      <span class="case-tag-sol">Approach</span>
+      <div class="case-sol">ターゲット設定・コピー・導線・CTA設計を一通り見直します。大手IT企業での経験をもとに、コンバージョン改善の具体策を提案します。</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec sec-bg-white">
+  <div class="sec-header">
+    <span class="lbl">Plans & Pricing</span>
+    <h2 class="ttl">課題の深さに合わせて<br><b>選べる3つのプラン</b></h2>
+  </div>
+  <div class="price-grid">
+    <div class="price-card featured">
+      <div class="pc-label">まずここから</div>
+      <div class="pc-name">壁打ち診断</div>
+      <div class="pc-detail">45分 ／ 単発 ／ オンライン</div>
+      <div class="pc-price">¥10,000</div>
+      <div class="pc-desc">「何が問題かわからない」状態の整理に最適。15年の視点で課題を言語化します。初回ヒアリング30分は無料です。</div>
+    </div>
+    <div class="price-card">
+      <div class="pc-label">成果物として受け取る</div>
+      <div class="pc-name">スポット診断レポート</div>
+      <div class="pc-detail">PDF納品 ／ 約1週間</div>
+      <div class="pc-price">¥50,000</div>
+      <div class="pc-desc">UI/UX・マネタイズ・導線設計を総合診断。改善優先度マップと具体的な提案をPDFで納品します。</div>
+    </div>
+    <div class="price-card">
+      <div class="pc-label">継続的に伴走する</div>
+      <div class="pc-name">月次コンサルティング</div>
+      <div class="pc-detail">月1回面談 ／ テキスト相談込み</div>
+      <div class="pc-price">¥30,000<small> /月</small></div>
+      <div class="pc-desc">指標の定点観測・改善施策の立案・実装サポート。PDCAを継続して回します。</div>
+    </div>
+  </div>
+  <p class="price-note">※ 初回ヒアリング（30分）は無料です。プランはヒアリング後にゆっくり決めてください。<br>※ LP制作・広告運用・コンテンツ設計など個別対応も承ります。</p>
+</section>
+
+<!-- FLOW -->
+<section class="sec sec-bg-gm">
+  <div class="sec-header">
+    <span class="lbl">How It Works</span>
+    <h2 class="ttl">相談の流れ</h2>
+  </div>
+  <div class="flow-wrap">
+    <div class="flow-item">
+      <div class="flow-n">01</div>
+      <div class="flow-badge">無料</div>
+      <div class="flow-title">お問い合わせ</div>
+      <div class="flow-sub">フォームからご連絡ください。「何を相談すればいいかわからない」でも大丈夫です。</div>
+      <span class="flow-arrow">→</span>
+    </div>
+    <div class="flow-item">
+      <div class="flow-n">02</div>
+      <div class="flow-badge">30分 · 無料</div>
+      <div class="flow-title">初回ヒアリング</div>
+      <div class="flow-sub">現状と課題を簡単にお聞きします。どのプランが合うか一緒に確認します。</div>
+      <span class="flow-arrow">→</span>
+    </div>
+    <div class="flow-item">
+      <div class="flow-n">03</div>
+      <div class="flow-badge">あなたが選ぶ</div>
+      <div class="flow-title">プランを選んで開始</div>
+      <div class="flow-sub">壁打ち・レポート・月次コンサル。初回後にゆっくり決めてください。</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROFILE -->
+<section class="sec sec-bg-white">
+  <div class="sec-header">
+    <span class="lbl">Who I Am</span>
+    <h2 class="ttl">大手ITの現場経験を、<br><b>そのまま活かします。</b></h2>
+  </div>
+  <div class="profile-card">
+    <div class="profile-img-wrap">
+      <img src="https://raw.githubusercontent.com/memetomamoru-maker/corp/main/images/mamoru.png" alt="池田直也">
+    </div>
+    <div class="profile-body">
+      <h3>池田 直也 <span style="font-weight:300;font-size:.9em;letter-spacing:.04em;">Naoya Ikeda</span></h3>
+      <span class="role">Nudge Rogue KOBE 代表 · MBA · FP</span>
+      <p>デザイナーからキャリアをスタートし、企画・マーケティング・PMへ。LINEヤフーで15年以上、大規模Webサービスの立ち上げに複数参画。UI/UX設計・グロース・プロジェクトマネジメントを実務で担当してきました。FP資格も保有しており、収益設計まで一気通貫で対応できます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-sec">
+  <div class="cta-inner">
+    <span class="cta-eyebrow">Ready to start?</span>
+    <h2>「何が問題かわからない」<br>その状態こそ、<br>相談のタイミングです。</h2>
+    <p>課題が整理できていなくても大丈夫。<br>壁打ち診断で、何から手をつければいいかが見えてきます。</p>
+    <a href="#contact-form" class="cta-btn">無料相談を予約する</a>
+    <span class="cta-sub">初回ヒアリング30分・無料 · 全国オンライン対応</span>
+  </div>
+</div>
+
+<!-- FORM -->
+<section class="form-sec" id="contact-form">
+  <div class="form-wrap">
+    <div class="sec-header">
+      <span class="lbl">Contact</span>
+      <h2 class="ttl">お問い合わせ</h2>
+    </div>
+    <p class="form-lead">「まだ課題が整理できていない」「どのプランか迷っている」。そのままフォームに書いて送ってください。通常2営業日以内にご返信します。</p>
+    <div id="form-success" class="form-success">
+      <h3>送信が完了しました</h3>
+      <p>通常2営業日以内にご返信します。<br>しばらくお待ちください。</p>
+    </div>
+    <div id="form-body">
+      <div class="frow">
+        <label>お名前<span class="req">必須</span></label>
+        <input type="text" id="fname" placeholder="山田 太郎">
+      </div>
+      <div class="frow">
+        <label>メールアドレス<span class="req">必須</span></label>
+        <input type="email" id="femail" placeholder="hello@example.com">
+      </div>
+      <div class="frow">
+        <label>サイトURL（あれば）</label>
+        <input type="url" id="furl" placeholder="https://example.com">
+      </div>
+      <div class="frow">
+        <label>相談内容</label>
+        <select id="ftype">
+          <option value="">選択してください</option>
+          <option>サイトの成果が出ない・改善したい</option>
+          <option>リニューアルを検討している</option>
+          <option>LP・コンバージョン改善</option>
+          <option>月次コンサルを検討している</option>
+          <option>その他・まだ決まっていない</option>
+        </select>
+      </div>
+      <div class="frow">
+        <label>現状と課題・ご希望など</label>
+        <textarea id="fmsg" placeholder="「成果が出ているのかどうかもわからない」でも大丈夫です。気軽に書いてください。"></textarea>
+      </div>
+      <button class="form-btn" onclick="submitForm()">送信する</button>
+    </div>
+  </div>
+</section>
+
+<div class="float-cta">
+  <a href="#contact-form" class="float-btn">無料相談を予約する</a>
+  <span class="float-note">初回30分無料</span>
+</div>
+
+<footer>
+  <div class="f-logo">NUDGE ROGUE KOBE</div>
+  <a href="nudge_rogue_v20.html" class="f-back">← コーポレートサイト</a>
+  <div class="f-copy">© 2027 Nudge Rogue 合同会社</div>
+</footer>
+
+<script>
+function submitForm(){
+  var name=document.getElementById('fname').value.trim();
+  var email=document.getElementById('femail').value.trim();
+  if(!name||!email){alert('お名前とメールアドレスをご入力ください。');return;}
+  document.getElementById('form-body').style.display='none';
+  document.getElementById('form-success').style.display='block';
+  window.scrollTo({top:document.getElementById('contact-form').offsetTop-80,behavior:'smooth'});
+}
+</script>
+<script>
+(function(){
+  var canvas = document.getElementById('hero-canvas');
+  if(!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var stars = [], W = 0, H = 0;
+  function resize(){
+    W = canvas.width = canvas.parentElement.offsetWidth || window.innerWidth;
+    H = canvas.height = canvas.parentElement.offsetHeight || window.innerHeight;
+  }
+  function rand(a,b){ return Math.random()*(b-a)+a; }
+  function mk(){
+    var g = Math.random()<.13;
+    return { x:rand(0,W), y:rand(0,H), r:g?rand(1.4,2.4):rand(.4,1.2),
+      peak:g?rand(.45,.8):rand(.3,.9), spd:rand(.003,.01),
+      ph:rand(0,Math.PI*2), green:g };
+  }
+  function init(){
+    resize();
+    stars=[];
+    for(var i=0;i<130;i++) stars.push(mk());
+  }
+  var t=0, running=false;
+  function loop(){
+    ctx.clearRect(0,0,W,H); t+=.016;
+    for(var i=0;i<stars.length;i++){
+      var s=stars[i];
+      var a=s.peak*(0.5+0.5*Math.sin(t*s.spd*60+s.ph));
+      ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      if(s.green){
+        ctx.fillStyle='rgba(160,230,180,'+a+')';
+        ctx.shadowColor='rgba(100,200,130,.8)'; ctx.shadowBlur=10;
+      } else {
+        ctx.fillStyle='rgba(245,252,248,'+a+')';
+        ctx.shadowColor='rgba(200,240,220,.3)'; ctx.shadowBlur=3;
+      }
+      ctx.fill();
+    }
+    ctx.shadowBlur=0;
+    requestAnimationFrame(loop);
+  }
+  // 即時初期化 + DOMContentLoaded + load の三重保険
+  function start(){
+    if(running) return; running=true;
+    init(); loop();
+  }
+  setTimeout(start, 0);
+  document.addEventListener('DOMContentLoaded', start);
+  window.addEventListener('load', start);
+  window.addEventListener('resize', function(){
+    resize();
+    for(var i=0;i<stars.length;i++){ stars[i].x=rand(0,W); stars[i].y=rand(0,H); }
+  });
+})();
+</script>
+</body>
+</html>
