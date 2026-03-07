@@ -107,26 +107,12 @@ nav.on .hamburger span { background:var(--ink); }
   position:relative; height:100vh;height:100svh; min-height:600px;
   overflow:hidden; display:flex; align-items:center; justify-content:center;
 }
-.hbg {
-  position:absolute; inset:0;
-  background:
-    radial-gradient(ellipse 55% 75% at 50% 100%,#1c4030 0%,transparent 68%),
-    radial-gradient(ellipse 90% 55% at 25% 55%,#2d6044 0%,transparent 58%),
-    radial-gradient(ellipse 70% 65% at 75% 38%,#3d7a55 0%,transparent 58%),
-    linear-gradient(180deg,#1c3d28 0%,#2d6044 42%,#4a8c65 72%,#2d5c3a 100%);
-  animation:hbreathe 9s ease-in-out infinite;
-}
 @keyframes hbreathe { 0%,100%{filter:brightness(1)} 50%{filter:brightness(1.07) saturate(1.1)} }
-.hrays { position:absolute; inset:0; background:linear-gradient(174deg,rgba(255,248,200,.07) 0%,transparent 52%),linear-gradient(167deg,rgba(210,255,210,.06) 12%,transparent 48%),linear-gradient(180deg,rgba(180,255,195,.09) 22%,transparent 44%); animation:hray 7s ease-in-out infinite; }
 @keyframes hray { 0%,100%{opacity:.7} 40%{opacity:1} 70%{opacity:.85} }
-.hmist  { position:absolute; bottom:0; left:0; right:0; height:44%; background:linear-gradient(to top,rgba(195,238,212,.22),transparent); animation:hmove 11s ease-in-out infinite; }
-.hmist2 { position:absolute; bottom:8%; left:-18%; right:-18%; height:26%; background:linear-gradient(to top,rgba(175,228,198,.13),transparent); border-radius:50%; animation:hmove2 15s ease-in-out infinite; }
 @keyframes hmove  { 0%,100%{transform:translateX(0);opacity:.8}  50%{transform:translateX(2%);opacity:1} }
 @keyframes hmove2 { 0%,100%{transform:translateX(0);opacity:.6}  50%{transform:translateX(-3%);opacity:.9} }
-.hparticles { position:absolute; inset:0; pointer-events:none; }
 .hp { position:absolute; border-radius:50%; background:rgba(195,255,210,.72); animation:hpfloat linear infinite; }
 @keyframes hpfloat { 0%{transform:translateY(100vh) translateX(0) scale(0);opacity:0} 10%{opacity:1} 90%{opacity:.5} 100%{transform:translateY(-8vh) translateX(var(--drift)) scale(1);opacity:0} }
-.hbutterflies { position:absolute; inset:0; pointer-events:none; }
 .hb { position:absolute; animation:hbfly linear infinite; }
 .hb::before,.hb::after { content:''; position:absolute; width:10px; height:7px; border-radius:50% 50% 0 50%; animation:hwing .42s ease-in-out infinite alternate; }
 .hb::before { background:rgba(225,255,210,.65); right:5px; top:0; transform-origin:right center; }
@@ -1097,26 +1083,11 @@ body { font-size:18px; }
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hbg"></div><div class="hrays"></div>
-  <div class="hmist"></div><div class="hmist2"></div>
-  <svg style="position:absolute;bottom:0;left:0;width:100%;height:70%;pointer-events:none" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
-    <polygon points="100,500 148,285 196,500" fill="#2a5438" opacity=".5"/>
-    <polygon points="310,500 362,252 414,500" fill="#306042" opacity=".46"/>
-    <polygon points="570,500 625,205 680,500" fill="#2a5438" opacity=".46"/>
-    <polygon points="770,500 832,232 894,500" fill="#306042" opacity=".5"/>
-    <polygon points="1040,500 1102,215 1164,500" fill="#2a5438" opacity=".46"/>
-    <polygon points="0,500 58,182 116,500"      fill="#1c3c2c" opacity=".87"/>
-    <polygon points="58,500 128,124 198,500"    fill="#183428" opacity=".91"/>
-    <polygon points="225,500 308,152 391,500"   fill="#1c3c2c" opacity=".81"/>
-    <polygon points="435,500 525,172 615,500"   fill="#183428" opacity=".87"/>
-    <polygon points="695,500 786,132 877,500"   fill="#1c3c2c" opacity=".84"/>
-    <polygon points="895,500 995,162 1095,500"  fill="#183428" opacity=".87"/>
-    <polygon points="1145,500 1245,142 1345,500" fill="#1c3c2c" opacity=".84"/>
-    <polygon points="1315,500 1397,172 1479,500" fill="#183428" opacity=".91"/>
-    <rect x="0" y="470" width="1440" height="30" fill="#102418" opacity=".8"/>
-  </svg>
-  <div class="hparticles" id="hp"></div>
-  <div class="hbutterflies" id="hb"></div>
+  
+  
+  
+  
+  
   <div class="hcontent">
     
     <h1 class="htitle">NUDGE<br>ROGUE<em>KOBE</em></h1>
