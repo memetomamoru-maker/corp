@@ -9,12 +9,12 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --ink:#1a2820; --green:#4a8c65; --gp:#c8d8c0; --gm:#edf4ef;
-  --cream:#f6f2eb; --white:#ffffff; --tx:#2c3830; --tx2:#6b7c6f;
+  --ink:#1a2820; --green:#3d7a58; --gp:#b8ccb8; --gm:#edf4ef;
+  --cream:#f6f2eb; --white:#ffffff; --tx:#2c3830; --tx2:#4a5a4e;
   --H:clamp(24px,5vw,80px);
 }
 html{overflow-x:hidden;scroll-behavior:smooth;}
-body{font-family:'Noto Serif JP',serif;font-size:18px;background:var(--cream);color:var(--tx);line-height:2.0;overflow-x:hidden;}
+body{font-family:'Noto Serif JP',serif;font-size:17px;background:var(--cream);color:var(--tx);line-height:1.85;overflow-x:hidden;}
 
 /* ══════════════ NAV ══════════════ */
 nav{
@@ -74,7 +74,7 @@ nav{
 }
 .hero-h1{
   font-family:'Shippori Mincho',serif;
-  font-size:clamp(2rem,4.5vw,3.4rem);
+  font-size:clamp(1.8rem,3.8vw,2.8rem);
   font-weight:500;color:#fff;line-height:1.6;margin-bottom:28px;
 }
 .hero-h1 b{color:rgba(160,230,180,.9);font-weight:700;}
@@ -100,7 +100,7 @@ nav{
 }
 
 /* ══════════════ SECTION COMMON ══════════════ */
-.sec{padding:108px var(--H);}
+.sec{padding:88px var(--H);}
 .sec-bg-white{background:var(--white);}
 .sec-bg-cream{background:var(--cream);}
 .sec-bg-gm{background:var(--gm);}
@@ -130,8 +130,8 @@ nav{
 }
 .ttl{
   font-family:'Shippori Mincho',serif;
-  font-size:clamp(1.95rem,3.5vw,2.70rem);
-  font-weight:500;line-height:1.72;color:var(--ink);
+  font-size:clamp(1.75rem,3.2vw,2.40rem);
+  font-weight:500;line-height:1.6;color:var(--ink);
   margin-bottom:0;letter-spacing:.02em;
 }
 .ttl b{font-weight:700;}
@@ -142,8 +142,9 @@ nav{
   display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
   background:var(--gp);border:1px solid var(--gp);
 }
+@media(max-width:768px){.strength-grid{grid-template-columns:1fr;}}
 .strength-item{
-  background:var(--white);padding:44px 36px;
+  background:var(--white);padding:36px 28px;
   transition:background .25s;
 }
 .strength-item:hover{background:var(--gm);}
@@ -156,7 +157,7 @@ nav{
   font-family:'Shippori Mincho',serif;font-size:1.08rem;
   font-weight:700;color:var(--ink);margin-bottom:14px;line-height:1.7;
 }
-.s-body{font-size:.95rem;line-height:2.2;color:var(--tx2);}
+.s-body{font-size:.95rem;line-height:2.0;color:var(--tx2);}
 
 /* ══════════════ CASES ══════════════ */
 .cases-grid{
@@ -165,7 +166,7 @@ nav{
 }
 .case-card {
   background:var(--cream);
-  padding:44px 40px;
+  padding:36px 32px;
   transition:box-shadow .25s, transform .25s, border-left-color .25s;
   position:relative;
   border-left:3px solid transparent;
@@ -204,7 +205,7 @@ nav{
   display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
 }
 .price-card{
-  padding:40px 32px;border:1px solid var(--gp);
+  padding:32px 28px;border:1px solid var(--gp);
   border-radius:2px;background:var(--gm);
   display:flex;flex-direction:column;
 }
@@ -249,7 +250,7 @@ nav{
   gap:0;
 }
 .flow-item{
-  padding:44px 36px;background:var(--white);
+  padding:36px 28px;background:var(--white);
   border:1px solid var(--gp);position:relative;
 }
 .flow-item+.flow-item{border-left:none;}
@@ -276,9 +277,9 @@ nav{
 
 /* ══════════════ PROFILE ══════════════ */
 .profile-card{
-  display:flex;gap:48px;align-items:flex-start;
+  display:flex;gap:40px;align-items:flex-start;
   background:var(--white);border:1px solid var(--gp);
-  padding:52px 52px;border-radius:2px;
+  padding:44px 48px;border-radius:2px;
 }
 .profile-img-wrap{flex-shrink:0;}
 .profile-img-wrap img{
@@ -484,14 +485,14 @@ footer{
 <section class="lp-hero">
   <div class="hero-inner">
     <span class="hero-eyebrow">Web Consulting — Nudge Rogue KOBE</span>
-    <h1 class="hero-h1">そのサイト、<br><b>放置していませんか。</b></h1>
-    <p class="hero-sub">作ったはいいが、成果が見えない。何が問題かもわからない。<br>大手IT企業15年の視点で、課題をまず言語化します。</p>
+    <h1 class="hero-h1">WEBサイトは準備した。<br><b>それで放置は、もったいない。</b></h1>
+    <p class="hero-sub">サイトはある。でも、育てていない。<br>そこから始められます。</p>
     <div class="hero-targets">
-      <span class="hero-target-item">中小企業・スタートアップのWeb担当者</span>
+      <span class="hero-target-item">社内にWeb担当者がいない経営者</span>
       <span class="hero-target-sep">／</span>
-      <span class="hero-target-item">社内にマーケ専門家がいない経営者</span>
+      <span class="hero-target-item">サイトを作ったが成果が見えない方</span>
       <span class="hero-target-sep">／</span>
-      <span class="hero-target-item">代理店任せで数字が見えていない方</span>
+      <span class="hero-target-item">代理店任せで数字が把握できていない方</span>
     </div>
     <div class="hero-cta-wrap">
       <a href="#contact-form" class="hero-btn">壁打ち診断を予約する</a>
@@ -500,91 +501,147 @@ footer{
   </div>
 </section>
 
-<!-- WHY US -->
-<section class="sec sec-bg-white">
-  <div class="sec-header">
-    <span class="lbl">Why Us</span>
-    <h2 class="ttl">一般的な制作会社と、<br><b>何が違うのか。</b></h2>
-  </div>
-  <div class="strength-grid">
-    <div class="strength-item">
-      <span class="s-num">15</span>
-      <div class="s-title">大手ITでの実戦経験</div>
-      <div class="s-body">LINEヤフーで15年以上、大規模Webサービスの新規立ち上げ・UI/UX設計・グロース・PMを担当。理論ではなく現場で培った視点でお答えします。</div>
-    </div>
-    <div class="strength-item">
-      <span class="s-num">→</span>
-      <div class="s-title">「何が問題かわからない」から始められる</div>
-      <div class="s-body">課題が言語化できていない状態でも大丈夫です。壁打ち診断45分で、問題を一緒に整理するところから始めます。</div>
-    </div>
-    <div class="strength-item">
-      <span class="s-num">FP</span>
-      <div class="s-title">収益設計まで一気通貫</div>
-      <div class="s-body">FP資格も持つため、サイトのマネタイズ・収益構造まで踏み込んだ提案ができます。「育てる視点」と「稼がせる視点」を両方持っています。</div>
-    </div>
-  </div>
-</section>
-
 <!-- CASES -->
 <section class="sec sec-bg-cream">
   <div class="sec-header">
     <span class="lbl">Use Cases</span>
-    <h2 class="ttl">こんな状況で、<br><b>お困りではないですか。</b></h2>
+    <h2 class="ttl">こんな状況、<br><b>思い当たりませんか。</b></h2>
   </div>
   <div class="cases-grid">
     <div class="case-card">
       <span class="case-n">01</span>
       <div class="case-top">
-        <span class="case-tag">Situation</span>
+        <span class="case-tag">状況</span>
         <div class="case-issue">サイトを作ったが、成果が出ない</div>
       </div>
-      <span class="case-tag-sol">Approach</span>
-      <div class="case-sol">UI/UX・マネタイズ・導線設計の観点から現状を診断。何が問題で、どこから手をつければいいかを優先度マップで整理します。</div>
+      <span class="case-tag-sol">できること</span>
+      <div class="case-sol">まず、何が問題かを一緒に言語化します。問題が見えれば、手の打ちようが見えてきます。</div>
     </div>
     <div class="case-card">
       <span class="case-n">02</span>
       <div class="case-top">
-        <span class="case-tag">Situation</span>
+        <span class="case-tag">状況</span>
         <div class="case-issue">制作会社に任せきりで、数字が見えない</div>
       </div>
-      <span class="case-tag-sol">Approach</span>
-      <div class="case-sol">Googleアナリティクスの読み方から、改善の仮説立て・検証まで一緒に進めます。</div>
+      <span class="case-tag-sol">できること</span>
+      <div class="case-sol">数字は嘘をつきません。どこを見ればいいかを整理します。</div>
     </div>
     <div class="case-card">
       <span class="case-n">03</span>
       <div class="case-top">
-        <span class="case-tag">Situation</span>
+        <span class="case-tag">状況</span>
         <div class="case-issue">リニューアルしたいが、何から始めればいいかわからない</div>
       </div>
-      <span class="case-tag-sol">Approach</span>
-      <div class="case-sol">現状分析から要件整理まで。制作会社への発注前の「整理役」として入ることで、無駄なコストを防げます。</div>
+      <span class="case-tag-sol">できること</span>
+      <div class="case-sol">発注前に整理しておくと、無駄なコストが減ります。その整理役として入ります。</div>
     </div>
     <div class="case-card">
       <span class="case-n">04</span>
       <div class="case-top">
-        <span class="case-tag">Situation</span>
+        <span class="case-tag">状況</span>
         <div class="case-issue">集客はできているが、収益につながらない</div>
       </div>
-      <span class="case-tag-sol">Approach</span>
-      <div class="case-sol">マネタイズ構造・LPの訴求・価格設計まで踏み込んで見直します。FP視点での収益設計も合わせて対応できます。</div>
+      <span class="case-tag-sol">できること</span>
+      <div class="case-sol">集客の問題ではなく、収益設計の問題です。そこから見直します。</div>
     </div>
     <div class="case-card">
       <span class="case-n">05</span>
       <div class="case-top">
-        <span class="case-tag">Situation</span>
+        <span class="case-tag">状況</span>
         <div class="case-issue">社内に相談できる人間がいない</div>
       </div>
-      <span class="case-tag-sol">Approach</span>
-      <div class="case-sol">週次・月次で「壁打ち相手」として入ります。意思決定の前に話せる場所があるだけで、動くスピードが変わります。</div>
+      <span class="case-tag-sol">できること</span>
+      <div class="case-sol">決める前に話せる場所があると、動くスピードが変わります。</div>
     </div>
     <div class="case-card">
       <span class="case-n">06</span>
       <div class="case-top">
-        <span class="case-tag">Situation</span>
+        <span class="case-tag">状況</span>
         <div class="case-issue">LPを作ったが、反応が薄い</div>
       </div>
-      <span class="case-tag-sol">Approach</span>
-      <div class="case-sol">ターゲット設定・コピー・導線・CTA設計を一通り見直します。大手IT企業での経験をもとに、コンバージョン改善の具体策を提案します。</div>
+      <span class="case-tag-sol">できること</span>
+      <div class="case-sol">ターゲット・コピー・導線・CTA。どこかに必ず原因があります。一緒に探します。</div>
+    </div>
+    <div class="case-card">
+      <span class="case-n">07</span>
+      <div class="case-top">
+        <span class="case-tag">状況</span>
+        <div class="case-issue">採用が集まらない。求人を出しても応募がこない</div>
+      </div>
+      <span class="case-tag-sol">できること</span>
+      <div class="case-sol">求人票ではなく、会社の見せ方が問題です。WEBから採用を変えます。</div>
+    </div>
+    <div class="case-card">
+      <span class="case-n">08</span>
+      <div class="case-top">
+        <span class="case-tag">状況</span>
+        <div class="case-issue">制作会社に発注したいが、何を頼めばいいかわからない</div>
+      </div>
+      <span class="case-tag-sol">できること</span>
+      <div class="case-sol">何を頼むかが整理できれば、発注は怖くありません。その整理から一緒にやります。</div>
+    </div>
+  </div>
+</section>
+
+<div style="text-align:center;padding:40px var(--H);background:var(--gm);">
+  <a href="#contact-form" style="display:inline-flex;align-items:center;gap:10px;padding:16px 40px;background:var(--green);color:#fff;text-decoration:none;font-family:'Shippori Mincho',serif;font-size:.95rem;font-weight:500;letter-spacing:.08em;border-radius:1px;">初回30分・無料相談を予約する →</a>
+  <p style="margin-top:10px;font-size:.78rem;color:var(--tx2);font-family:'Cormorant Garamond',serif;font-style:italic;letter-spacing:.1em;">勧誘なし · 全国オンライン対応</p>
+</div>
+
+<!-- WHY US -->
+<section class="sec sec-bg-white">
+  <div class="sec-header">
+    <span class="lbl">Why Us</span>
+    <h2 class="ttl">なぜ、制作会社でも<br><b>コンサル会社でもないのか。</b></h2>
+  </div>
+  <div class="strength-grid">
+    <div class="strength-item">
+      <span class="s-num">15+</span>
+      <div class="s-title">大手ITでの実戦経験</div>
+      <div class="s-body">大手IT企業で15年以上、サービスを育て続けました。教科書の話ではなく、現場で積んだ視点で話します。</div>
+    </div>
+    <div class="strength-item">
+      <span class="s-num">→</span>
+      <div class="s-title">「何が問題かわからない」から始められる</div>
+      <div class="s-body">「何が問題かわからない」が一番よくある状態です。そこから始めます。</div>
+    </div>
+    <div class="strength-item">
+      <span class="s-num">MBA</span>
+      <div class="s-title">事業戦略まで一気通貫</div>
+      <div class="s-body">サイトの改善は手段です。何のためのサイトか、そこから考えます。</div>
+    </div>
+    <div class="strength-item">
+      <span class="s-num">AI</span>
+      <div class="s-title">AIを使って自分で作れる</div>
+      <div class="s-body">提案だけではなく、実際に動くものを作れます。AIを使いながら、速く、安く。</div>
+    </div>
+    <div class="strength-item">
+      <span class="s-num">UX</span>
+      <div class="s-title">デザイン・UIUXの現場を知っている</div>
+      <div class="s-body">デザイナー出身だから、きれいなサイトと成果が出るサイトの違いがわかります。</div>
+    </div>
+    <div class="strength-item">
+      <span class="s-num">神戸</span>
+      <div class="s-title">神戸・関西に根ざした視点</div>
+      <div class="s-body">神戸にいます。東京の大手ではなく、話しかけやすい距離にいる専門家として。</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROFILE -->
+<section class="sec sec-bg-gm">
+  <div class="sec-header">
+    <span class="lbl">Who I Am</span>
+    <h2 class="ttl">やってきたことを、<br><b>そのまま活かします。</b></h2>
+  </div>
+  <div class="profile-card">
+    <div class="profile-img-wrap">
+      <img src="https://raw.githubusercontent.com/memetomamoru-maker/corp/main/images/mamoru.png" alt="池田直也">
+    </div>
+    <div class="profile-body">
+      <h3>池田 直也 <span style="font-weight:300;font-size:.9em;letter-spacing:.04em;">Naoya Ikeda</span></h3>
+      <span class="role">Nudge Rogue KOBE 代表 · MBA</span>
+      <p>デザイナーからスタートし、企画・事業企画・PMへ。大手IT企業で15年以上、サービスを育て続けました。作ることも、数字を動かすことも、現場でやってきました。</p>
     </div>
   </div>
 </section>
@@ -593,75 +650,52 @@ footer{
 <section class="sec sec-bg-white">
   <div class="sec-header">
     <span class="lbl">Plans &amp; Pricing</span>
-    <h2 class="ttl">課題の深さに合わせて<br><b>選べる6つのプラン</b></h2>
+    <h2 class="ttl">まず話してから、<br><b>決めてください。</b></h2>
   </div>
-  <div class="price-grid">
+  <div class="price-grid" style="grid-template-columns:repeat(2,1fr);">
 
     <div class="price-card featured">
-      <div class="pc-label">まずここから・初回無料</div>
+      <div class="pc-label">まずここから</div>
       <div class="pc-name">壁打ち診断</div>
-      <div class="pc-detail">初回30分 無料 ／ 以降45分 ／ オンライン</div>
-      <div class="pc-price"><span class="pc-was">¥15,000</span>¥10,000</div>
-      <div class="pc-save">¥5,000オフ・創業記念価格</div>
-      <div class="pc-desc">「何が問題かわからない」状態の整理に最適。15年の視点で課題を言語化します。初回ヒアリング30分は無料です。</div>
-    </div>
-
-    <div class="price-card">
-      <div class="pc-label">単発で同席・確認したい</div>
-      <div class="pc-name">広告MTG同席診断</div>
-      <div class="pc-detail">1回 ／ オンライン同席 ／ FB資料付き</div>
-      <div class="pc-price"><span class="pc-was">¥50,000</span>¥44,000</div>
-      <div class="pc-save">¥6,000オフ・創業記念価格</div>
-      <div class="pc-desc">広告代理店とのMTGに同席し、提出資料をもとに第三者視点でフィードバックします。広告費が適切に使われているか、費用対効果は妥当かを一緒に確認します。
-        <div class="case-example"><span class="case-ex-label">例）</span>月次レポートのCPA・CTRが改善しているように見えるが本当に効果が出ているのか確認したい、という飲食チェーン運営会社の担当者の方。MTG同席＋診断レポートを組み合わせてご依頼。</div>
-      </div>
+      <div class="pc-detail">45分 ／ オンライン ／ 初回30分無料</div>
+      <div class="pc-price">¥15,000</div>
+      <div class="pc-desc">「何が問題かわからない」が一番よくある状態です。話すことで整理されます。初回30分は無料です。</div>
     </div>
 
     <div class="price-card">
       <div class="pc-label">成果物として受け取る</div>
-      <div class="pc-name">スポット診断レポート</div>
-      <div class="pc-detail">PDF納品 ／ 約1週間</div>
-      <div class="pc-price"><span class="pc-was">¥80,000</span>¥72,000</div>
-      <div class="pc-save">¥8,000オフ・創業記念価格</div>
-      <div class="pc-desc">UI/UX・マネタイズ・導線設計を総合診断。改善の優先順位と具体的な提案をPDFで納品します。
-        <div class="case-example"><span class="case-ex-label">例）</span>採用サービスのLPを自社制作したがCVRが低い、という人材系スタートアップの方。スポット診断レポート＋壁打ち診断を組み合わせてご依頼。</div>
-      </div>
+      <div class="pc-name">サイト診断レポート</div>
+      <div class="pc-detail">PDF納品 ／ 約1週間 ／ オンライン</div>
+      <div class="pc-price">¥80,000</div>
+      <div class="pc-desc">UI/UX・導線・マネタイズを診断し、改善の優先順位と具体的な提案をPDFで納品します。発注前の整理にも使えます。</div>
     </div>
 
     <div class="price-card">
-      <div class="pc-label">継続的に伴走する</div>
+      <div class="pc-label">月次で伴走する</div>
       <div class="pc-name">月次コンサルティング</div>
-      <div class="pc-detail">月1回面談 ／ テキスト相談込み</div>
-      <div class="pc-price"><span class="pc-was">¥50,000</span>¥44,000<small> /月</small></div>
-      <div class="pc-save">¥6,000オフ・創業記念価格</div>
-      <div class="pc-desc">月1回の面談で現状レビュー・改善施策の立案・優先順位整理を行います。「何をすべきか」を毎月明確にしたい方向け。実行は社内で行う前提のプランです。</div>
-    </div>
-
-    <div class="price-card featured">
-      <div class="pc-label">おすすめ ／ 社内に専門家がいない方へ</div>
-      <div class="pc-name">Webマーケ壁打ち顧問</div>
-      <div class="pc-detail">月2回面談 ／ テキスト相談無制限 ／ MTG同席1回/月含む<br><span style="font-size:.82em;color:var(--tx2);">最低契約3ヶ月 ／ 以降1ヶ月単位で継続・解約可</span></div>
-      <div class="pc-price">¥200,000<small> /月〜</small></div>
-      <div class="pc-save">詳細・ご予算はお気軽にご相談ください</div>
-      <div class="pc-desc">月次コンサルとの違いは「深さと速さ」です。テキスト相談無制限で意思決定をリアルタイムでサポート。広告MTGへの同席・代理店への対応・数字の解釈まで、社内に専門家がいる状態をつくります。<br><br>「月1回では間に合わない」「判断を一人で抱えている」という方に。
-        <div class="case-example"><span class="case-ex-label">例）</span>社内にWebマーケの担当者がおらず、制作会社・広告代理店・SNS運用をそれぞれ別に外注していて、全体を見渡せる人間がいない、というEC事業者の方。壁打ち顧問＋広告MTG同席を組み合わせてご依頼。</div>
-      </div>
+      <div class="pc-detail">月1回面談60分 ／ チャット相談込み ／ オンライン</div>
+      <div class="pc-price">¥50,000<small> /月</small></div>
+      <div class="pc-desc">月1回、何をすべきかを整理します。実行は社内でやる前提。判断の精度を上げるためのプランです。</div>
     </div>
 
     <div class="price-card">
-      <div class="pc-label">その他・なんでもご相談を</div>
-      <div class="pc-name">カスタム対応</div>
-      <div class="pc-detail">内容・規模によりご相談 ／ オンライン</div>
-      <div class="pc-price" style="font-size:2rem;line-height:1.4;padding-top:8px;">要相談</div>
-      <div class="pc-save">まずはお気軽にどうぞ</div>
-      <div class="pc-desc">上記プランに当てはまらないお困りごとも、柔軟に対応します。「どのプランが合うかわからない」「複数組み合わせたい」「予算が合わない」など、状況をお聞きした上でオーダーメイドでご提案します。</div>
-      <div style="margin-top:auto;padding-top:24px;">
-        <a href="#contact-form" class="pc-cta-link">無料ヒアリングを予約する →</a>
-      </div>
+      <div class="pc-label">深く・継続的に関わる</div>
+      <div class="pc-name">月次伴走プラン</div>
+      <div class="pc-detail">月2回面談 ／ チャット相談無制限<br><span style="font-size:.82em;color:var(--tx2);">最低3ヶ月 ／ 以降1ヶ月単位で継続・解約可</span></div>
+      <div class="pc-price" style="font-size:2rem;line-height:1.4;">要相談</div>
+      <div class="pc-desc">判断を一人で抱えている方に。チャット無制限で、意思決定をリアルタイムでサポートします。</div>
+    </div>
+
+    <div class="price-card featured" style="grid-column:1/-1;">
+      <div class="pc-label">長期的なパートナーとして</div>
+      <div class="pc-name">事業成長パートナー契約</div>
+      <div class="pc-detail">月次MTG ／ チャット相談無制限 ／ 長期継続前提<br><span style="font-size:.82em;color:var(--tx2);">※ お受けできる人数に限りがあります。お断りする場合があります。</span></div>
+      <div class="pc-price" style="font-size:2rem;line-height:1.4;">要相談</div>
+      <div class="pc-desc">WEBを起点に、事業の伸ばし方を長期で一緒に考えます。「信頼できる外部の人間を一人持ちたい」という方へ。お受けできる数を絞っています。</div>
     </div>
 
   </div>
-  <p class="price-note">※ 初回ヒアリング（30分）は無料です。プランはヒアリング後にゆっくり決めてください。<br>※ 対面をご希望の方はスケジュール調整の上お伺いします（交通費実費をご負担ください）。</p>
+  <p class="price-note">※ 初回ヒアリング（30分）は無料です。プランはヒアリング後にゆっくり決めてください。<br>※ 上記プランに当てはまらない場合もお気軽にご相談ください。内容に合わせてオーダーメイドで対応します。</p>
 </section>
 
 <!-- FLOW -->
@@ -675,39 +709,21 @@ footer{
       <div class="flow-n">01</div>
       <div class="flow-badge">無料</div>
       <div class="flow-title">お問い合わせ</div>
-      <div class="flow-sub">フォームからご連絡ください。「何を相談すればいいかわからない」でも大丈夫です。</div>
+      <div class="flow-sub">フォームから送ってください。「何を話せばいいかわからない」でも構いません。</div>
       <span class="flow-arrow">→</span>
     </div>
     <div class="flow-item">
       <div class="flow-n">02</div>
       <div class="flow-badge">30分 · 無料</div>
       <div class="flow-title">初回ヒアリング</div>
-      <div class="flow-sub">現状と課題を簡単にお聞きします。どのプランが合うか一緒に確認します。</div>
+      <div class="flow-sub">現状を聞かせてください。どのプランが合うか、一緒に決めます。</div>
       <span class="flow-arrow">→</span>
     </div>
     <div class="flow-item">
       <div class="flow-n">03</div>
       <div class="flow-badge">あなたが選ぶ</div>
       <div class="flow-title">プランを選んで開始</div>
-      <div class="flow-sub">壁打ち・レポート・月次コンサル。初回後にゆっくり決めてください。</div>
-    </div>
-  </div>
-</section>
-
-<!-- PROFILE -->
-<section class="sec sec-bg-white">
-  <div class="sec-header">
-    <span class="lbl">Who I Am</span>
-    <h2 class="ttl">大手ITの現場経験を、<br><b>そのまま活かします。</b></h2>
-  </div>
-  <div class="profile-card">
-    <div class="profile-img-wrap">
-      <img src="https://raw.githubusercontent.com/memetomamoru-maker/corp/main/images/mamoru.png" alt="池田直也">
-    </div>
-    <div class="profile-body">
-      <h3>池田 直也 <span style="font-weight:300;font-size:.9em;letter-spacing:.04em;">Naoya Ikeda</span></h3>
-      <span class="role">Nudge Rogue KOBE 代表 · MBA · FP</span>
-      <p>デザイナーからキャリアをスタートし、企画・マーケティング・PMへ。LINEヤフーで15年以上、大規模Webサービスの立ち上げに複数参画。UI/UX設計・グロース・プロジェクトマネジメントを実務で担当してきました。FP資格も保有しており、収益設計まで一気通貫で対応できます。</p>
+      <div class="flow-sub">話を聞いてから、ゆっくり選んでください。</div>
     </div>
   </div>
 </section>
@@ -716,8 +732,8 @@ footer{
 <div class="cta-sec">
   <div class="cta-inner">
     <span class="cta-eyebrow">Ready to start?</span>
-    <h2>「何が問題かわからない」<br>その状態こそ、<br>相談のタイミングです。</h2>
-    <p>課題が整理できていなくても大丈夫。<br>壁打ち診断で、何から手をつければいいかが見えてきます。</p>
+    <h2>「何が問題かわからない」<br>それが、一番よくある相談の入口です。</h2>
+    <p>話すことで、見えてくることがあります。<br>まず30分、試してください。</p>
     <a href="#contact-form" class="cta-btn">無料相談を予約する</a>
     <span class="cta-sub">初回ヒアリング30分・無料 · 全国オンライン対応</span>
   </div>
@@ -730,7 +746,7 @@ footer{
       <span class="lbl">Contact</span>
       <h2 class="ttl">お問い合わせ</h2>
     </div>
-    <p class="form-lead">「まだ課題が整理できていない」「どのプランか迷っている」。そのままフォームに書いて送ってください。通常2営業日以内にご返信します。</p>
+    <p class="form-lead">「まだ整理できていない」で構いません。そのまま書いて送ってください。2営業日以内に返信します。</p>
     <div id="form-success" class="form-success">
       <h3>送信が完了しました</h3>
       <p>通常2営業日以内にご返信します。<br>しばらくお待ちください。</p>
@@ -749,6 +765,10 @@ footer{
         <input type="url" id="furl" placeholder="https://example.com">
       </div>
       <div class="frow">
+        <label>貴社サイトのURL（あれば）</label>
+        <input type="url" id="furl" placeholder="https://example.com">
+      </div>
+      <div class="frow">
         <label>相談内容</label>
         <select id="ftype">
           <option value="">選択してください</option>
@@ -761,7 +781,7 @@ footer{
       </div>
       <div class="frow">
         <label>現状と課題・ご希望など</label>
-        <textarea id="fmsg" placeholder="「成果が出ているのかどうかもわからない」でも大丈夫です。気軽に書いてください。"></textarea>
+        <textarea id="fmsg" placeholder="「成果が出ているのかどうかもわからない」でも構いません。気軽に書いてください。"></textarea>
       </div>
       <button class="form-btn" onclick="submitForm()">送信する</button>
     </div>

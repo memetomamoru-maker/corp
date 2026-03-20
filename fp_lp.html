@@ -9,14 +9,14 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --ink:#1a2820; --green:#4a8c65; --green-d:#3d7050;
-  --gp:#c8d8c0; --gm:#edf4ef; --cream:#f6f2eb;
-  --white:#fff; --tx:#2c3830; --tx2:#6b7c6f;
+  --ink:#1a2820; --green:#3d7a58; --green-d:#3d7050;
+  --gp:#b8ccb8; --gm:#edf4ef; --cream:#f6f2eb;
+  --white:#fff; --tx:#2c3830; --tx2:#4a5a4e;
   --H:clamp(24px,6vw,88px);
 }
 html{overflow-x:hidden;scroll-behavior:smooth;}
-body{font-family:'Noto Serif JP',serif;font-size:18px;
-  background:var(--cream);color:var(--tx);line-height:2.0;overflow-x:hidden;}
+body{font-family:'Noto Serif JP',serif;font-size:17px;
+  background:var(--cream);color:var(--tx);line-height:1.85;overflow-x:hidden;}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;
@@ -76,7 +76,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;
   font-family:'Cormorant Garamond',serif;font-style:italic;letter-spacing:.14em;}
 
 /* SECTION BASE */
-.sec{padding:104px var(--H);}
+.sec{padding:88px var(--H);}
 .sec-bg-white{background:var(--white);}
 .sec-bg-cream{background:var(--cream);}
 .sec-bg-gm{background:var(--gm);}
@@ -102,8 +102,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;
 .lbl::before{content:'';display:block;width:28px;height:1px;
   background:var(--green);flex-shrink:0;}
 .ttl{font-family:'Shippori Mincho',serif;
-  font-size:clamp(1.95rem,3.8vw,2.80rem);
-  font-weight:500;line-height:1.7;color:var(--ink);letter-spacing:.04em;}
+  font-size:clamp(1.75rem,3.2vw,2.40rem);
+  font-weight:500;line-height:1.6;color:var(--ink);letter-spacing:.04em;}
 .ttl b{font-weight:700;}
 .sec-lead{margin-top:20px;font-size:.98rem;
   line-height:2.3;color:var(--tx2);max-width:580px;}
@@ -113,7 +113,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;
   gap:1px;background:var(--gp);margin-top:4px;}
 .case-card {
   background:var(--cream);
-  padding:44px 40px;
+  padding:36px 32px;
   transition:box-shadow .25s, transform .25s, border-left-color .25s;
   position:relative;
   border-left:3px solid transparent;
@@ -132,12 +132,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;
 .case-divider::before{content:'';display:block;width:20px;height:1px;background:var(--green);}
 .case-divider-label{font-family:'Cormorant Garamond',serif;font-size:.88rem;
   font-style:italic;letter-spacing:.18em;color:var(--green);font-weight:600;}
-.case-sol{font-size:.96rem;line-height:2.2;color:var(--tx2);}
+.case-sol{font-size:.96rem;line-height:2.0;color:var(--tx2);}
 
 /* PRICE */
 .price-grid{display:grid;grid-template-columns:repeat(2,1fr);
   gap:16px;margin-top:4px;}
-.price-card{padding:40px 32px;border:1px solid var(--gp);
+.price-card{padding:32px 28px;border:1px solid var(--gp);
   border-radius:3px;background:var(--gm);position:relative;}
 .price-card.featured{background:var(--white);border-color:var(--green);
   box-shadow:0 4px 32px rgba(74,140,101,.12);}
@@ -161,7 +161,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;
 
 /* FLOW */
 .flow-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:4px;}
-.flow-item{padding:40px 32px;background:var(--white);
+.flow-item{padding:32px 24px;background:var(--white);
   border:1px solid var(--gp);text-align:center;}
 .flow-step{width:48px;height:48px;border-radius:50%;
   border:1px solid var(--gp);background:var(--white);
@@ -194,7 +194,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;
 
 /* PROFILE */
 .profile-card{display:grid;grid-template-columns:auto 1fr;
-  gap:48px;align-items:start;padding:52px 48px;
+  gap:40px;align-items:start;padding:40px 44px;
   background:var(--white);border:1px solid var(--gp);
   border-radius:3px;margin-top:4px;}
 .profile-img{width:120px;height:120px;border-radius:50%;
@@ -287,7 +287,7 @@ footer{background:#0f1d15;padding:36px var(--H);display:flex;align-items:center;
   .profile-card{grid-template-columns:1fr;gap:24px;padding:32px 24px;}
   .case-card {
   background:var(--cream);
-  padding:44px 40px;
+  padding:36px 32px;
   transition:box-shadow .25s, transform .25s, border-left-color .25s;
   position:relative;
   border-left:3px solid transparent;
@@ -318,8 +318,8 @@ footer{background:#0f1d15;padding:36px var(--H);display:flex;align-items:center;
 <section class="lp-hero">
   <div class="hero-inner">
     <div class="hero-eyebrow">Financial Planning — Fee Only</div>
-    <h1 class="hero-h1">お金の相談を、<br><em>どこにすればいいか</em><br>わからない。</h1>
-    <p class="hero-sub">FPに行けば保険を勧められる。友人には話しにくい。<br>そんなあなたのために、何も売らないFPがここにいます。</p>
+    <h1 class="hero-h1">お金の話、<br><em>誰にすればいいか</em><br>わからない。</h1>
+    <p class="hero-sub">FPに行けば保険を勧められる。友人には話しにくい。<br>何も売らない人間が、ここにいます。</p>
     <div class="hero-actions">
       <a href="#contact-form" class="hero-btn">まず30分、話してみる</a>
       <span class="hero-note">初回30分無料 · 準備不要 · 全国オンライン対応</span>
@@ -331,7 +331,7 @@ footer{background:#0f1d15;padding:36px var(--H);display:flex;align-items:center;
 <section class="sec sec-bg-white">
   <div class="sec-header">
     <div class="lbl">Use Cases</div>
-    <h2 class="ttl">こんな状況、<br><b>心当たりはありませんか。</b></h2>
+    <h2 class="ttl">こんな悩み、<br><b>一人で抱えていませんか。</b></h2>
   </div>
   <div class="cases-grid">
     <div class="case-card">
@@ -339,42 +339,64 @@ footer{background:#0f1d15;padding:36px var(--H);display:flex;align-items:center;
       <span class="case-tag">FP不信</span>
       <div class="case-issue">FPに相談したら、結局保険の話になった</div>
       <div class="case-divider"><span class="case-divider-label">できること</span></div>
-      <div class="case-sol">報酬は相談料のみ。保険も投資信託も売りません。あなたの利益だけを考えたアドバイスを、構造として保証します。</div>
+      <div class="case-sol">売るものがないから、正直に話せます。あなたの利益だけを考えます。</div>
     </div>
     <div class="case-card">
       <span class="case-n">02</span>
       <span class="case-tag">FIRE試算</span>
       <div class="case-issue">サイドFIREしたいが、本当にできるか数字が見えない</div>
       <div class="case-divider"><span class="case-divider-label">できること</span></div>
-      <div class="case-sol">現在の資産・収支をもとに、FIRE達成時期・必要資産額・取り崩し戦略をシミュレーション。サイドFIRE実現者として実感のある言葉でお伝えします。</div>
+      <div class="case-sol">実際にサイドFIREを実現した人間が、あなたの数字で試算します。</div>
     </div>
     <div class="case-card">
       <span class="case-n">03</span>
       <span class="case-tag">漠然とした不安</span>
       <div class="case-issue">将来が不安で、何から始めればいいかわからない</div>
       <div class="case-divider"><span class="case-divider-label">できること</span></div>
-      <div class="case-sol">「なんとなく不安」で十分です。話すことで、自分でも気づいていなかった問題が整理されることがあります。まず壁打ちから。</div>
+      <div class="case-sol">「なんとなく不安」で十分です。話すことで整理されます。</div>
     </div>
     <div class="case-card">
       <span class="case-n">04</span>
       <span class="case-tag">キャリア転換</span>
       <div class="case-issue">転職・独立を考えているが、資金面が心配</div>
       <div class="case-divider"><span class="case-divider-label">できること</span></div>
-      <div class="case-sol">転職・独立・副業開始のタイミングに合わせた資産配置・キャッシュフローの見直しをサポートします。</div>
+      <div class="case-sol">タイミングとお金の準備を整理します。</div>
     </div>
     <div class="case-card">
       <span class="case-n">05</span>
       <span class="case-tag">セカンドオピニオン</span>
       <div class="case-issue">他のFPや証券会社の提案が、本当に正しいか確認したい</div>
       <div class="case-divider"><span class="case-divider-label">できること</span></div>
-      <div class="case-sol">他のFPや証券会社から受けた提案を、利害関係のない中立な立場から評価・検証します。</div>
+      <div class="case-sol">利害関係のない人間が、第三者として見ます。</div>
     </div>
     <div class="case-card">
       <span class="case-n">06</span>
       <span class="case-tag">誰にも話せない</span>
       <div class="case-issue">家族にも友人にも話せないお金の悩みがある</div>
       <div class="case-divider"><span class="case-divider-label">できること</span></div>
-      <div class="case-sol">守秘義務のもと、正直に向き合います。「こんなこと相談していいのか」という内容でも大丈夫です。</div>
+      <div class="case-sol">どんな内容でも構いません。守秘義務のもと、正直に話します。</div>
+    </div>
+  </div>
+</section>
+
+<div style="text-align:center;padding:40px var(--H);background:var(--gm);">
+  <a href="#contact-form" style="display:inline-flex;align-items:center;gap:10px;padding:16px 40px;background:var(--green);color:#fff;text-decoration:none;font-family:'Shippori Mincho',serif;font-size:.95rem;font-weight:500;letter-spacing:.08em;border-radius:2px;">まず30分、話してみる →</a>
+  <p style="margin-top:10px;font-size:.78rem;color:var(--tx2);font-family:'Cormorant Garamond',serif;font-style:italic;letter-spacing:.1em;">初回30分無料 · 勧誘なし · 全国オンライン対応</p>
+</div>
+
+<!-- PROFILE -->
+<section class="sec sec-bg-gm">
+  <div class="sec-header">
+    <div class="lbl">Who I Am</div>
+    <h2 class="ttl">やってきた人間が、<br><b>話します。</b></h2>
+  </div>
+  <div class="profile-card">
+    <img class="profile-img" src="https://raw.githubusercontent.com/memetomamoru-maker/corp/main/images/mamoru.png" alt="池田直也">
+    <div>
+      <div class="profile-name">池田 直也</div>
+      <div class="profile-name-en">Naoya Ikeda</div>
+      <div class="profile-role">Nudge Rogue KOBE 代表 · MBA · FP</div>
+      <p class="profile-body">大手IT企業に15年以上勤め、FP資格を独学で取得。2026年にサイドFIREを実現しました。「FPに行ったら保険の話になった」。その経験がここに来ました。担当替えなし、代表が一貫して対応します。</p>
     </div>
   </div>
 </section>
@@ -383,7 +405,7 @@ footer{background:#0f1d15;padding:36px var(--H);display:flex;align-items:center;
 <section class="sec sec-bg-cream">
   <div class="sec-header">
     <div class="lbl">Plans & Pricing</div>
-    <h2 class="ttl">あなたのペースで<br><b>選べる4つのプラン</b></h2>
+    <h2 class="ttl">まず話してから、<br><b>決めてください。</b></h2>
     <p class="sec-lead">どれが合うかわからなければ、まず無料ヒアリングで一緒に確認します。</p>
   </div>
   <div class="price-grid">
@@ -393,7 +415,7 @@ footer{background:#0f1d15;padding:36px var(--H);display:flex;align-items:center;
       <div class="pc-detail">30分 · 単発 · オンライン</div>
       <div class="pc-price">¥5,000</div>
       <div class="pc-divider"></div>
-      <div class="pc-desc">「とりあえず話してみたい」。そのくらいの気軽さで使えます。FIRE試算・セカンドオピニオンの入口に。</div>
+      <div class="pc-desc">「とりあえず話してみたい」。それで十分です。</div>
     </div>
     <div class="price-card">
       <span class="pc-label">深く話したい</span>
@@ -401,7 +423,7 @@ footer{background:#0f1d15;padding:36px var(--H);display:flex;align-items:center;
       <div class="pc-detail">60分 · 単発 · オンライン</div>
       <div class="pc-price">¥10,000</div>
       <div class="pc-divider"></div>
-      <div class="pc-desc">資産整理・キャッシュフロー確認・キャリア転換の資金計画など、腰を据えて話したい方に。</div>
+      <div class="pc-desc">腰を据えて話したいときに。資産・キャッシュフロー・キャリアの資金計画まで。</div>
     </div>
     <div class="price-card">
       <span class="pc-label">成果物が欲しい</span>
@@ -409,7 +431,7 @@ footer{background:#0f1d15;padding:36px var(--H);display:flex;align-items:center;
       <div class="pc-detail">成果物納品 · 約1週間</div>
       <div class="pc-price">¥30,000</div>
       <div class="pc-divider"></div>
-      <div class="pc-desc">FIRE達成時期・必要資産額・取り崩し戦略を詳細シミュレーション。PDF形式で納品します。</div>
+      <div class="pc-desc">あなたの数字でFIREを試算します。達成時期・必要額・取り崩し戦略をPDFで納品。</div>
     </div>
     <div class="price-card">
       <span class="pc-label">継続して伴走</span>
@@ -417,7 +439,7 @@ footer{background:#0f1d15;padding:36px var(--H);display:flex;align-items:center;
       <div class="pc-detail">月1回60分 + テキスト相談</div>
       <div class="pc-price">¥15,000<small> /月</small></div>
       <div class="pc-divider"></div>
-      <div class="pc-desc">月1回の面談＋月間テキスト相談。資産・生活の変化を継続して伴走します。</div>
+      <div class="pc-desc">月1回の面談とチャット相談で、変化を一緒に追います。</div>
     </div>
   </div>
   <div class="price-note">
@@ -437,19 +459,19 @@ footer{background:#0f1d15;padding:36px var(--H);display:flex;align-items:center;
       <div class="flow-step">01</div>
       <div class="flow-badge">まず無料で</div>
       <div class="flow-title">お問い合わせ</div>
-      <div class="flow-sub">フォームからご連絡ください。「何を話せばいいかわからない」でも大丈夫です。</div>
+      <div class="flow-sub">フォームから送ってください。「何を話せばいいかわからない」でも構いません。</div>
     </div>
     <div class="flow-item">
       <div class="flow-step">02</div>
       <div class="flow-badge">30分 · 無料</div>
       <div class="flow-title">初回ヒアリング</div>
-      <div class="flow-sub">状況を簡単にお聞きし、どのプランが合うか一緒に確認します。勧誘は一切ありません。</div>
+      <div class="flow-sub">状況を聞かせてください。どのプランが合うか一緒に確認します。勧誘はありません。</div>
     </div>
     <div class="flow-item">
       <div class="flow-step">03</div>
       <div class="flow-badge">あなたが選ぶ</div>
       <div class="flow-title">プランを選んで開始</div>
-      <div class="flow-sub">壁打ち・じっくり相談・レポート・月次伴走。初回後にゆっくり決めてください。</div>
+      <div class="flow-sub">話を聞いてから、ゆっくり選んでください。</div>
     </div>
   </div>
 </section>
@@ -466,28 +488,28 @@ footer{background:#0f1d15;padding:36px var(--H);display:flex;align-items:center;
         <span>「無料相談」と書いてあるFPと何が違うのですか？</span>
         <span class="faq-icon">+</span>
       </button>
-      <div class="faq-a">一般的な「無料相談FP」は、保険や投資信託の手数料が収益源です。相談は無料でも、最終的に商品を購入してもらうことが前提になっています。Nudge Rogueは報酬を相談料のみとしており、商品の販売・紹介は一切しません。「売る理由がない」という構造が根本的に異なります。</div>
+      <div class="faq-a">一般的な「無料相談FP」は、保険や投資信託の手数料が収益源です。相談は無料でも、商品を買ってもらうことが前提にあります。Nudge Rogueは相談料のみが収益です。売る理由がない、という構造が違います。</div>
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">
         <span>FIREに興味がなくても相談できますか？</span>
         <span class="faq-icon">+</span>
       </button>
-      <div class="faq-a">もちろんです。「独立・転職の資金計画を立てたい」「お金の不安を整理したい」「将来のキャッシュフローを確認したい」など、FIREに限らずお金と人生の選択に関わる相談であればお受けしています。</div>
+      <div class="faq-a">FIREに限りません。「独立の資金計画」「お金の不安を整理したい」「将来のキャッシュフローを確認したい」など、お金と人生の選択に関わることであれば。</div>
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">
         <span>1回だけ相談して、継続しなくても失礼ではないですか？</span>
         <span class="faq-icon">+</span>
       </button>
-      <div class="faq-a">まったく問題ありません。1回で整理がついてそれで十分という方も多くいます。「継続しないと申し訳ない」という気持ちは不要です。強制も期待もしていません。</div>
+      <div class="faq-a">1回で十分という方も多くいます。「継続しないと申し訳ない」という気持ちは要りません。</div>
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">
         <span>相談前に何を準備すればいいですか？</span>
         <span class="faq-icon">+</span>
       </button>
-      <div class="faq-a">特別な準備は不要です。「なんとなく不安」という状態でも大丈夫です。ただ、資産状況（預貯金・投資額など）や月々の収支をざっくり把握していると、より具体的なお話ができます。</div>
+      <div class="faq-a">準備は不要です。ただ、資産や収支をざっくり把握していると、より具体的に話せます。</div>
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">
@@ -506,28 +528,11 @@ footer{background:#0f1d15;padding:36px var(--H);display:flex;align-items:center;
   </div>
 </section>
 
-<!-- PROFILE -->
-<section class="sec sec-bg-gm">
-  <div class="sec-header">
-    <div class="lbl">Who I Am</div>
-    <h2 class="ttl">サイドFIRE実現者が、<br><b>担当します。</b></h2>
-  </div>
-  <div class="profile-card">
-    <img class="profile-img" src="https://raw.githubusercontent.com/memetomamoru-maker/corp/main/images/mamoru.png" alt="池田直也">
-    <div>
-      <div class="profile-name">池田 直也</div>
-      <div class="profile-name-en">Naoya Ikeda</div>
-      <div class="profile-role">Nudge Rogue KOBE 代表 · FP · MBA</div>
-      <p class="profile-body">LINEヤフーで15年以上勤務後、FP資格を独学で取得し、2026年にサイドFIREを実現。「FPに行ったら保険の話になった」という自身の経験が、この事業の原点です。担当替えなし。代表・池田が一貫して対応します。</p>
-    </div>
-  </div>
-</section>
-
 <!-- MID CTA -->
 <div class="mid-cta">
   <div class="mid-cta-inner">
-    <h2>「誰に相談すればいいか<br>わからない」<br><em>その一言で十分です。</em></h2>
-    <p>準備不要。資料不要。まず30分、話してみてください。<br>保険も投資信託も売りません。あなたの話を、ただ一緒に考えます。</p>
+    <h2>「誰に相談すれば<br>いいかわからない」<br><em>それで十分です。</em></h2>
+    <p>準備も資料も要りません。まず30分、話してみてください。</p>
     <a href="#contact-form" class="cta-btn">まず30分、話してみる</a>
     <span class="cta-sub">完全無料 · 勧誘なし · オンライン対応</span>
   </div>
@@ -540,7 +545,7 @@ footer{background:#0f1d15;padding:36px var(--H);display:flex;align-items:center;
       <div class="lbl">Contact</div>
       <h2 class="ttl">お問い合わせ</h2>
     </div>
-    <p class="form-lead">「まだ相談内容が決まっていない」「どのプランか迷っている」。そのままフォームに書いて送ってください。通常2営業日以内にご返信します。</p>
+    <p class="form-lead">「まだ決まっていない」で構いません。そのまま書いて送ってください。2営業日以内に返信します。</p>
     <div id="form-success" class="form-success">
       <h3>送信が完了しました</h3>
       <p>通常2営業日以内にご返信します。しばらくお待ちください。</p>
@@ -567,7 +572,7 @@ footer{background:#0f1d15;padding:36px var(--H);display:flex;align-items:center;
       </div>
       <div class="frow">
         <label>メッセージ・ご希望の日程など</label>
-        <textarea id="fmsg" placeholder="「なんとなく不安」でも大丈夫です。気軽に書いてください。"></textarea>
+        <textarea id="fmsg" placeholder="「なんとなく不安」でも構いません。気軽に書いてください。"></textarea>
       </div>
       <button class="form-btn" onclick="submitForm()">送信する</button>
     </div>
